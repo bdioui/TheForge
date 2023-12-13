@@ -1,0 +1,304 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Balises pour référencement naturel -->
+    <meta name="description" content="Une Équipe de développement informatique spécialisée dans l'intelligence artificielle. Offrant des solutions innovantes pour les défis technologiques de demain.">
+    <meta name="keywords" content="développement informatique, intelligence artificielle, IA, solutions technologiques, innovation, Web3, Informatique">
+    <meta name="author" content="The Forge">
+
+    <!-- Balises Open Graph pour les réseaux sociaux (remplacez les valeurs par les vôtres) -->
+    <meta property="og:title" content="The Forge">
+    <meta property="og:description" content="Une Équipe de développement informatique spécialisée dans l'intelligence artificielle. Offrant des solutions innovantes pour les défis technologiques de demain.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="www.theforge.fr">
+    <meta property="og:image" content="URL de l'image à afficher sur les réseaux sociaux">
+
+    <!-- Balises Twitter Card pour Twitter (remplacez les valeurs par les vôtres) -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@votrecompte">
+    <meta name="twitter:title" content="Nom de votre entreprise">
+    <meta name="twitter:description" content="Entreprise de développement informatique de pointe spécialisée dans l'intelligence artificielle. Offrant des solutions innovantes pour les défis technologiques du futur.">
+    <meta name="twitter:image" content="URL de l'image à afficher sur Twitter">
+
+    <!-- Favicon -->
+     <link rel="icon" href="{% static 'Logos/Icones/Icones_vert.png' %}" type="image/x-icon">
+
+    <title>Bienvenue chez The Forge </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="{% static 'css/about.css' %}" rel="stylesheet">
+
+  </head>
+  <body style="background-color:#014948 !important; color:#FFC98A !important">
+
+  <header>
+  <!-- Barre de navigation -->
+  <div class="container">
+    <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-green" id="mainNavbar" style="background-color:#014948 !important; color:#FFC98A !important;">
+      <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="{% static 'Logos/Principal/Principal_beige.svg' %}" alt="Logo The Forge" width="150">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse m-auto" id="navbarNavDropdown">
+        <ul class="navbar-nav m-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'Main:index' %}">Accueil</a>
+          </li>
+          <!-- Menu déroulant pour les services -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Services
+            </a>
+            <ul class="dropdown-menu" style="background-color:transparent; border-style:none;">
+              <li><a class="nav-link" href="{% url 'Main:ai' %}">Intelligence artificielle</a></li>
+              <li><a class="nav-link" href="{% url 'Main:cyber' %}">Cybersécurité</a></li>
+              <li><a class="nav-link" href="{% url 'Main:iot' %}">IOT et matériel embarqué</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Entreprise
+            </a>
+            <ul class="dropdown-menu" style="background-color:transparent; border-style:none;">
+              <li><a class="nav-link" href="{% url 'Main:about' %}">À propos</a></li>
+              <li><a class="nav-link" href="{% url 'Main:blog' %}">Blog</a></li>
+              <li><a class="nav-link" href="{% url 'Main:about' %}">FAQ</a></li>
+              <li><a class="nav-link" href="{% url 'Main:about' %}">Charte</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'Main:join' %}">Nous rejoindre</a>
+          </li>
+        </ul>
+          <a type="button" class="btn btn-outline-beige contact-item" href="{% url 'Main:contact' %}">Nous contacter</a>
+      </div>
+    </div>
+    </nav>
+  </div>
+</header>
+
+  <!-- Section services -->
+  <Main>
+    <!-- Section Hero -->
+    <section>
+      <div class="mt-5 container HeroContainer text-beige m-auto">
+        <div class="row justify-content-between align-items-center">
+          <div class="col-sm-12 col-md-6 display-2">The Forge</div>
+          <div class="col-sm-12 col-md-6 mt-4">
+            <p style="font-size:20px !important;">Chez The Forge, nous sommes animés par la conviction que le progrès technologique se réalise à travers une collaboration authentique et une recherche continue d'excellence. En valorisant la diversité des talents et des idées, nous parvenons à concevoir des solutions qui non seulement répondent aux défis actuels mais façonnent également un avenir numérique commun et responsable.</p>
+            <button class="btn btn-outline-beige">Travaillons ensemble</button>
+            <a href="#" class="text-beige ms-3">Rejoindre The Forge</a>
+          </div>
+        </div>
+          <img class='mt-5' src="{% static 'Assets/images/cinematic-image-of-people-working-in-a-start-up-bu-2022-09-07-00-09-49-utc.jpg' %}" alt="L'équipe de The Forge en session brainstorm" width="100%">
+      </div>
+    </section>
+    <!-- Section Hero -->
+
+   <!-- Section Notre vision -->
+    <section>
+      <div class="text-beige container text-whit mt-3" style="padding-bottom:60px !important">
+        <div class="row justify-content-between align-items-center">
+          <div class="col-sm-12 col-md-4 align-items-between">
+            <p class="display-2">Notre vision</p>
+            <p style="font-size:20px !important;">The Forge est guidée par la conviction que la collaboration est la clé de l'innovation. Nous valorisons le potentiel unique de chaque membre de notre équipe, et c'est ensemble que nous mobilisons nos compétences et notre créativité.</p>
+          </div>
+          <div class="col-sm-12 col-md-6">
+            <img src="{% static 'Assets/images/cinematic-image-of-people-working-in-a-start-up-bu-2022-09-07-00-05-40-utc.jpg' %}" width="100%">
+          </div>
+        </div>
+
+        <div class="row justify-content-between text-beige">
+          <div class="col-lg-4 col-md-4 col-sm-12 mt-3 p-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none" stroke-width="1px" stroke="#FBC88B"><path d="M28 44h-8A12 12 0 0 1 8 32h0a12 12 0 0 1 12-12h8M36 20h8a12 12 0 0 1 12 12h0a12 12 0 0 1-12 12h-8M20 32h24"/></svg>
+            <h3>Collaboration ouverte</h3>
+            <p>Favoriser une culture de collaboration ouverte où chaque membre de The Forge contribue activement pour atteindre le succès collectif.</p>
+          </div>
+
+          <div class="col-lg-4 col-md-4 col-sm-12 mt-3 p-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none" stroke-width="1px" stroke="#FBC88B"><path d="M30.28 44L29 28.27a1.85 1.85 0 0 0-3.32-1h0a1.85 1.85 0 0 0 1.48 3h9.74a1.85 1.85 0 0 0 1.48-3h0a1.85 1.85 0 0 0-3.32 1L33.72 44"/><path d="M37.41 44c0-5.41 4.35-10.27 6.6-13.66a14.34 14.34 0 0 0 2.38-8.81C46 14.35 41 8 32 8s-14.41 6.08-14.41 14.38a14.33 14.33 0 0 0 2.48 8.09c2.3 3.38 6.52 8.12 6.52 13.53M28 52a4 4 0 0 0 8 0"/><rect x="24" y="44" width="16" height="8" rx="3"/></svg>
+            <h3>Innovation Continue</h3>
+            <p>Encourager la créativité et rechercher de manière active des solutions novatrices pour dépasser constamment les attentes.</p>
+          </div>
+
+          <div class="col-lg-4 col-md-4 col-sm-12 mt-3 p-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none" stroke-width="1px" stroke="#FBC88B"><path d="M20 56h0a8 8 0 0 1-8-8V36l-4-4 4-4V16a8 8 0 0 1 8-8h0M44 8h0a8 8 0 0 1 8 8v12l4 4-4 4v12a8 8 0 0 1-8 8h0M20 32h4M30 32h4M40 32h4"/></svg>
+            <h3>Inclusion et diversité</h3>
+            <p>Promouvoir la diversité et l'inclusion en tant que force motrice, créant ainsi un environnement accueillant pour une variété de talents et stimulant la créativité et l'innovation.</p>
+          </div>
+
+          <div class="col-lg-4 col-md-4 col-sm-12 mt-3 p-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none" stroke-width="1px" stroke="#FBC88B"><path d="M15 49A24 24 0 0 1 32 8M49 15a24 24 0 0 1-17 41"/><path d="M15.03 40v8.97H8M48.97 24v-8.97H56"/></svg>
+            <h3>Impact Positif</h3>
+            <p>Aspirer à créer un impact positif, non seulement dans le domaine technologique, mais aussi dans la vie de nos clients, membres de l'équipe et de la communauté au sens large.</p>
+          </div>
+
+          <div class="col-lg-4 col-md-4 col-sm-12 mt-3 p-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none" stroke-width="1px" stroke="#FBC88B"><path d="M56 32l-8 8-8-8M32 56l-8-8 8-8M8 32l8-8 8 8M32 8l8 8-8 8M40 16H16M16 24v24M48 48H24M48 40V16"/></svg>
+            <h3>Partenariat à Long Terme</h3>
+            <p>Nous ne visons pas seulement des projets ponctuels, mais des partenariats à long terme. Nous investissons dans la croissance continue de nos clients en évoluant avec eux.</p>
+          </div>
+
+          <div class="col-lg-4 col-md-4 col-sm-12 mt-3 p-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none" stroke-width="1px" stroke="#FBC88B"><circle cx="32" cy="32" r="24"/><path d="M28 28l-4 12 12-4 4-12-12 4z"/></svg>            <h3>Éthique Professionnelle</h3>
+            <p>Nous nous engageons à maintenir les normes les plus élevées d'éthique professionnelle. L'intégrité, la responsabilité et le respect guident toutes nos interactions.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Section nos valeurs -->
+
+     <!-- Section Notre Engagement -->
+    <section>
+      <div class="text-beige container text-whit mt-3" style="padding-bottom:60px !important">
+        <div class="row justify-content-between align-items-center">
+          <div class="col-sm-12 col-md-6">
+            <img src="{% static 'Assets/images/cinematic-image-of-people-working-in-a-start-up-bu-2022-09-07-00-05-39-utc.jpg' %}" width="100%">
+          </div>
+          <div class="col-sm-12 col-md-4 align-items-between">
+            <p class="display-2">Notre engagement</p>
+            <p>The Forge s'engage fermement à établir les standards de l'excellence dans l'industrie technologique. Notre dévouement à la conformité IT et à la sécurité des données est sans faille, assurant que chaque solution respecte rigoureusement les normes et réglementations en vigueur. Nous honorons notre parole en matière de respect des délais, conscient que le temps de nos clients est précieux. </p>
+          </div>
+        </div>
+
+        <div class="row justify-content-between text-beige mt-5">
+          <div class="col-lg-4 col-md-4 col-sm-12 mt-3 p-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none" stroke-width="1px" stroke="#FBC88B"><path d="M8 12h48v40H8z"/><path d="M20 40l8-8-8-8M32 40h12"/></svg>            <h3>IT Compliance</h3>
+            <p>Nous nous engageons à respecter toutes les exigences de conformité informatique pertinentes. Nos pratiques et solutions sont alignées sur les normes réglementaires pour assurer une gestion informatique transparente et conforme.</p>
+          </div>
+
+          <div class="col-lg-4 col-md-4 col-sm-12 mt-3 p-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none" stroke-width="1px" stroke="#FBC88B"><path d="M20 28v-8a12 12 0 0 1 24 0v8H16a4 4 0 0 0-4 4v20a4 4 0 0 0 4 4h32a4 4 0 0 0 4-4V40"/><path d="M56 28L32 48l-8-8"/></svg>
+            <h3>Sécurité des Données</h3>
+            <p>La sécurité des données de nos clients est une priorité absolue. Nous mettons en place des mesures rigoureuses pour garantir la confidentialité et l'intégrité des données.</p>
+          </div>
+
+          <div class="col-lg-4 col-md-4 col-sm-12 mt-3 p-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none" stroke-width="1px" stroke="#FBC88B"><circle cx="32" cy="32" r="24"/><path d="M40 44l-8-12V16"/></svg>
+            <h3>Respect des délais</h3>
+            <p>Nous comprenons l'importance du temps pour nos clients. Notre engagement est de respecter les délais convenus, offrant ainsi des solutions fiables et ponctuelles.</p>
+          </div>
+
+          <div class="col-lg-4 col-md-4 col-sm-12 mt-3 p-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none" stroke-width="1px" stroke="#FBC88B"><path d="M24 10h32v12H24zM24 26h24v12H24zM24 42h12v12H24zM8 26h12v12H8z"/></svg>
+            <h3>Clarté et lisibilité du code</h3>
+            <p>Nous nous engageons à écrire un code dont la clarté et la lisibilité sont prioritaires, en utilisant des noms significatifs et une mise en forme cohérente. Notre code sera une documentation en soi, facilitant la compréhension pour l'ensemble de l'équipe.</p>
+          </div>
+
+          <div class="col-lg-4 col-md-4 col-sm-12 mt-3 p-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none" stroke-width="1px" stroke="#FBC88B"><ellipse cx="32" cy="32" rx="8" ry="24"/><ellipse cx="32" cy="32" rx="8" ry="24" transform="rotate(-60 31.999 31.996)"/><ellipse cx="32" cy="32" rx="24" ry="8" transform="rotate(-30 32.007 31.996)"/><circle cx="32" cy="32" r="2"/></svg>
+            <h3>Efficacité et performance</h3>
+            <p>Nous nous engageons à optimiser notre code pour une performance maximale, en évitant les inefficacités et en choisissant des algorithmes et des structures de données judicieux. Notre code sera efficace sans compromettre la qualité et la clarté. .</p>
+          </div>
+
+          <div class="col-lg-4 col-md-4 col-sm-12 mt-3 p-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none" stroke-width="1px" stroke="#FBC88B"><path d="M53.54 11.31v31.12c0 9.38-2.8 10.18-8.38 13.57h0L18 40.22c-8-4.58-7.37-7.58-7.57-14l27.15-15.53c7.98-4.58 10.18-2.59 15.96.62z"/><path d="M38.37 34.84l-12.76-7.39 27.93-16.14"/><path d="M10.45 26.26l27.92 16.16V27.9"/><path d="M32.46 31.42l12.7-7.55.01 32.13"/></svg>
+            <h3>Maintenabilité et extensibilité</h3>
+            <p>Nous nous engageons à créer un code maintenable à long terme, en favorisant la modularité et en suivant des bonnes pratiques de documentation, de tests et de gestion de version. Notre code évoluera facilement pour répondre aux besoins futurs.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Section notre engagement -->
+
+     <!-- Section Notre Engagement -->
+    <section>
+      <div class="text-beig pt-2 container borderTop text-whit mt-4" style="padding-bottom:60px !important">
+        <div class="display-1">
+          Travaillez avec The Forge et commencer à développer le numérique de demain.
+          <button class="btn btn-outline-beige w-100 mt-2" style="font-size:30px;">Travailler avec nous</button>
+        </div>
+      </div>
+    </section>
+    <!-- Section notre engagement -->
+
+
+  </Main>
+
+  <footer class="footer text-beige" style="margin-top:15rem; background-color:#014948;">
+  <div class="container text-beige borderTop">
+    <div class="row m-auto text-beige" style="padding-top:50px; padding-bottom:50px;">
+      <div class="col-md-3 mb-3 mb-md-0 text-beige">
+        <img src="{% static 'Logos/Principal/Principal_beige.svg' %}" alt="Logo" height="60">
+      </div>
+      <div class="col-md-2 mb-3 mb-md-0 text-beige">
+        <h5>The Forge</h5>
+        <ul class="list-unstyled">
+          <li><a href="#about" class="text-beige">À propos</a></li>
+          <li><a href="#blog" class="text-beige">Blog</a></li>
+          <li><a href="#faq" class="text-beige">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="col-md-2 mb-3 mb-md-0 text-beige">
+        <h5>Services</h5>
+        <ul class="list-unstyled">
+          <li><a href="#about" class="text-beige">Intelligence artificielle</a></li>
+          <li><a href="#blog" class="text-beige">Cybersécurité</a></li>
+          <li><a href="#faq" class="text-beige">IOT</a></li>
+        </ul>
+      </div>
+      <div class="col-md-2">
+        <h5>Nous rejoindre</h5>
+        <ul class="list-unstyled">
+          <li><a href="#" class="text-beige">Carrière</a></li>
+          <li><a href="#" class="text-beige">Notre équipe</a></li>
+        </ul>
+      </div>
+      <div class="col-md-2">
+        <h5>Nous contacter</h5>
+        <ul class="list-unstyled">
+          <li><a href="mailto:contact@theforge.fr" class="text-beige">contact@theforge.fr</a></li>
+          <li><a href="tel:0299123244" class="text-beige">02 99 12 32 44</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="borderTop row pt-3 justify-content-around m-auto">
+      <div class="col-6 flex-grow-1">
+        <address class="">
+          <strong>The Forge ltd</strong><br>
+          5 CRS DE VERDUN GENSOUL<br>
+          69002 LYON
+          <abbr title="Phone"></abbr> (123) 456-7890
+        </address>
+      </div>
+      <div class="col-6 align-items-end" style="text-align:right">
+         <a href="" class="text-beige unstyled" style="text-align:right; margin:0 !important; margin-bottom:0px !important;">Conditions générales d'utilisation</a><br>
+        <a href="" class="text-beige unstyled" style="text-align:right; margin:0 !important; margin-bottom:0px !important;">Mentions légales</a>
+      </div>
+    </div>
+  </div>
+    <img src="{% static 'Assets/Motifs/horizontale/footer_beige.png' %}" width="100%" style="">
+</footer>
+
+
+
+
+
+
+    <script>
+
+   document.addEventListener('DOMContentLoaded', function () {
+      var navbarToggler = document.querySelector('.navbar-toggler');
+      var navbar = document.querySelector('.navbar'); // Assurez-vous que cela cible le bon élément
+
+      navbarToggler.addEventListener('click', function() {
+        navbar.classList.toggle('navbar-open'); // Basculer la classe pour toute la navbar
+      });
+    });
+
+    </script>
+
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+
+  </body>
+</html>

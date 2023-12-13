@@ -1,0 +1,132 @@
+<style>
+
+      body {
+        background-color:#00000 !important;
+      }
+
+      .pointer {
+        cursor:pointer !important;
+      }
+
+      .borderTop {
+        border-style:solid none none none;
+        border-color:white;
+        border-width:1px;
+      }
+
+      .borderTopBottom {
+        border-style:solid none solid none;
+        border-color:white;
+        border-width:1px;
+      }
+
+      .navbar-shadow {
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      }
+
+      .nav-link {
+        color:white;
+        text-decoration:None;
+      }
+
+      .nav-item{
+        margin-left:70px;
+      }
+
+      .nav-link:hover {
+        color:white;
+        text-decoration:underline;
+      }
+
+      .MainTitle {
+          position:relative;
+          top:55%;
+          left:0%;
+      }
+
+      .contact-item{
+        position:relative;
+        right:0%;
+      }
+
+      btn:hover {
+        color:black !important;
+      }
+
+      .jumbotron{
+        height:100vh;
+      }
+
+      bg-black {
+        background-color: #1D1D1D !important; /* Couleur de fond du footer */
+        color: #fff !important; /* Couleur du texte */
+      }
+
+      .footer {
+        background-color: #1D1D1D; /* Couleur de fond du footer */
+        color: #fff; /* Couleur du texte */
+      }
+
+      .footer a.text-white {
+        text-decoration: none; /* Supprime le soulignement des liens */
+        color: #fff; /* Couleur des liens */
+      }
+
+      .footer a.text-white:hover {
+        text-decoration: underline; /* Ajoute un soulignement au survol */
+      }
+
+      .footer address {
+        font-style: normal; /* Empêche l'adresse d'être en italique */
+        color: #fff; /* Couleur de l'adresse */
+      }
+
+      .footer .border-top {
+        border-color: #4e4e4e; /* Couleur de la bordure supérieure */
+      }
+
+      .nav-link, .nav-link:visited {
+          color: white !important; /* Assure que les liens restent blancs même après avoir été visités */
+        }
+
+      .navbar-toggler {
+          border-color: transparent; /* Rendre le bord du bouton transparent */
+        }
+
+        .navbar-toggler-icon {
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255, 255, 255)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+          /* Remplacez la couleur stroke par white ou #fff pour un icône blanc */
+        }
+
+        /* CSS pour le bouton Nous contacter sur mobile */
+        @media (max-width: 991px) {
+          .contact-item {
+            margin-top: 0.5rem;
+            margin-left:4rem;/* Ajustez cette valeur pour aligner verticalement */
+            width: 40%; /* Prendre toute la largeur pour éviter le décalage */
+            text-align: center; /* Centrer le texte sur mobile */
+          }
+        }
+
+        /* Cette règle s'applique à la barre de navigation entière lorsque la classe 'navbar-open' est activée */
+        .navbar.navbar-open {
+          background-color: #000 !important; /* Mettre le fond à noir */
+          padding-bottom:20px;
+        }
+
+        .navbar-toggler:focus {
+          outline: none;
+          box-shadow: none;
+        }
+
+        .btn-outline-white {
+            color:white;
+            border-color:white;
+            border-style:solid;
+        }
+
+
+
+
+
+</style>

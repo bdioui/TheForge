@@ -1,0 +1,184 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    {{ form.media }}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Balises pour référencement naturel -->
+    <meta name="description" content="Une Équipe de développement informatique spécialisée dans l'intelligence artificielle. Offrant des solutions innovantes pour les défis technologiques de demain.">
+    <meta name="keywords" content="développement informatique, intelligence artificielle, IA, solutions technologiques, innovation, Web3, Informatique">
+    <meta name="author" content="The Forge">
+
+    <!-- Balises Open Graph pour les réseaux sociaux (remplacez les valeurs par les vôtres) -->
+    <meta property="og:title" content="The Forge">
+    <meta property="og:description" content="Une Équipe de développement informatique spécialisée dans l'intelligence artificielle. Offrant des solutions innovantes pour les défis technologiques de demain.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="www.theforge.fr">
+    <meta property="og:image" content="URL de l'image à afficher sur les réseaux sociaux">
+
+    <!-- Balises Twitter Card pour Twitter (remplacez les valeurs par les vôtres) -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@votrecompte">
+    <meta name="twitter:title" content="Nom de votre entreprise">
+    <meta name="twitter:description" content="Entreprise de développement informatique de pointe spécialisée dans l'intelligence artificielle. Offrant des solutions innovantes pour les défis technologiques du futur.">
+    <meta name="twitter:image" content="URL de l'image à afficher sur Twitter">
+
+    <!-- Favicon -->
+    <link rel="icon" href="{% static 'Logos/Icones/Icones_vert_gris.png' %}" type="image/x-icon">
+
+    <title>Bienvenue chez The Forge </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="{% static 'css/contact.css' %}" rel="stylesheet">
+  </head>
+  <body style="background-color:#F5F6F1 !important; color: #015453 !important">
+
+  <header>
+  <!-- Barre de navigation -->
+  <div class="container">
+    <nav class="navbar navbar-expand-lg fixed-top navbar-light" id="mainNavbar" style="background-color:#F5F6F1 !important; color:#015453 !important;">
+      <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="{% static 'Logos/Principal/Principal_vert.svg' %}" alt="Logo The Forge" width="150">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse m-auto" id="navbarNavDropdown">
+        <ul class="navbar-nav m-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'Main:index' %}">Accueil</a>
+          </li>
+          <!-- Menu déroulant pour les services -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Services
+            </a>
+            <ul class="dropdown-menu" style="background-color:transparent; border-style:none;">
+              <li><a class="nav-link" href="{% url 'Main:ai' %}">Intelligence artificielle</a></li>
+              <li><a class="nav-link" href="{% url 'Main:cyber' %}">Cybersécurité</a></li>
+              <li><a class="nav-link" href="{% url 'Main:iot' %}">IOT et matériel embarqué</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Entreprise
+            </a>
+            <ul class="dropdown-menu" style="background-color:transparent; border-style:none;">
+              <li><a class="nav-link" href="{% url 'Main:about' %}">À propos</a></li>
+              <li><a class="nav-link" href="{% url 'Main:blog' %}">Blog</a></li>
+              <li><a class="nav-link" href="{% url 'Main:about' %}">FAQ</a></li>
+              <li><a class="nav-link" href="{% url 'Main:about' %}">Charte</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'Main:join' %}">Nous rejoindre</a>
+          </li>
+        </ul>
+          <a type="button" class="btn btn-outline-vert contact-item" href="{% url 'Main:contact' %}">Nous contacter</a>
+      </div>
+    </div>
+    </nav>
+  </div>
+</header>
+
+  <!-- Section services -->
+  <Main>
+    <!-- Section Hero -->
+    <section>
+      <div class="container text-vert" style="padding-top:15rem !important; padding-bottom:100px !important">
+        <div class="display-1" style="margin-bottom:100px;">Blog</div>
+        <div class="row borderTop justify-content-around pt-4 m-auto p-2">
+          {% for post in posts %}
+          <a href="{% url 'Main:post' post.pk %}" class="nav-link mb-3 col-sm-12 col-md-6 col-lg-4 pointer" style="cursor:pointer !important;">
+            <img src="{{post.image.url}}" width="250px">
+            <h3>{{post.title}}</h3>
+            <p>{{post.created_at|date:"l d F Y"}}</p>
+          </a>
+          {% endfor %}
+        </div>
+        {% if user.is_staff %}
+        <a class='text-vert' href="{% url 'Main:create_post' %}">+ Publier un nouvel article</a>
+        {% endif %}
+      </div>
+
+    </section>
+    <!-- Section Hero -->
+  </Main>
+
+  <footer class="footer text-vert" style="margin-top:15rem; background-color:#F5F6F1;">
+  <div class="container text-vert borderTop">
+    <div class="row m-auto text-vert" style="padding-top:50px; padding-bottom:50px;">
+      <div class="col-md-3 mb-3 mb-md-0 text-vert">
+        <img src="{% static 'Logos/Principal/Principal_vert.svg' %}" alt="Logo" height="60">
+      </div>
+      <div class="col-md-2 mb-3 mb-md-0 text-vert">
+        <h5>The Forge</h5>
+        <ul class="list-unstyled">
+          <li><a href="#about" class="text-vert">À propos</a></li>
+          <li><a href="#blog" class="text-vert">Blog</a></li>
+          <li><a href="#faq" class="text-vert">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="col-md-2 mb-3 mb-md-0 text-vert">
+        <h5>Services</h5>
+        <ul class="list-unstyled">
+          <li><a href="#about" class="text-vert">Intelligence artificielle</a></li>
+          <li><a href="#blog" class="text-vert">Cybersécurité</a></li>
+          <li><a href="#faq" class="text-vert">IOT</a></li>
+        </ul>
+      </div>
+      <div class="col-md-2">
+        <h5>Nous rejoindre</h5>
+        <ul class="list-unstyled">
+          <li><a href="#" class="text-vert">Carrière</a></li>
+          <li><a href="#" class="text-vert">Notre équipe</a></li>
+        </ul>
+      </div>
+      <div class="col-md-2">
+        <h5>Nous contacter</h5>
+        <ul class="list-unstyled">
+          <li><a href="mailto:contact@theforge.fr" class="text-vert">contact@theforge.fr</a></li>
+          <li><a href="tel:0299123244" class="text-vert">02 99 12 32 44</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="borderTop row pt-3 justify-content-around m-auto">
+      <div class="col-6 flex-grow-1">
+        <address class="">
+          <strong>The Forge ltd</strong><br>
+          5 CRS DE VERDUN GENSOUL<br>
+          69002 LYON
+          <abbr title="Phone"></abbr> (123) 456-7890
+        </address>
+      </div>
+      <div class="col-6 align-items-end" style="text-align:right">
+         <a href="" class="text-vert unstyled" style="text-align:right; margin:0 !important; margin-bottom:0px !important;">Conditions générales d'utilisation</a><br>
+        <a href="" class="text-vert unstyled" style="text-align:right; margin:0 !important; margin-bottom:0px !important;">Mentions légales</a>
+      </div>
+    </div>
+  </div>
+    <img src="{% static 'Assets/Motifs/horizontale/footer_vert.png' %}" width="100%" style="">
+</footer>
+
+  <script>
+
+ document.addEventListener('DOMContentLoaded', function () {
+    var navbarToggler = document.querySelector('.navbar-toggler');
+    var navbar = document.querySelector('.navbar'); // Assurez-vous que cela cible le bon élément
+
+    navbarToggler.addEventListener('click', function() {
+      navbar.classList.toggle('navbar-open'); // Basculer la classe pour toute la navbar
+    });
+  });
+
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+
+  </body>
+</html>

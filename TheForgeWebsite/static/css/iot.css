@@ -1,0 +1,198 @@
+<style>
+
+      body {
+        background-color:#823712 !important;
+      }
+
+      .pointer {
+        cursor:pointer !important;
+      }
+
+      .borderTop {
+        border-style:solid none none none;
+        border-color:#823712 !important; ;
+        border-width:1px;
+      }
+
+      .borderTopBottom {
+        border-style:solid none solid none;
+        border-color:#823712 !important; ;
+        border-width:1px;
+      }
+
+      .navbar-shadow {
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      }
+
+      .nav-link {
+        color:#823712; !important;
+        text-decoration:None;
+      }
+
+      .nav-item{
+        color:#823712; !important;
+        margin-left:70px;
+      }
+
+      .nav-link:hover {
+        color:#823712 !important;
+        text-decoration:underline;
+      }
+
+      .MainTitle {
+          position:relative;
+          top:65%;
+          left:0%;
+      }
+
+      .contact-item{
+        position:relative;
+        right:0%;
+
+      }
+
+      .jumbotron{
+        height:100vh;
+      }
+
+      .footer {
+        background-color: #F5F6F1; /* Couleur de fond du footer */
+        color: #015453; /* Couleur du texte */
+      }
+
+      .footer a.text-white {
+        text-decoration: none; /* Supprime le soulignement des liens */
+        color: #015453; /* Couleur des liens */
+      }
+
+      .footer a.text-white:hover {
+        text-decoration: underline; /* Ajoute un soulignement au survol */
+      }
+
+      .footer address {
+        font-style: normal; /* Empêche l'adresse d'être en italique */
+        color: #015453; /* Couleur de l'adresse */
+      }
+
+      .footer .border-top {
+        border-color: #4e4e4e; /* Couleur de la bordure supérieure */
+      }
+
+      .nav-link, .nav-link:visited {
+          color: #823712 !important; /* Assure que les liens restent blancs même après avoir été visités */
+        }
+
+      a:visited{
+        color:#823712; !important;
+      }
+
+      .navbar-toggler {
+          border-color: transparent; /* Rendre le bord du bouton transparent */
+        }
+
+        .navbar-toggler-icon {
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(1, 73, 72)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+          /* Remplacez la couleur stroke par white ou #823712 pour un icône blanc */
+        }
+
+        /* Cette règle s'applique à la barre de navigation entière lorsque la classe 'navbar-open' est activée */
+        .navbar.navbar-open {
+          background-color: #823712 !important;
+          padding-bottom:20px;
+        }
+
+        .navbar-toggler:focus {
+          outline: none;
+          box-shadow: none;
+        }
+
+        .btn-outline-marron {
+          color: #823712; /* Couleur du texte du bouton */
+          border-color: #823712; /* Couleur de la bordure du bouton */
+        }
+
+        .btn-outline-marron:hover {
+          color: #CAFFFF !important; /* Couleur du texte du bouton au survol */
+          background-color: #823712; /* Couleur de fond du bouton au survol */
+          border-color: #823712; /* Couleur de la bordure du bouton au survol */
+        }
+
+        .text-marron{
+            color:#823712 !important;
+        }
+
+        a.text-marron {
+            text-decoration:none !important;
+        }
+
+        a.text-marron:hover {
+            text-decoration:underline !important;
+        }
+
+        .HeroContainer {
+            margin-top:15rem !important;
+            padding-bottom:60px !important
+        }
+
+        /* CSS pour le bouton Nous contacter sur mobile */
+        @media (max-width: 991px) {
+          .contact-item {
+            margin-top: 0.5rem;
+            margin-left:4rem;/* Ajustez cette valeur pour aligner verticalement */
+            width: 40%; /* Prendre toute la largeur pour éviter le décalage */
+            text-align: center; /* Centrer le texte sur mobile */
+          }
+           .HeroContainer {
+            margin-top:5rem !important;
+            padding-bottom:60px !important
+        }
+        }
+
+       .job {
+          text-decoration: none; /* Enlève le soulignement par défaut */
+        }
+
+        .job:hover {
+          text-decoration: underline; /* Ajoute un soulignement au survol */
+          text-decoration-color:#823712;
+        }
+
+        textarea {
+          background-color:transparent !important;
+          border-color: #823712; /* Light blue border on focus */
+          width: 100%; /* Full width */
+          height: 150px; /* Adjust height as needed */
+          padding: 12px 20px; /* Some padding inside the textarea */
+          box-sizing: border-box; /* Include padding in total width and height */
+          border: 2px solid #ccc; /* Light grey border */
+          border-radius: 4px; /* Rounded borders */
+          resize: vertical; /* Allow the user to vertically resize the textarea (not horizontally) */
+          font-size: 16px; /* Increase font size for readability */
+          color: #333; /* Dark grey text color */
+        }
+
+        /* Style for when the user clicks into the textarea */
+        textarea:focus {
+          outline: none; /* Removes the default focus outline */
+          border-color: #823712; /* Light blue border on focus */
+          box-shadow: 0 0 0px transparent; /* Adds a glow effect on focus */
+        }
+
+        .ql-toolbar.ql-snow {
+            background-color:white !important;
+        }
+
+        a.link-marron{
+            color:#823712 !important;
+            text-decoration:underline !important;
+        }
+
+        a.link-marron:hover{
+            color:#823712 !important;
+            text-decoration:none !important;
+        }
+
+
+
+
+</style>
