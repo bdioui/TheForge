@@ -1,0 +1,187 @@
+<style>
+
+      body {
+        background-color:#00000 !important;
+      }
+
+      .pointer {
+        cursor:pointer !important;
+      }
+
+      .borderTop {
+        border-style:solid none none none;
+        border-color:black;
+        border-width:2px;
+      }
+
+      .borderTopBottom {
+        border-style:solid none solid none;
+        border-color:black;
+        border-width:2px;
+      }
+
+      .navbar-shadow {
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      }
+
+      .nav-link {
+        color:black;
+        text-decoration:None;
+      }
+
+      .nav-item{
+        margin-left:70px;
+      }
+
+      .nav-link:hover {
+        color:black;
+        text-decoration:underline;
+      }
+
+      .MainTitle {
+          position:relative;
+          top:55%;
+          left:0%;
+      }
+
+      .contact-item{
+        position:relative;
+        right:0%;
+      }
+
+      btn:hover {
+        color:black !important;
+      }
+
+      .jumbotron{
+        height:100vh;
+      }
+
+      bg-black {
+        background-color: #1D1D1D !important; /* Couleur de fond du footer */
+        color: #fff !important; /* Couleur du texte */
+      }
+
+      .footer {
+        background-color: #1D1D1D; /* Couleur de fond du footer */
+        color: #fff; /* Couleur du texte */
+      }
+
+      .footer a.text-black {
+        text-decoration: none; /* Supprime le soulignement des liens */
+        color: #fff; /* Couleur des liens */
+      }
+
+      .footer a.text-black:hover {
+        text-decoration: underline; /* Ajoute un soulignement au survol */
+      }
+
+      .footer address {
+        font-style: normal; /* Empêche l'adresse d'être en italique */
+        color: #fff; /* Couleur de l'adresse */
+      }
+
+      .footer .border-top {
+        border-color: #4e4e4e; /* Couleur de la bordure supérieure */
+      }
+
+      .nav-link, .nav-link:visited {
+          color: black !important; /* Assure que les liens restent blancs même après avoir été visités */
+        }
+
+      .navbar-toggler {
+          border-color: transparent; /* Rendre le bord du bouton transparent */
+        }
+
+        .navbar-toggler-icon {
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(0, 0, 0)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+          /* Remplacez la couleur stroke par black ou #fff pour un icône blanc */
+        }
+
+        /* CSS pour le bouton Nous contacter sur mobile */
+        @media (max-width: 991px) {
+          .contact-item {
+            margin-top: 0.5rem;
+            margin-left:4rem;/* Ajustez cette valeur pour aligner verticalement */
+            width: 40%; /* Prendre toute la largeur pour éviter le décalage */
+            text-align: center; /* Centrer le texte sur mobile */
+          }
+        }
+
+        /* Cette règle s'applique à la barre de navigation entière lorsque la classe 'navbar-open' est activée */
+        .navbar.navbar-open {
+          background-color: #FFFFF !important; /* Mettre le fond à noir */
+          padding-bottom:20px;
+        }
+
+        .navbar-toggler:focus {
+          outline: none;
+          box-shadow: none;
+        }
+
+        .btn-outline-black {
+            color:black;
+            border-color:black;
+            border-style:solid;
+        }
+
+        .btn-outline-black:hover {
+            color:white;
+            border-color:black;
+            background-color:black;
+            border-style:solid;
+        }
+
+        .accordion-button:not(.collapsed) {
+            box-shadow: none !important; /* Couleur du texte désirée */
+          }
+
+        .accordion-button {
+            color: black !important;
+            background-color: white !important; /* Couleur de fond désirée */
+            box-shadow: 0 0px 0px rgba(0, 0, 0, 0.0); /* Ombre désirée */
+          }
+
+        .accordion-button:focus {
+            box-shadow: none !important;
+            outline: 1 !important;
+        }
+
+        /* Style pour input sans box-shadow ni bordure */
+        input.custom-input {
+            background-color: transparent; /* Rend l'arrière-plan transparent */
+            border: 1; /* Enlève la bordure */
+            box-shadow: none; /* Enlève le box-shadow */
+        }
+
+        /* Pour changer la couleur du texte de l'input */
+        input.custom-input::placeholder {
+            color: #666; /* Couleur du texte du placeholder */
+        }
+
+        /* Pour gérer le focus sur l'input */
+        input.custom-input:focus {
+            border: 1; /* Assure qu'il n'y ait pas de bordure lors du focus */
+        }
+
+        .fade-up {
+          opacity: 0;
+          transform: translateY(20px);
+          visibility: hidden;
+          transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+          will-change: opacity, visibility, transform;
+        }
+
+        /* Lorsque l'élément entre dans le viewport, il remonte et devient visible */
+        .fade-up.visible {
+          opacity: 1;
+          transform: translateY(0);
+          visibility: visible;
+        }
+
+
+
+
+
+
+</style>

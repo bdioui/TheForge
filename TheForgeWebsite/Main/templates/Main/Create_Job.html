@@ -28,19 +28,20 @@
     <!-- Favicon -->
      <link rel="icon" href="{% static 'Logos/Icones/Icones_beige.png' %}" type="image/x-icon">
 
-    <title>Bienvenue chez The Forge </title>
+    <title>The Forge - Jobs</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link href="{% static 'css/join.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.typekit.net/eqx7rzk.css">
 
   </head>
-  <body style="background-color:#FFF0D6 !important; color: #015453 !important">
+  <body style="background-color:#FFF0D6 !important; color: #015453 !important; font-family: 'articulat-cf' !important;">
 
   <header>
   <!-- Barre de navigation -->
   <div class="container">
     <nav class="navbar navbar-expand-lg fixed-top navbar-light" id="mainNavbar" style="background-color:#FFF0D6 !important; color:#015453 !important;">
       <div class="container">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="{% url 'Main:index' %}">
         <img src="{% static 'Logos/Principal/Principal_vert.svg' %}" alt="Logo The Forge" width="150">
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -56,7 +57,7 @@
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Services
             </a>
-            <ul class="dropdown-menu" style="background-color:transparent; border-style:none;">
+            <ul class="dropdown-menu" style="background-color:#FFF0D6; border-style:none;">
               <li><a class="nav-link" href="{% url 'Main:ai' %}">Intelligence artificielle</a></li>
               <li><a class="nav-link" href="{% url 'Main:cyber' %}">Cybersécurité</a></li>
               <li><a class="nav-link" href="{% url 'Main:iot' %}">IOT et matériel embarqué</a></li>
@@ -66,11 +67,11 @@
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Entreprise
             </a>
-            <ul class="dropdown-menu" style="background-color:transparent; border-style:none;">
+            <ul class="dropdown-menu" style="background-color:#FFF0D6; border-style:none;">
               <li><a class="nav-link" href="{% url 'Main:about' %}">À propos</a></li>
               <li><a class="nav-link" href="{% url 'Main:blog' %}">Blog</a></li>
-              <li><a class="nav-link" href="{% url 'Main:about' %}">FAQ</a></li>
-              <li><a class="nav-link" href="{% url 'Main:about' %}">Charte</a></li>
+              <li><a class="nav-link" href="{% url 'Main:faq' %}">FAQ</a></li>
+              <li><a class="nav-link" href="{% url 'Main:charte' %}">Charte</a></li>
             </ul>
           </li>
           <li class="nav-item">
@@ -127,29 +128,33 @@
   <div class="container text-vert borderTop">
     <div class="row m-auto text-vert" style="padding-top:50px; padding-bottom:50px;">
       <div class="col-md-3 mb-3 mb-md-0 text-vert">
-        <img src="{% static 'Logos/Principal/Principal_vert.svg' %}" alt="Logo" height="60">
+        <a href="{% url 'Main:index' %}">
+          <img src="{% static 'Logos/Principal/Principal_vert.svg' %}" alt="Logo" height="60">
+        </a>
       </div>
-      <div class="col-md-2 mb-3 mb-md-0 text-vert">
-        <h5>The Forge</h5>
-        <ul class="list-unstyled">
-          <li><a href="#about" class="text-vert">À propos</a></li>
-          <li><a href="#blog" class="text-vert">Blog</a></li>
-          <li><a href="#faq" class="text-vert">FAQ</a></li>
-        </ul>
-      </div>
-      <div class="col-md-2 mb-3 mb-md-0 text-vert">
+      <div class="col-md-2 mb-3 mb-md-0 bleu">
         <h5>Services</h5>
         <ul class="list-unstyled">
-          <li><a href="#about" class="text-vert">Intelligence artificielle</a></li>
-          <li><a href="#blog" class="text-vert">Cybersécurité</a></li>
-          <li><a href="#faq" class="text-vert">IOT</a></li>
+          <li><a href="{% url 'Main:ai' %}" class="text-vert">Intelligence artificielle</a></li>
+          <li><a href="{% url 'Main:cyber' %}" class="text-vert">Cybersécurité</a></li>
+          <li><a href="{% url 'Main:iot' %}" class="text-vert">IOT</a></li>
         </ul>
       </div>
       <div class="col-md-2">
-        <h5>Nous rejoindre</h5>
+        <h5>Entreprise</h5>
         <ul class="list-unstyled">
-          <li><a href="#" class="text-vert">Carrière</a></li>
-          <li><a href="#" class="text-vert">Notre équipe</a></li>
+          <li><a href="{% url 'Main:join' %}" class="text-vert">Nous rejoindre</a></li>
+          <li><a href="{% url 'Main:blog' %}" class="text-vert">Blog</a></li>
+          <li><a href="{% url 'Main:faq' %}" class="text-vert">FAQ</a></li>
+          <li><a href="{% url 'Main:charte' %}" class="text-vert">Charte</a></li>
+        </ul>
+      </div>
+      <div class="col-md-2">
+        <h5>Suivez-nous</h5>
+        <ul class="list-unstyled">
+          <li><a href="#" class="text-vert">LinkedIn</a></li>
+          <li><a href="#" class="text-vert">Twitter</a></li>
+          <li><a href="#" class="text-vert">Facebook</a></li>
         </ul>
       </div>
       <div class="col-md-2">
@@ -170,16 +175,15 @@
         </address>
       </div>
       <div class="col-6 align-items-end" style="text-align:right">
-         <a href="" class="text-vert unstyled" style="text-align:right; margin:0 !important; margin-bottom:0px !important;">Conditions générales d'utilisation</a><br>
-        <a href="" class="text-vert unstyled" style="text-align:right; margin:0 !important; margin-bottom:0px !important;">Mentions légales</a>
+         <a href="{% url 'Main:Conditions' %}" class="text-vert unstyled" style="text-align:right; margin:0 !important; margin-bottom:0px !important;">Conditions générales d'utilisation</a><br>
+        <a href="{% url 'Main:Mentions' %}" class="text-vert unstyled" style="text-align:right; margin:0 !important; margin-bottom:0px !important;">Mentions légales</a>
       </div>
     </div>
   </div>
     <img src="{% static 'Assets/Motifs/horizontale/footer_vert.png' %}" width="100%" style="">
 </footer>
 
-
-    </script>
+    <script src="{% static 'js/main.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
 

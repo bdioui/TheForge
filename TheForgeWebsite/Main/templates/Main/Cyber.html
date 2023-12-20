@@ -28,19 +28,20 @@
     <!-- Favicon -->
      <link rel="icon" href="{% static 'Logos/Icones/Icones-vert-vert_clair.png' %}" type="image/x-icon">
 
-    <title>Bienvenue chez The Forge </title>
+    <title>The Forge - Cybersécurité</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link href="{% static 'css/cyber.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.typekit.net/eqx7rzk.css">
 
   </head>
-  <body style="background-color:#014948 !important; color: #ECFE8C !important">
+  <body style="background-color:#014948 !important; color: #ECFE8C !important; font-family: 'articulat-cf' !important;">
 
   <header>
   <!-- Barre de navigation -->
   <div class="container">
     <nav class="navbar navbar-expand-lg fixed-top navbar-light" id="mainNavbar" style="background-color:#014948 !important; color:#014948 !important;">
       <div class="container">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="{% url 'Main:index' %}">
         <img src="{% static 'Logos/Principal/Principal_vert_clair.svg' %}" alt="Logo The Forge" width="150">
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -56,7 +57,7 @@
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Services
             </a>
-            <ul class="dropdown-menu" style="background-color:transparent; border-style:none;">
+            <ul class="dropdown-menu" style="background-color:#014948; border-style:none;">
               <li><a class="nav-link" href="{% url 'Main:ai' %}">Intelligence artificielle</a></li>
               <li><a class="nav-link" href="{% url 'Main:cyber' %}">Cybersécurité</a></li>
               <li><a class="nav-link" href="{% url 'Main:iot' %}">IOT et matériel embarqué</a></li>
@@ -67,11 +68,11 @@
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Entreprise
             </a>
-            <ul class="dropdown-menu" style="background-color:transparent; border-style:none;">
+            <ul class="dropdown-menu" style="background-color:#014948; border-style:none;">
               <li><a class="nav-link" href="{% url 'Main:about' %}">À propos</a></li>
               <li><a class="nav-link" href="{% url 'Main:blog' %}">Blog</a></li>
-              <li><a class="nav-link" href="{% url 'Main:about' %}">FAQ</a></li>
-              <li><a class="nav-link" href="{% url 'Main:about' %}">Charte</a></li>
+              <li><a class="nav-link" href="{% url 'Main:faq' %}">FAQ</a></li>
+              <li><a class="nav-link" href="{% url 'Main:charte' %}">Charte</a></li>
             </ul>
           </li>
           <li class="nav-item">
@@ -87,9 +88,21 @@
 
   <!-- Section services -->
   <Main>
+    {% if messages %}
+      <div class="messages row justify-content-center align-items-center" id='messageBox' style="position:fixed; top:100px; right:25px; text-align:center; background-color:#014948; border-style:solid; border-width:1px; border-color:#ECFE8C; color:#ECFE8C; padding:10px">
+        <a type="button" onclick="closeMessage()" style="--bs-btn-close-color:white; position:absolute; left:5px; top:5px; color:#ECFE8C; width:5px;">X</a>
+        {% for message in messages %}
+          <div>
+             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 64 64" fill="none" stroke-width="2px" stroke="#ECFE8C"><path d="M8 12h48v40H8z"/><path d="M56 20L32 36 8 20"/></svg>
+             <h3>Merci !</h3>
+             <p>{{ message }}</p>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
     <!-- Section Hero -->
     <section>
-      <div class="mt-5 container HeroContainer text-vert-clair m-auto">
+      <div class="mt-5 container HeroContainer text-vert-clair m-auto fade-up">
         <div class="row justify-content-between align-items-center">
           <div class="col-md-6 col-lg-6 col-sm-12 ">
             <div class="display-1">Créer ensemble un environement digital responsable et sécurisé</div>
@@ -104,12 +117,12 @@
 
     <!-- Section sur évaluation -->
     <section>
-      <div class="container text-vert-clair m-auto borderTop py-4">
+      <div class="container text-vert-clair m-auto borderTop py-4 fade-up">
         <div class="row justify-content-between align-items-top">
           <div class="col-md-6 col-lg-6 col-sm-12" style="width:20rem;">
             <h3>Évaluation et Gestion des Risques</h3>
             <p class="mt-4">Nous commençons par une évaluation complète de votre infrastructure numérique pour identifier les vulnérabilités potentielles. Notre équipe utilise des techniques avancées pour analyser et gérer les risques, assurant une protection solide contre les attaques et les violations de données.</p>
-            <a class="btn btn-outline-vert-clair">Nous parler de vos besoins</a>
+            <a class="btn btn-outline-vert-clair mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Nous parler de vos besoins</a>
           </div>
           <div class="col-md-6 col-lg-6 col-sm-12">
             <img src="{% static 'Assets/images/cinematic-image-of-people-working-in-a-start-up-bu-2023-11-27-04-50-49-utc.jpg' %}" width="100%"/>
@@ -121,7 +134,7 @@
 
     <!-- Section sur Cyberattaque -->
     <section>
-      <div class="container text-vert-clair m-auto borderTop py-4">
+      <div class="container text-vert-clair m-auto borderTop py-4 fade-up">
         <div class="row justify-content-between align-items-top">
           <div class="col-md-6 col-lg-6 col-sm-12">
             <img src="{% static 'Assets/Motifs/horizontale/grille_horizontale_vert_clair.png' %}" width="100%"/>
@@ -129,7 +142,7 @@
           <div class="col-md-6 col-lg-6 col-sm-12" style="width:20rem;">
             <h3>Protection contre les Cyberattaques</h3>
             <p class="mt-4">Notre approche proactive de la cybersécurité comprend la mise en place de barrières robustes contre les cyberattaques. De la détection d'intrusion à la prévention des fuites de données, nos solutions sont conçues pour offrir une sécurité multicouche.</p>
-            <a class="btn btn-outline-vert-clair">Nous parler de vos besoins</a>
+            <a class="btn btn-outline-vert-clair mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Nous parler de vos besoins</a>
           </div>
         </div>
       </div>
@@ -138,12 +151,12 @@
 
     <!-- Section sur Conformité -->
     <section>
-      <div class="container text-vert-clair m-auto borderTop py-4">
+      <div class="container text-vert-clair m-auto borderTop py-4 fade-up">
         <div class="row justify-content-between align-items-top">
           <div class="col-md-6 col-lg-6 col-sm-12" style="width:20rem;">
             <h3>Conformité et Sécurité des Données</h3>
             <p class="mt-4">Respecter les réglementations de confidentialité et de protection des données est essentiel. Nous aidons votre entreprise à se conformer aux normes internationales, minimisant les risques légaux et renforçant la confiance de vos clients.</p>
-            <a class="btn btn-outline-vert-clair">Nous parler de vos besoins</a>
+            <a class="btn btn-outline-vert-clair mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Nous parler de vos besoins</a>
           </div>
           <div class="col-md-6 col-lg-6 col-sm-12">
             <svg id="Calque_1" data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 425.2 425.2">
@@ -792,15 +805,15 @@
 
      <!-- Section sur Sensibilisation -->
     <section>
-      <div class="container text-vert-clair m-auto borderTop py-4">
+      <div class="container text-vert-clair m-auto borderTop py-4 fade-up">
         <div class="row justify-content-between align-items-top">
-          <div class="col-md-6 col-lg-6 col-sm-12">
-            <img src="{% static 'Assets/Images/cinematic-image-of-people-working-in-a-start-up-bu-2023-11-27-05-04-54-utc.jpg' %}" width="80%"/>
+          <div class="col-md-6 col-lg-6 col-sm-12 mb-2">
+            <img src="{% static 'Assets/Images/cinematic-image-of-people-working-in-a-start-up-bu-2023-11-27-05-04-54-utc.jpg' %}" width="100%"/>
           </div>
           <div class="col-md-6 col-lg-6 col-sm-12" style="width:20rem;">
             <h3>Formation et Sensibilisation à la Sécurité</h3>
             <p class="mt-4">Une grande partie de la sécurité dépend de la sensibilisation. Nous offrons des formations spécialisées pour vos équipes, leur enseignant les meilleures pratiques de cybersécurité et les sensibilisant aux méthodes courantes de piratage et de fraude.</p>
-            <a class="btn btn-outline-vert-clair">Nous parler de vos besoins</a>
+            <a class="btn btn-outline-vert-clair mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Nous parler de vos besoins</a>
           </div>
         </div>
       </div>
@@ -809,7 +822,7 @@
 
     <!-- Section sur Automatisation -->
     <section>
-      <div class="container text-vert-clair m-auto borderTop py-4">
+      <div class="container text-vert-clair m-auto borderTop py-4 fade-up">
           <div class="col-12 display-1 fst-italic">
             "Nous nous concentrons sur des solutions de cybersécurité innovantes qui renforcent la protection et la résilience face aux menaces en constante évolution, pour un monde connecté plus sûr pour tous."
           </div>
@@ -823,29 +836,33 @@
   <div class="container text-vert-clair borderTop">
     <div class="row m-auto text-vert-clair" style="padding-top:50px; padding-bottom:50px;">
       <div class="col-md-3 mb-3 mb-md-0 text-vert-clair">
-        <img src="{% static 'Logos/Principal/Principal_vert_clair.svg' %}" alt="Logo" height="60">
+        <a href="{% url 'Main:index' %}">
+         <img src="{% static 'Logos/Principal/Principal_vert_clair.svg' %}" alt="Logo" height="60">
+        </a>
       </div>
-      <div class="col-md-2 mb-3 mb-md-0 text-vert-clair">
-        <h5>The Forge</h5>
-        <ul class="list-unstyled">
-          <li><a href="#about" class="text-vert-clair">À propos</a></li>
-          <li><a href="#blog" class="text-vert-clair">Blog</a></li>
-          <li><a href="#faq" class="text-vert-clair">FAQ</a></li>
-        </ul>
-      </div>
-      <div class="col-md-2 mb-3 mb-md-0 text-vert-clair">
+      <div class="col-md-2 mb-3 mb-md-0 text-bleu">
         <h5>Services</h5>
         <ul class="list-unstyled">
-          <li><a href="#about" class="text-vert-clair">Intelligence artificielle</a></li>
-          <li><a href="#blog" class="text-vert-clair">Cybersécurité</a></li>
-          <li><a href="#faq" class="text-vert-clair">IOT</a></li>
+          <li><a href="{% url 'Main:ai' %}" class="text-vert-clair">Intelligence artificielle</a></li>
+          <li><a href="{% url 'Main:cyber' %}" class="text-vert-clair">Cybersécurité</a></li>
+          <li><a href="{% url 'Main:iot' %}" class="text-vert-clair">IOT</a></li>
         </ul>
       </div>
       <div class="col-md-2">
-        <h5>Nous rejoindre</h5>
+        <h5>Entreprise</h5>
         <ul class="list-unstyled">
-          <li><a href="#" class="text-vert-clair">Carrière</a></li>
-          <li><a href="#" class="text-vert-clair">Notre équipe</a></li>
+          <li><a href="{% url 'Main:join' %}" class="text-vert-clair">Nous rejoindre</a></li>
+          <li><a href="{% url 'Main:blog' %}" class="text-vert-clair">Blog</a></li>
+          <li><a href="{% url 'Main:faq' %}" class="text-vert-clair">FAQ</a></li>
+          <li><a href="{% url 'Main:charte' %}" class="text-vert-clair">Charte</a></li>
+        </ul>
+      </div>
+      <div class="col-md-2">
+        <h5>Suivez-nous</h5>
+        <ul class="list-unstyled">
+          <li><a href="{% url 'Main:join' %}" class="text-vert-clair">LinkedIn</a></li>
+          <li><a href="{% url 'Main:join' %}" class="text-vert-clair">Twitter</a></li>
+          <li><a href="{% url 'Main:join' %}" class="text-vert-clair">Facebook</a></li>
         </ul>
       </div>
       <div class="col-md-2">
@@ -866,13 +883,91 @@
         </address>
       </div>
       <div class="col-6 align-items-end" style="text-align:right">
-         <a href="" class="text-vert-clair unstyled" style="text-align:right; margin:0 !important; margin-bottom:0px !important;">Conditions générales d'utilisation</a><br>
-        <a href="" class="text-vert-clair unstyled" style="text-align:right; margin:0 !important; margin-bottom:0px !important;">Mentions légales</a>
+         <a href="{% url 'Main:Conditions' %}" class="text-vert-clair unstyled" style="text-align:right; margin:0 !important; margin-bottom:0px !important;">Conditions générales d'utilisation</a><br>
+        <a href="{% url 'Main:Mentions' %}" class="text-vert-clair unstyled" style="text-align:right; margin:0 !important; margin-bottom:0px !important;">Mentions légales</a>
       </div>
     </div>
   </div>
     <img src="{% static 'Assets/Motifs/horizontale/footer_vert_clair.png' %}" width="100%" style="">
 </footer>
+
+   <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content" style="background-color:#014948; border-color:#ECFE8C">
+        <div class="modal-header" style="border-color:#ECFE8C">
+          <h1 class="modal-title fs-5 text-bleu" id="exampleModalLabel">Parlez-nous de vos besoins !</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style=""></button>
+        </div>
+        <div class="modal-body text-vert_clair">
+          <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mb-3 mt-4">
+                <label for="exampleFormControlInput1" class="form-label text-bleu">Votre adresse email</label>
+                <input type="email" class="form-control" name='email' id="exampleFormControlInput1" placeholder="nom@exemple.com" style="background-color:transparent; color:#ECFE8C; border-color:#ECFE8C; outline: none;box-shadow: none;" required>
+            </div>
+
+            <div class="mb-3 mt-4">
+                <label for="firstName" class="form-label">Votre prénom</label>
+                <input type="text" class="form-control" name='first_name' id="firstName" placeholder="Jane" style="background-color:transparent; color:#ECFE8C; border-color:#ECFE8C; outline: none;box-shadow: none;" required>
+            </div>
+
+            <div class="mb-3 mt-4">
+                <label for="lastName" class="form-label">Votre nom</label>
+                <input type="text" class="form-control" name='last_name' id="lastName" placeholder="Doe" style="background-color:transparent; color:#ECFE8C; border-color:#ECFE8C; outline: none;box-shadow: none;" required>
+            </div>
+
+            <div class="mb-3 mt-4">
+                <label for="companyName" class="form-label">Votre Entreprise</label>
+                <input type="text" class="form-control" name='company' id="companyName" placeholder="Company.ltd" style="background-color:transparent; color:#ECFE8C; border-color:#ECFE8C; outline: none;box-shadow: none;" required>
+            </div>
+
+            <div class="mb-3 mt-4">
+                <label for="sectorSelect" class="form-label">Votre secteur d'activité</label>
+                <select class="form-control" name='field' id="sectorSelect" style="background-color:transparent; color:#ECFE8C; border-color:#ECFE8C; outline: none;box-shadow: none;" required>
+                    <option value="">>> Sélectionnez votre secteur <<</option>
+                    <!-- Liste exhaustive des secteurs -->
+                    <option value="technologie">Technologie et Informatique</option>
+                    <option value="finance">Finance et Banque</option>
+                    <option value="finance">Santé et Pharmaceutique</option>
+                    <option value="finance">Éducation et Formation</option>
+                    <option value="finance">Industrie et Manufacture</option>
+                    <option value="finance">Commerce et Distribution</option>
+                    <option value="finance">Agriculture et Agroalimentaire</option>
+                    <option value="finance">Énergie et Ressources</option>
+                    <option value="finance">Construction et BTP</option>
+                    <option value="finance">Transport et Logistique</option>
+                    <option value="finance">Tourisme et Hôtellerie</option>
+                    <option value="finance">Arts et Culture</option>
+                    <option value="finance">Médias et Communication</option>
+                    <option value="finance">Services Publics et Administration</option>
+                    <option value="finance">Loisirs et Divertissement</option>
+                    <option value="finance">Environnement et Développement Durable</option>
+                    <option value="finance">Conseil et Gestion</option>
+                    <option value="finance">Recherche et Développement</option>
+                    <option value="finance">Autres</option>
+                    <!-- Ajoutez d'autres options ici -->
+                </select>
+            </div>
+
+            <div class="mb-3 mt-4">
+                <label for="contentTextArea" class="form-label">Vos besoins</label>
+                <textarea class="form-control" name='content' id="contentTextArea" placeholder="Décrivez vos besoins" style="background-color:transparent; color:#ECFE8C; border-color:#ECFE8C; outline: none;box-shadow: none;" required></textarea>
+            </div>
+
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" name='callback_request' id="callbackRequest" style="outline: none;box-shadow: none;">
+                <label class="form-check-label" for="callbackRequest">Être rappelé ?</label>
+            </div>
+
+            <button class="btn btn-outline-vert-clair w-100 mt-2">Envoyer</button>
+        </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal -->
 
     <script>
 
@@ -894,8 +989,13 @@
         });
     });
 
+     function closeMessage() {
+    document.getElementById('messageBox').style.display = 'none';
+    };
+
     </script>
 
+    <script src="{% static 'js/main.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
 

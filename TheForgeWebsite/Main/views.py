@@ -11,22 +11,308 @@ import os
 def Index(request):
     posts = Post.objects.all()
     return render(request, 'Main/Index.html', {'posts':posts})
+def Charte(request):
+    return render(request, 'Main/Charte.html')
+
+def Mentions(request):
+    return render(request, 'Main/Mentions.html')
+
+def Conditions(request):
+    return render(request, 'Main/Conditions.html')
+
+def FAQ(request):
+    if request.method == "POST":
+        callback_request = request.POST.get('callback_request') == 'on'
+
+        # Mail de confirmation
+        email_template = get_template(os.path.join(settings.BASE_DIR, 'Main/templates/Main/request_confirmation.html'))
+        email = request.POST.get('email')
+        subject = 'Demande reçu !'
+        email_body = email_template.render()
+        from_email = settings.EMAIL_HOST_USER
+        recipient_list = [email]
+
+        email = EmailMessage(subject, email_body, from_email, recipient_list)
+        email.content_subtype = 'html'
+        email.send()
+
+        # Préparation de l'email pour l'administrateur avec les pièces jointes
+        email = request.POST.get('email'),
+        first_name = request.POST.get('first_name'),
+        last_name = request.POST.get('last_name'),
+        content = request.POST.get('content'),
+        company = request.POST.get('company'),
+        callback_request = callback_request,
+
+        admin_email = EmailMessage(
+            subject=f'Nouvelle question',
+            body=f'Une nouvelle question a été reçue sur le site internet de The Forge.\n'
+                 f'Email : {email}\n'
+                 f'Nom : {first_name} {last_name}\n'
+                 f'Entreprise : {company} \n'
+                 f'Demande : {content}',
+            from_email=settings.EMAIL_HOST_USER,
+            to=['bdiouipierre@gmail.com']  # Remplacez par l'email de l'administrateur
+        )
+        admin_email.send()
+        messages.success(request, 'Votre demande a bien été envoyée !')
+        return redirect('Main:faq')
+    else:
+        return render(request, 'Main/FAQ.html')
 
 def AI(request):
-    return render(request, 'Main/AI.html')
+    if request.method == "POST":
+        callback_request = request.POST.get('callback_request') == 'on'
+        contact_request = ContactRequest(
+            email=request.POST.get('email'),
+            first_name = request.POST.get('first_name'),
+            last_name = request.POST.get('last_name'),
+            content = request.POST.get('content'),
+            company = request.POST.get('company'),
+            field = request.POST.get('field'),
+            callback_request = callback_request,
+        )
+        contact_request.save()
+
+        # Mail de confirmation
+        email_template = get_template(os.path.join(settings.BASE_DIR, 'Main/templates/Main/request_confirmation.html'))
+        email = request.POST.get('email')
+        subject = 'Demande reçu !'
+        email_body = email_template.render()
+        from_email = settings.EMAIL_HOST_USER
+        recipient_list = [email]
+
+        email = EmailMessage(subject, email_body, from_email, recipient_list)
+        email.content_subtype = 'html'
+        email.send()
+
+        # Préparation de l'email pour l'administrateur avec les pièces jointes
+        email = request.POST.get('email'),
+        first_name = request.POST.get('first_name'),
+        last_name = request.POST.get('last_name'),
+        content = request.POST.get('content'),
+        company = request.POST.get('company'),
+        field = request.POST.get('field'),
+        callback_request = callback_request,
+
+        admin_email = EmailMessage(
+            subject=f'Nouveau prospect',
+            body=f'Une nouvelle demande a été reçue sur le site internet de The Forge.\n'
+                 f'Email : {email}\n'
+                 f'Nom : {first_name} {last_name}\n'
+                 f'Entreprise : {company} ({field})\n'
+                 f'Souhaite être rappelé ? : {"Oui" if callback_request else "Non"}\n'
+                 f'Demande : {content}',
+            from_email=settings.EMAIL_HOST_USER,
+            to=['bdiouipierre@gmail.com']  # Remplacez par l'email de l'administrateur
+        )
+        admin_email.send()
+        messages.success(request, 'Votre demande a bien été envoyée !')
+        return redirect('Main:ai')
+    else:
+        return render(request, 'Main/AI.html')
 
 def Cyber(request):
-    return render(request, 'Main/Cyber.html')
+    if request.method == "POST":
+        callback_request = request.POST.get('callback_request') == 'on'
+        contact_request = ContactRequest(
+            email=request.POST.get('email'),
+            first_name=request.POST.get('first_name'),
+            last_name=request.POST.get('last_name'),
+            content=request.POST.get('content'),
+            company=request.POST.get('company'),
+            field=request.POST.get('field'),
+            callback_request=callback_request,
+        )
+        contact_request.save()
+
+        # Mail de confirmation
+        email_template = get_template(os.path.join(settings.BASE_DIR, 'Main/templates/Main/request_confirmation.html'))
+        email = request.POST.get('email')
+        subject = 'Demande reçu !'
+        email_body = email_template.render()
+        from_email = settings.EMAIL_HOST_USER
+        recipient_list = [email]
+
+        email = EmailMessage(subject, email_body, from_email, recipient_list)
+        email.content_subtype = 'html'
+        email.send()
+
+        # Préparation de l'email pour l'administrateur avec les pièces jointes
+        email = request.POST.get('email'),
+        first_name = request.POST.get('first_name'),
+        last_name = request.POST.get('last_name'),
+        content = request.POST.get('content'),
+        company = request.POST.get('company'),
+        field = request.POST.get('field'),
+        callback_request = callback_request,
+
+        admin_email = EmailMessage(
+            subject=f'Nouveau prospect',
+            body=f'Une nouvelle demande a été reçue sur le site internet de The Forge.\n'
+                 f'Email : {email}\n'
+                 f'Nom : {first_name} {last_name}\n'
+                 f'Entreprise : {company} ({field})\n'
+                 f'Souhaite être rappelé ? : {"Oui" if callback_request else "Non"}\n'
+                 f'Demande : {content}',
+            from_email=settings.EMAIL_HOST_USER,
+            to=['bdiouipierre@gmail.com']  # Remplacez par l'email de l'administrateur
+        )
+        admin_email.send()
+        messages.success(request, 'Votre demande a bien été envoyée !')
+        return redirect('Main:cyber')
+    else:
+        return render(request, 'Main/Cyber.html')
 
 def IoT(request):
-    return render(request, 'Main/IoT.html')
+    if request.method == "POST":
+        callback_request = request.POST.get('callback_request') == 'on'
+        contact_request = ContactRequest(
+            email=request.POST.get('email'),
+            first_name=request.POST.get('first_name'),
+            last_name=request.POST.get('last_name'),
+            content=request.POST.get('content'),
+            company=request.POST.get('company'),
+            field=request.POST.get('field'),
+            callback_request=callback_request,
+        )
+        contact_request.save()
+
+        # Mail de confirmation
+        email_template = get_template(os.path.join(settings.BASE_DIR, 'Main/templates/Main/request_confirmation.html'))
+        email = request.POST.get('email')
+        subject = 'Demande reçu !'
+        email_body = email_template.render()
+        from_email = settings.EMAIL_HOST_USER
+        recipient_list = [email]
+
+        email = EmailMessage(subject, email_body, from_email, recipient_list)
+        email.content_subtype = 'html'
+        email.send()
+
+        # Préparation de l'email pour l'administrateur avec les pièces jointes
+        email = request.POST.get('email'),
+        first_name = request.POST.get('first_name'),
+        last_name = request.POST.get('last_name'),
+        content = request.POST.get('content'),
+        company = request.POST.get('company'),
+        field = request.POST.get('field'),
+        callback_request = callback_request,
+
+        admin_email = EmailMessage(
+            subject=f'Nouveau prospect',
+            body=f'Une nouvelle demande a été reçue sur le site internet de The Forge.\n'
+                 f'Email : {email}\n'
+                 f'Nom : {first_name} {last_name}\n'
+                 f'Entreprise : {company} ({field})\n'
+                 f'Souhaite être rappelé ? : {"Oui" if callback_request else "Non"}\n'
+                 f'Demande : {content}',
+            from_email=settings.EMAIL_HOST_USER,
+            to=['bdiouipierre@gmail.com']  # Remplacez par l'email de l'administrateur
+        )
+        admin_email.send()
+        messages.success(request, 'Votre demande a bien été envoyée !')
+        return redirect('Main:iot')
+    else:
+        return render(request, 'Main/IoT.html')
 
 def About(request):
-    return render(request, 'Main/About.html')
+    if request.method == "POST":
+        callback_request = request.POST.get('callback_request') == 'on'
+        contact_request = ContactRequest(
+            email=request.POST.get('email'),
+            first_name = request.POST.get('first_name'),
+            last_name = request.POST.get('last_name'),
+            content = request.POST.get('content'),
+            company = request.POST.get('company'),
+            field = request.POST.get('field'),
+            callback_request = callback_request,
+        )
+        contact_request.save()
+
+        # Mail de confirmation
+        email_template = get_template(os.path.join(settings.BASE_DIR, 'Main/templates/Main/request_confirmation.html'))
+        email = request.POST.get('email')
+        subject = 'Demande reçu !'
+        email_body = email_template.render()
+        from_email = settings.EMAIL_HOST_USER
+        recipient_list = [email]
+
+        email = EmailMessage(subject, email_body, from_email, recipient_list)
+        email.content_subtype = 'html'
+        email.send()
+
+        # Préparation de l'email pour l'administrateur avec les pièces jointes
+        email = request.POST.get('email'),
+        first_name = request.POST.get('first_name'),
+        last_name = request.POST.get('last_name'),
+        content = request.POST.get('content'),
+        company = request.POST.get('company'),
+        field = request.POST.get('field'),
+        callback_request = callback_request,
+
+        admin_email = EmailMessage(
+            subject=f'Nouveau prospect',
+            body=f'Une nouvelle demande a été reçue sur le site internet de The Forge.\n'
+                 f'Email : {email}\n'
+                 f'Nom : {first_name} {last_name}\n'
+                 f'Entreprise : {company} ({field})\n'
+                 f'Souhaite être rappelé ? : {"Oui" if callback_request else "Non"}\n'
+                 f'Demande : {content}',
+            from_email=settings.EMAIL_HOST_USER,
+            to=['bdiouipierre@gmail.com']  # Remplacez par l'email de l'administrateur
+        )
+        admin_email.send()
+        messages.success(request, 'Votre demande a bien été envoyée !')
+        return redirect('Main:about')
+    else:
+        return render(request, 'Main/About.html')
 
 def Join(request):
     jobs = Job.objects.all()
-    return render(request, 'Main/Join.html', {"jobs":jobs})
+    if request.method == "POST":
+        application = Applicant(
+            email=request.POST.get('email'),
+            job=Job.objects.get(title='candidature_libre'),
+            cv = request.FILES.get('cv'),
+            cover_letter = request.FILES.get('cover_letter'),
+            )
+        application.save()
+
+        email = request.POST.get('email')
+        email_template = get_template(os.path.join(settings.BASE_DIR, 'Main/templates/Main/job_confirmation.html'))
+
+        subject = 'Message reçu !'
+        email_body = email_template.render()
+        from_email = settings.EMAIL_HOST_USER
+        recipient_list = [email]
+
+        email = EmailMessage(subject, email_body, from_email, recipient_list)
+        email.content_subtype = 'html'
+        email.send()
+
+        # Préparation de l'email pour l'administrateur avec les pièces jointes
+        admin_email = EmailMessage(
+            f'Nouvelle candidature libre',
+            f'Une nouvelle candidature libre a été envoyée.',
+            settings.EMAIL_HOST_USER,
+            ['bdiouipierre@gmail.com']  # Remplacez par l'email de l'administrateur
+        )
+
+        cv_file = request.FILES.get('cv')
+        cover_letter_file = request.FILES.get('cover_letter')
+
+        if cv_file:
+            admin_email.attach(cv_file.name, cv_file.read(), cv_file.content_type)
+        if cover_letter_file:
+            admin_email.attach(cover_letter_file.name, cover_letter_file.read(), cover_letter_file.content_type)
+
+        admin_email.send()
+        messages.success(request, 'Votre candidature a bien été envoyée !')
+        return redirect('Main:join')
+    else :
+        return render(request, 'Main/Join.html', {'jobs':jobs})
+
 
 def Blog(request):
     posts = Post.objects.all()

@@ -28,19 +28,20 @@
     <!-- Favicon -->
      <link rel="icon" href="{% static 'Logos/Icones/Icones_vert.png' %}" type="image/x-icon">
 
-    <title>Bienvenue chez The Forge </title>
+    <title>The Forge - Entreprise</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link href="{% static 'css/about.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.typekit.net/eqx7rzk.css">
 
   </head>
-  <body style="background-color:#014948 !important; color:#FFC98A !important">
+  <body style="background-color:#014948 !important; color:#FFC98A !important; font-family: 'articulat-cf' !important;">
 
   <header>
   <!-- Barre de navigation -->
   <div class="container">
     <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-green" id="mainNavbar" style="background-color:#014948 !important; color:#FFC98A !important;">
       <div class="container">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="{% url 'Main:index' %}">
         <img src="{% static 'Logos/Principal/Principal_beige.svg' %}" alt="Logo The Forge" width="150">
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -56,21 +57,21 @@
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Services
             </a>
-            <ul class="dropdown-menu" style="background-color:transparent; border-style:none;">
+            <ul class="dropdown-menu" style="background-color:#014948; border-style:none;">
               <li><a class="nav-link" href="{% url 'Main:ai' %}">Intelligence artificielle</a></li>
-              <li><a class="nav-link" href="{% url 'Main:cyber' %}">Cybersécurité</a></li>
               <li><a class="nav-link" href="{% url 'Main:iot' %}">IOT et matériel embarqué</a></li>
+              <li><a class="nav-link" href="{% url 'Main:cyber' %}">Cybersécurité</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Entreprise
             </a>
-            <ul class="dropdown-menu" style="background-color:transparent; border-style:none;">
+            <ul class="dropdown-menu" style="background-color:#014948; border-style:none;">
               <li><a class="nav-link" href="{% url 'Main:about' %}">À propos</a></li>
               <li><a class="nav-link" href="{% url 'Main:blog' %}">Blog</a></li>
-              <li><a class="nav-link" href="{% url 'Main:about' %}">FAQ</a></li>
-              <li><a class="nav-link" href="{% url 'Main:about' %}">Charte</a></li>
+              <li><a class="nav-link" href="{% url 'Main:faq' %}">FAQ</a></li>
+              <li><a class="nav-link" href="{% url 'Main:charte' %}">Charte</a></li>
             </ul>
           </li>
           <li class="nav-item">
@@ -86,15 +87,27 @@
 
   <!-- Section services -->
   <Main>
+    {% if messages %}
+      <div class="messages row justify-content-center align-items-center" id='messageBox' style="position:fixed; top:100px; right:25px; text-align:center; background-color:#014948; border-style:solid; border-width:1px; border-color:#FFC98A; color:#FFC98A; padding:10px">
+        <a type="button" onclick="closeMessage()" style="--bs-btn-close-color:#FFC98A; position:absolute; left:5px; top:5px; color:#FFC98A; width:5px;">X</a>
+        {% for message in messages %}
+          <div>
+             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 64 64" fill="none" stroke-width="2px" stroke="#FFC98A"><path d="M8 12h48v40H8z"/><path d="M56 20L32 36 8 20"/></svg>
+             <h3>Merci !</h3>
+             <p>{{ message }}</p>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
     <!-- Section Hero -->
     <section>
-      <div class="mt-5 container HeroContainer text-beige m-auto">
+      <div class="mt-5 container HeroContainer text-beige m-auto fade-up">
         <div class="row justify-content-between align-items-center">
           <div class="col-sm-12 col-md-6 display-2">The Forge</div>
           <div class="col-sm-12 col-md-6 mt-4">
             <p style="font-size:20px !important;">Chez The Forge, nous sommes animés par la conviction que le progrès technologique se réalise à travers une collaboration authentique et une recherche continue d'excellence. En valorisant la diversité des talents et des idées, nous parvenons à concevoir des solutions qui non seulement répondent aux défis actuels mais façonnent également un avenir numérique commun et responsable.</p>
-            <button class="btn btn-outline-beige">Travaillons ensemble</button>
-            <a href="#" class="text-beige ms-3">Rejoindre The Forge</a>
+            <button class="btn btn-outline-beige" data-bs-toggle="modal" data-bs-target="#exampleModal">Travaillons ensemble</button>
+            <a href="{% url 'Main:join' %}" class="text-beige ms-3">Rejoindre The Forge</a>
           </div>
         </div>
           <img class='mt-5' src="{% static 'Assets/images/cinematic-image-of-people-working-in-a-start-up-bu-2022-09-07-00-09-49-utc.jpg' %}" alt="L'équipe de The Forge en session brainstorm" width="100%">
@@ -105,7 +118,7 @@
    <!-- Section Notre vision -->
     <section>
       <div class="text-beige container text-whit mt-3" style="padding-bottom:60px !important">
-        <div class="row justify-content-between align-items-center">
+        <div class="row justify-content-between align-items-center fade-up">
           <div class="col-sm-12 col-md-4 align-items-between">
             <p class="display-2">Notre vision</p>
             <p style="font-size:20px !important;">The Forge est guidée par la conviction que la collaboration est la clé de l'innovation. Nous valorisons le potentiel unique de chaque membre de notre équipe, et c'est ensemble que nous mobilisons nos compétences et notre créativité.</p>
@@ -115,7 +128,7 @@
           </div>
         </div>
 
-        <div class="row justify-content-between text-beige">
+        <div class="row justify-content-between text-beige fade-up">
           <div class="col-lg-4 col-md-4 col-sm-12 mt-3 p-3">
             <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none" stroke-width="1px" stroke="#FBC88B"><path d="M28 44h-8A12 12 0 0 1 8 32h0a12 12 0 0 1 12-12h8M36 20h8a12 12 0 0 1 12 12h0a12 12 0 0 1-12 12h-8M20 32h24"/></svg>
             <h3>Collaboration ouverte</h3>
@@ -158,7 +171,7 @@
      <!-- Section Notre Engagement -->
     <section>
       <div class="text-beige container text-whit mt-3" style="padding-bottom:60px !important">
-        <div class="row justify-content-between align-items-center">
+        <div class="row justify-content-between align-items-center fade-up">
           <div class="col-sm-12 col-md-6">
             <img src="{% static 'Assets/images/cinematic-image-of-people-working-in-a-start-up-bu-2022-09-07-00-05-39-utc.jpg' %}" width="100%">
           </div>
@@ -168,7 +181,7 @@
           </div>
         </div>
 
-        <div class="row justify-content-between text-beige mt-5">
+        <div class="row justify-content-between text-beige mt-5 fade-up">
           <div class="col-lg-4 col-md-4 col-sm-12 mt-3 p-3">
             <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none" stroke-width="1px" stroke="#FBC88B"><path d="M8 12h48v40H8z"/><path d="M20 40l8-8-8-8M32 40h12"/></svg>            <h3>IT Compliance</h3>
             <p>Nous nous engageons à respecter toutes les exigences de conformité informatique pertinentes. Nos pratiques et solutions sont alignées sur les normes réglementaires pour assurer une gestion informatique transparente et conforme.</p>
@@ -210,10 +223,10 @@
 
      <!-- Section Notre Engagement -->
     <section>
-      <div class="text-beig pt-2 container borderTop text-whit mt-4" style="padding-bottom:60px !important">
+      <div class="text-beig pt-2 container borderTop text-whit mt-4 fade-up" style="padding-bottom:60px !important">
         <div class="display-1">
           Travaillez avec The Forge et commencer à développer le numérique de demain.
-          <button class="btn btn-outline-beige w-100 mt-2" style="font-size:30px;">Travailler avec nous</button>
+          <button class="btn btn-outline-beige w-100 mt-2" style="font-size:30px;" data-bs-toggle="modal" data-bs-target="#exampleModal">Travailler avec nous</button>
         </div>
       </div>
     </section>
@@ -226,29 +239,33 @@
   <div class="container text-beige borderTop">
     <div class="row m-auto text-beige" style="padding-top:50px; padding-bottom:50px;">
       <div class="col-md-3 mb-3 mb-md-0 text-beige">
-        <img src="{% static 'Logos/Principal/Principal_beige.svg' %}" alt="Logo" height="60">
-      </div>
-      <div class="col-md-2 mb-3 mb-md-0 text-beige">
-        <h5>The Forge</h5>
-        <ul class="list-unstyled">
-          <li><a href="#about" class="text-beige">À propos</a></li>
-          <li><a href="#blog" class="text-beige">Blog</a></li>
-          <li><a href="#faq" class="text-beige">FAQ</a></li>
-        </ul>
+        <a href="{% url 'Main:index' %}">
+          <img src="{% static 'Logos/Principal/Principal_beige.svg' %}" alt="Logo" height="60">
+        </a>
       </div>
       <div class="col-md-2 mb-3 mb-md-0 text-beige">
         <h5>Services</h5>
         <ul class="list-unstyled">
-          <li><a href="#about" class="text-beige">Intelligence artificielle</a></li>
-          <li><a href="#blog" class="text-beige">Cybersécurité</a></li>
-          <li><a href="#faq" class="text-beige">IOT</a></li>
+          <li><a href="{% url 'Main:ai' %}" class="text-beige">Intelligence artificielle</a></li>
+          <li><a href="{% url 'Main:iot' %}" class="text-beige">IOT</a></li>
+          <li><a href="{% url 'Main:cyber' %}" class="text-beige">Cybersécurité</a></li>
         </ul>
       </div>
       <div class="col-md-2">
-        <h5>Nous rejoindre</h5>
+        <h5>Entreprise</h5>
         <ul class="list-unstyled">
-          <li><a href="#" class="text-beige">Carrière</a></li>
-          <li><a href="#" class="text-beige">Notre équipe</a></li>
+          <li><a href="{% url 'Main:join' %}" class="text-beige">Nous rejoindre</a></li>
+          <li><a href="{% url 'Main:blog' %}" class="text-beige">Blog</a></li>
+          <li><a href="{% url 'Main:faq' %}" class="text-beige">FAQ</a></li>
+          <li><a href="{% url 'Main:charte' %}" class="text-beige">Charte</a></li>
+        </ul>
+      </div>
+      <div class="col-md-2">
+        <h5>Suivez-nous</h5>
+        <ul class="list-unstyled">
+          <li><a href="#" class="text-beige">LinkedIn</a></li>
+          <li><a href="#" class="text-beige">Twitter</a></li>
+          <li><a href="#" class="text-beige">Facebook</a></li>
         </ul>
       </div>
       <div class="col-md-2">
@@ -262,20 +279,98 @@
     <div class="borderTop row pt-3 justify-content-around m-auto">
       <div class="col-6 flex-grow-1">
         <address class="">
-          <strong>The Forge ltd</strong><br>
+          <strong>The Forge</strong><br>
           5 CRS DE VERDUN GENSOUL<br>
           69002 LYON
           <abbr title="Phone"></abbr> (123) 456-7890
         </address>
       </div>
       <div class="col-6 align-items-end" style="text-align:right">
-         <a href="" class="text-beige unstyled" style="text-align:right; margin:0 !important; margin-bottom:0px !important;">Conditions générales d'utilisation</a><br>
-        <a href="" class="text-beige unstyled" style="text-align:right; margin:0 !important; margin-bottom:0px !important;">Mentions légales</a>
+         <a href="{% url 'Main:Conditions' %}" class="text-beige unstyled" style="text-align:right; margin:0 !important; margin-bottom:0px !important;">Conditions générales d'utilisation</a><br>
+        <a href="{% url 'Main:Mentions' %}" class="text-beige unstyled" style="text-align:right; margin:0 !important; margin-bottom:0px !important;">Mentions légales</a>
       </div>
     </div>
   </div>
     <img src="{% static 'Assets/Motifs/horizontale/footer_beige.png' %}" width="100%" style="">
 </footer>
+
+    <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content" style="background-color:#014948; border-color:#FFC98A">
+        <div class="modal-header" style="border-color:#FFC98A">
+          <h1 class="modal-title fs-5 text-bleu" id="exampleModalLabel">Parlez-nous de vos besoins !</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style=""></button>
+        </div>
+        <div class="modal-body text-beige">
+          <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mb-3 mt-4">
+                <label for="exampleFormControlInput1" class="form-label text-bleu">Votre adresse email</label>
+                <input type="email" class="form-control" name='email' id="exampleFormControlInput1" style="background-color:transparent; color:#FFC98A; border-color:#FFC98A; outline: none;box-shadow: none;" required>
+            </div>
+
+            <div class="mb-3 mt-4">
+                <label for="firstName" class="form-label">Votre prénom</label>
+                <input type="text" class="form-control" name='first_name' id="firstName" style="background-color:transparent; color:#FFC98A; border-color:#FFC98A; outline: none;box-shadow: none;" required>
+            </div>
+
+            <div class="mb-3 mt-4">
+                <label for="lastName" class="form-label">Votre nom</label>
+                <input type="text" class="form-control" name='last_name' id="lastName" style="background-color:transparent; color:#FFC98A; border-color:#FFC98A; outline: none;box-shadow: none;" required>
+            </div>
+
+            <div class="mb-3 mt-4">
+                <label for="companyName" class="form-label">Votre Entreprise</label>
+                <input type="text" class="form-control" name='company' id="companyName" style="background-color:transparent; color:#FFC98A; border-color:#FFC98A; outline: none;box-shadow: none;" required>
+            </div>
+
+            <div class="mb-3 mt-4">
+                <label for="sectorSelect" class="form-label">Votre secteur d'activité</label>
+                <select class="form-select" name='field' id="sectorSelect" style="background-color:transparent; color:#FFC98A; border-color:#FFC98A; outline: none;box-shadow: none;" required>
+                    <option value=""><i class="bi bi-chevron-down text-beige"></i>>> Sélectionnez votre secteur <<</option>
+                    <!-- Liste exhaustive des secteurs -->
+                    <option value="technologie">Technologie et Informatique</option>
+                    <option value="finance">Finance et Banque</option>
+                    <option value="finance">Santé et Pharmaceutique</option>
+                    <option value="finance">Éducation et Formation</option>
+                    <option value="finance">Industrie et Manufacture</option>
+                    <option value="finance">Commerce et Distribution</option>
+                    <option value="finance">Agriculture et Agroalimentaire</option>
+                    <option value="finance">Énergie et Ressources</option>
+                    <option value="finance">Construction et BTP</option>
+                    <option value="finance">Transport et Logistique</option>
+                    <option value="finance">Tourisme et Hôtellerie</option>
+                    <option value="finance">Arts et Culture</option>
+                    <option value="finance">Médias et Communication</option>
+                    <option value="finance">Services Publics et Administration</option>
+                    <option value="finance">Loisirs et Divertissement</option>
+                    <option value="finance">Environnement et Développement Durable</option>
+                    <option value="finance">Conseil et Gestion</option>
+                    <option value="finance">Recherche et Développement</option>
+                    <option value="finance">Autres</option>
+                    <!-- Ajoutez d'autres options ici -->
+                </select>
+            </div>
+
+            <div class="mb-3 mt-4">
+                <label for="contentTextArea" class="form-label">Vos besoins</label>
+                <textarea class="form-control" name='content' id="contentTextArea" style="background-color:transparent; color:#FFC98A; border-color:#FFC98A; outline: none;box-shadow: none;" required></textarea>
+            </div>
+
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" name='callback_request' id="callbackRequest" style="outline: none;box-shadow: none;">
+                <label class="form-check-label" for="callbackRequest">Être rappelé ?</label>
+            </div>
+
+            <button class="btn btn-outline-beige w-100 mt-2">Envoyer</button>
+        </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal -->
 
 
 
@@ -293,10 +388,13 @@
       });
     });
 
-    </script>
 
+     function closeMessage() {
+    document.getElementById('messageBox').style.display = 'none';
+    };
 
     </script>
+    <script src="{% static 'js/main.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
 

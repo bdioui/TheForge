@@ -64,3 +64,16 @@ class Message(models.Model):
 
     def __str__(self):
         return self.email + ' : ' + self.submitted_at
+
+class ContactRequest(models.Model):
+    # Définir les champs selon le formulaire
+    email = models.EmailField(max_length=255)
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+    company = models.CharField(max_length=100)
+    field = models.CharField(max_length=100)
+    content = models.TextField()
+    callback_request = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"{self.first_name} {self.last_name} - {self.company}"

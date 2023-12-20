@@ -182,5 +182,20 @@
             background-color:white !important;
         }
 
+        .fade-up {
+          opacity: 0;
+          transform: translateY(20px);
+          visibility: hidden;
+          transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+          will-change: opacity, visibility, transform;
+        }
+
+        /* Lorsque l'élément entre dans le viewport, il remonte et devient visible */
+        .fade-up.visible {
+          opacity: 1;
+          transform: translateY(0);
+          visibility: visible;
+        }
+
 
 </style>

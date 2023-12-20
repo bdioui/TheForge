@@ -1,0 +1,246 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Balises pour référencement naturel -->
+    <meta name="description" content="Une Équipe de développement informatique spécialisée dans l'intelligence artificielle. Offrant des solutions innovantes pour les défis technologiques de demain.">
+    <meta name="keywords" content="développement informatique, intelligence artificielle, IA, solutions technologiques, innovation, Web3, Informatique">
+    <meta name="author" content="The Forge">
+
+    <!-- Balises Open Graph pour les réseaux sociaux (remplacez les valeurs par les vôtres) -->
+    <meta property="og:title" content="The Forge">
+    <meta property="og:description" content="Une Équipe de développement informatique spécialisée dans l'intelligence artificielle. Offrant des solutions innovantes pour les défis technologiques de demain.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="www.theforge.fr">
+    <meta property="og:image" content="URL de l'image à afficher sur les réseaux sociaux">
+
+    <!-- Balises Twitter Card pour Twitter (remplacez les valeurs par les vôtres) -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@votrecompte">
+    <meta name="twitter:title" content="Nom de votre entreprise">
+    <meta name="twitter:description" content="Entreprise de développement informatique de pointe spécialisée dans l'intelligence artificielle. Offrant des solutions innovantes pour les défis technologiques du futur.">
+    <meta name="twitter:image" content="URL de l'image à afficher sur Twitter">
+
+    <!-- Favicon -->
+    <link rel="icon" href="{% static 'Logos/Icones/Icones_bleu_foncé.png' %}" type="image/x-icon">
+
+    <title>The Forge - CGU</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="{% static 'css/charte.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.typekit.net/eqx7rzk.css">
+
+  </head>
+  <body style="background-color:#E5EEFF !important; color:#2F3540 !important; font-family: 'articulat-cf' !important;">
+
+  <header>
+  <!-- Barre de navigation -->
+  <div class="container">
+    <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-white" id="mainNavbar" style="background-color:#E5EEFF !important; color:#FFC98A !important;">
+      <div class="container">
+      <a class="navbar-brand" href="{% url 'Main:index' %}">
+        <img src="{% static 'Logos/Principal/Principal_bleu_foncé.svg' %}" alt="Logo The Forge" width="150">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse m-auto" id="navbarNavDropdown">
+        <ul class="navbar-nav m-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'Main:index' %}">Accueil</a>
+          </li>
+          <!-- Menu déroulant pour les services -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Services
+            </a>
+            <ul class="dropdown-menu" style="background-color:#E5EEFF; border-style:none;">
+              <li><a class="nav-link" href="{% url 'Main:ai' %}">Intelligence artificielle</a></li>
+              <li><a class="nav-link" href="{% url 'Main:cyber' %}">Cybersécurité</a></li>
+              <li><a class="nav-link" href="{% url 'Main:iot' %}">IOT et matériel embarqué</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Entreprise
+            </a>
+            <ul class="dropdown-menu" style="background-color:#E5EEFF; border-style:none;">
+              <li><a class="nav-link" href="{% url 'Main:about' %}">À propos</a></li>
+              <li><a class="nav-link" href="{% url 'Main:blog' %}">Blog</a></li>
+              <li><a class="nav-link" href="{% url 'Main:faq' %}">FAQ</a></li>
+              <li><a class="nav-link" href="{% url 'Main:about' %}">Charte</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'Main:join' %}">Nous rejoindre</a>
+          </li>
+        </ul>
+          <a type="button" class="btn btn-outline-bleu_foncé contact-item" href="{% url 'Main:contact' %}">Nous contacter</a>
+      </div>
+    </div>
+    </nav>
+  </div>
+</header>
+
+  <!-- Section services -->
+  <Main>
+    <!-- Section Hero -->
+    <section>
+      <div class="mt-5 container HeroContainer text-bleu_foncé m-auto">
+        <div class="row justify-content-between align-items-top">
+          <div class="col-sm-12 col-md-6">
+            <div class="display-1">Conditions d'utilisation</div>
+          </div>
+          <div class="col-sm-12 col-md-6 mt-4">
+            <img src="{% static 'Assets/Images/cinematic-image-of-people-working-in-a-start-up-bu-2023-11-27-04-53-25-utc.jpg' %}" width="100%">
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Section Hero -->
+
+     <!-- Section Notre Engagement -->
+    <section>
+      <div class="pt-2 container borderTop mt-4" style="padding-bottom:60px !important;">
+        <div class="row justify-content-start">
+            <div class="col-lg-3 col-md-3 col-sm-12">
+              <p>Site mis à jour le 17 décembre 2023 <br> <a href='#' class="nav-link link-bleu" style="color:black !important">Contacter l'administrateur du site</a></p>
+
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12">
+              <p>
+                En accédant au site web de The Forge, vous acceptez de vous conformer à ces conditions d'utilisation, à toutes les lois et réglementations applicables, et convenez que vous êtes responsable du respect des lois locales en vigueur. Si vous n'êtes pas d'accord avec l'une de ces conditions, vous êtes interdit d'utiliser ou d'accéder à ce site. Les matériaux contenus dans ce site web sont protégés par le droit d'auteur et le droit des marques.
+              </p>
+              <br>
+              <br>
+
+              <h1>Utilisation du site</h1>
+              <p>
+                Le site The Forge vous est proposé à titre personnel et non commercial. Vous ne pouvez pas modifier, copier, distribuer, transmettre, afficher, exécuter, reproduire, publier, concéder sous licence, créer des œuvres dérivées, transférer ou vendre toute information, logiciel, produit ou service obtenu à partir de ce site.
+              </p>
+              <br>
+              <br>
+
+              <h1>Limitation de responsabilité</h1>
+              <p>
+                Les informations et services sur le site The Forge sont fournis "en l'état" sans garantie d'aucune sorte. The Forge ne garantit pas l'exactitude et la complétude des matériaux, logiciels ou services sur ce site. The Forge peut apporter des modifications aux matériaux et services offerts sur ce site, ou aux produits et prix décrits, à tout moment et sans préavis.
+              </p>
+              <br>
+              <br>
+
+              <h1>Liens tiers</h1>
+              <p>
+                The Forge n'a pas examiné tous les sites liés à son site web et n'est pas responsable du contenu de ces sites liés. L'inclusion de tout lien n'implique pas l'approbation par The Forge du site. L'utilisation de tout site web lié se fait aux risques et périls de l'utilisateur.              </p>
+              <br>
+              <br>
+
+              <h1>Modifications des conditions</h1>
+              <p>
+                The Forge peut réviser ces conditions d'utilisation pour son site web à tout moment sans préavis. En utilisant ce site, vous acceptez d'être lié par la version actuelle de ces conditions générales d'utilisation.              </p>
+              <br>
+              <br>
+
+               <h1>Loi applicable</h1>
+              <p>
+                Tout litige lié au site web de The Forge sera régi par les lois du pays où se trouve le siège de The Forge sans égard à ses dispositions en matière de conflits de lois.              <br>
+              <br>
+
+            </div>
+          </div>
+        </div>
+    </section>
+    <!-- Section notre engagement -->
+
+
+  </Main>
+
+  <footer class="footer text-bleu_foncé" style="margin-top:5rem; background-color:#E5EEFF;">
+  <div class="container text-bleu_foncé borderTop" style="margin-bottom:150px;">
+    <div class="row m-auto text-bleu_foncé" style="padding-top:50px; padding-bottom:50px;">
+      <div class="col-md-3 mb-3 mb-md-0 text-bleu_foncé">
+        <a href="{% url 'Main:index' %}">
+          <img src="{% static 'Logos/Principal/Principal_bleu_foncé.svg' %}" alt="Logo" height="60">
+        </a>
+      </div>
+      <div class="col-md-2 mb-3 mb-md-0 text-bleu_foncé">
+        <h5>Services</h5>
+        <ul class="list-unstyled">
+          <li><a href="{% url 'Main:ai' %}" class="text-bleu_foncé">Intelligence artificielle</a></li>
+          <li><a href="{% url 'Main:cyber' %}" class="text-bleu_foncé">Cybersécurité</a></li>
+          <li><a href="{% url 'Main:iot' %}" class="text-bleu_foncé">IOT</a></li>
+        </ul>
+      </div>
+      <div class="col-md-2">
+        <h5>Entreprise</h5>
+        <ul class="list-unstyled">
+          <li><a href="{% url 'Main:join' %}" class="text-bleu_foncé">Nous rejoindre</a></li>
+          <li><a href="{% url 'Main:blog' %}" class="text-bleu_foncé">Blog</a></li>
+          <li><a href="{% url 'Main:faq' %}" class="text-bleu_foncé">FAQ</a></li>
+          <li><a href="{% url 'Main:charte' %}" class="text-bleu_foncé">Charte</a></li>
+        </ul>
+      </div>
+      <div class="col-md-2">
+        <h5>Suivez-nous</h5>
+        <ul class="list-unstyled">
+          <li><a href="#" class="text-bleu_foncé">LinkedIn</a></li>
+          <li><a href="#" class="text-bleu_foncé">Twitter</a></li>
+          <li><a href="#" class="text-bleu_foncé">Facebook</a></li>
+        </ul>
+      </div>
+      <div class="col-md-2">
+        <h5>Nous contacter</h5>
+        <ul class="list-unstyled">
+          <li><a href="mailto:contact@theforge.fr" class="text-bleu_foncé">contact@theforge.fr</a></li>
+          <li><a href="tel:0299123244" class="text-bleu_foncé">02 99 12 32 44</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="borderTop row pt-3 justify-content-around m-auto text-bleu_foncé">
+      <div class="col-6 flex-grow-1 text-bleu_foncé">
+        <address class="">
+          <strong>The Forge ltd</strong><br>
+          5 CRS DE VERDUN GENSOUL<br>
+          69002 LYON
+          <abbr title="Phone"></abbr> (123) 456-7890
+        </address>
+      </div>
+      <div class="col-6 align-items-end" style="text-align:right">
+         <a href="{% url 'Main:Conditions' %}" class="text-bleu_foncé unstyled" style="text-align:right; margin:0 !important; margin-bottom:0px !important;">Conditions générales d'utilisation</a><br>
+        <a href="{% url 'Main:Mentions' %}" class="text-bleu_foncé unstyled" style="text-align:right; margin:0 !important; margin-bottom:0px !important;">Mentions légales</a>
+      </div>
+    </div>
+  </div>
+    <img src="{% static 'Assets/Motifs/horizontale/footer_bleu_foncé.png' %}" width="100%" style="">
+</footer>
+
+
+
+
+
+
+    <script>
+
+   document.addEventListener('DOMContentLoaded', function () {
+      var navbarToggler = document.querySelector('.navbar-toggler');
+      var navbar = document.querySelector('.navbar'); // Assurez-vous que cela cible le bon élément
+
+      navbarToggler.addEventListener('click', function() {
+        navbar.classList.toggle('navbar-open'); // Basculer la classe pour toute la navbar
+      });
+    });
+
+
+     function closeMessage() {
+    document.getElementById('messageBox').style.display = 'none';
+    };
+
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+
+  </body>
+</html>

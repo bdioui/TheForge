@@ -13,6 +13,11 @@ urlpatterns = [
     path('ai/', views.AI, name='ai'),
     path('cyber/', views.Cyber, name='cyber'),
     path('iot/', views.IoT, name='iot'),
+    path('charte/', views.Charte, name='charte'),
+    path('faq/', views.FAQ, name='faq'),
+    path('mentions/', views.Mentions, name='Mentions'),
+    path('conditions/', views.Conditions, name='Conditions'),
+
 
     path('blog/', views.Blog, name='blog'),
     path('create_post/', views.Create_Post, name='create_post'),

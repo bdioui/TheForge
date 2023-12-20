@@ -1,0 +1,345 @@
+<!doctype html>
+
+{% load static %}
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Balises pour référencement naturel -->
+    <meta name="description" content="Une Équipe de développement informatique spécialisée dans l'intelligence artificielle. Offrant des solutions innovantes pour les défis technologiques de demain.">
+    <meta name="keywords" content="développement informatique, intelligence artificielle, IA, solutions technologiques, innovation, Web3, Informatique">
+    <meta name="author" content="The Forge">
+
+    <!-- Balises Open Graph pour les réseaux sociaux (remplacez les valeurs par les vôtres) -->
+    <meta property="og:title" content="The Forge">
+    <meta property="og:description" content="Une Équipe de développement informatique spécialisée dans l'intelligence artificielle. Offrant des solutions innovantes pour les défis technologiques de demain.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="www.theforge.fr">
+    <meta property="og:image" content="URL de l'image à afficher sur les réseaux sociaux">
+
+    <!-- Balises Twitter Card pour Twitter (remplacez les valeurs par les vôtres) -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@votrecompte">
+    <meta name="twitter:title" content="Nom de votre entreprise">
+    <meta name="twitter:description" content="Entreprise de développement informatique de pointe spécialisée dans l'intelligence artificielle. Offrant des solutions innovantes pour les défis technologiques du futur.">
+    <meta name="twitter:image" content="URL de l'image à afficher sur Twitter">
+
+    <!-- Favicon -->
+    <link rel="icon" href="{% static 'Logos/Icones/Icones_noir_blanc.png' %}" type="image/x-icon">
+
+    <title>The Forge - FAQ</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="{% static 'css/faq.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.typekit.net/eqx7rzk.css">
+
+  </head>
+
+  <body style="font-family: 'articulat-cf' !important;">
+
+  <header>
+    {% if messages %}
+      <div class="messages row justify-content-center align-items-center" id='messageBox' style="position:fixed; top:100px; right:25px; text-align:center; background-color:white; border-style:solid; border-width:1px; border-color:black; color:black; padding:10px; z-index:999 !important;">
+        <a type="button" onclick="closeMessage()" style="--bs-btn-close-color:black; position:absolute; left:5px; top:5px; color:black; width:5px;">X</a>
+        {% for message in messages %}
+          <div>
+             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 64 64" fill="none" stroke-width="2px" stroke="black"><path d="M8 12h48v40H8z"/><path d="M56 20L32 36 8 20"/></svg>
+             <h3>Merci !</h3>
+             <p>{{ message }}</p>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  <!-- Barre de navigation -->
+  <div class="container">
+    <nav class="navbar navbar-expand-lg fixed-top bg-white navbar-light" id="mainNavbar">
+      <div class="container">
+      <a class="navbar-brand" href="{% url 'Main:index' %}">
+        <img src="{% static 'Logos/Principal/Principal_noir.svg' %}" alt="Logo The Forge" width="150" style="color:'white'">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse m-auto text-black" id="navbarNavDropdown">
+        <ul class="navbar-nav m-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'Main:index' %}">Accueil</a>
+          </li>
+          <!-- Menu déroulant pour les services -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Services
+            </a>
+           <ul class="dropdown-menu" style="background-color:white; border-style:none;">
+              <li><a class="nav-link" href="{% url 'Main:ai' %}">Intelligence artificielle</a></li>
+              <li><a class="nav-link" href="{% url 'Main:iot' %}">IOT et matériel embarqué</a></li>
+              <li><a class="nav-link" href="{% url 'Main:cyber' %}">Cybersécurité</a></li>
+            </ul>
+          </li>
+
+           <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Entreprise
+            </a>
+            <ul class="dropdown-menu" style="background-color:white; border-style:none;">
+              <li><a class="nav-link" href="{% url 'Main:about' %}">À propos</a></li>
+              <li><a class="nav-link" href="{% url 'Main:blog' %}">Blog</a></li>
+              <li><a class="nav-link" href="{% url 'Main:faq' %}">FAQ</a></li>
+              <li><a class="nav-link" href="{% url 'Main:charte' %}">Charte</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'Main:join' %}">Nous rejoindre</a>
+          </li>
+        </ul>
+          <a type="button" class="btn btn-outline-black contact-item" href="{% url 'Main:join' %}">Nous contacter</a>
+      </div>
+    </div>
+    </nav>
+  </div>
+</header>
+  <!-- Section services -->
+  <Main>
+    <!-- Section citation -->
+    <section>
+      <div class="container py-4 borderTopBottom m-auto fade-up" style="margin-top:10rem !important;">
+        <div class="row">
+          <div class='col-lg-6 col-md-6 col-sm-12 display-1 mb-4'>
+            FAQ
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12 accordion" id="faqAccordion">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  Quels types de services propose The Forge ?
+                </button>
+              </h2>
+              <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  The Forge est spécialisée dans le développement de solutions personnalisées en intelligence artificielle, cybersécurité, et IoT. Nous offrons une gamme de services allant de la consultation et l'analyse de données à la conception et au déploiement de systèmes intelligents.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                  Comment The Forge assure-t-elle la sécurité des données ?
+                </button>
+              </h2>
+              <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  La sécurité des données est une priorité absolue chez The Forge. Nous utilisons des protocoles de cryptage avancés, des systèmes de gestion des accès rigoureux et des audits réguliers pour garantir la sécurité et la confidentialité des données de nos clients.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                  L'intelligence artificielle développée par The Forge est-elle éthique et sans parti pris ?
+                </button>
+              </h2>
+              <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  Oui. Nous nous engageons à développer une IA éthique et impartiale. Pour cela, nous utilisons des méthodes de développement transparentes, des tests rigoureux pour détecter et éliminer les biais, et des principes d'éthique forts qui guident toutes nos créations.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingFour">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                  Quelle est l'approche de The Forge en matière de développement durable et de RSE ?
+                </button>
+              </h2>
+              <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  The Forge s'engage dans le développement durable et la responsabilité sociétale des entreprises. Nous adoptons des pratiques écoresponsables dans nos opérations et cherchons à avoir un impact positif sur la société à travers nos technologies et initiatives.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingFive">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+                  Comment puis-je collaborer avec The Forge sur un projet ?
+                </button>
+              </h2>
+              <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  Pour entamer une collaboration, veuillez nous contacter via notre formulaire en ligne ou par téléphone. Nous discuterons de vos besoins, explorerons les solutions possibles et établirons un plan de projet adapté à vos objectifs.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingSix">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
+                  The Forge propose-t-elle des formations ou des ateliers sur l'IA et la cybersécurité ?
+                </button>
+              </h2>
+              <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  Oui, nous offrons des formations et ateliers pour les entreprises et les particuliers intéressés par l'IA et la cybersécurité. Ces sessions sont adaptées au niveau de compétence des participants et couvrent divers sujets, des bases de l'IA à des concepts plus avancés.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingSeven">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="true" aria-controls="collapseSeven">
+                  Comment The Forge garantit-elle la qualité de ses services ?
+                </button>
+              </h2>
+              <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  Nous maintenons une qualité élevée en suivant des processus de développement rigoureux, en employant une équipe hautement qualifiée, et en utilisant des méthodes de test et de validation approfondies pour chaque projet.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingEight">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="true" aria-controls="collapseEight">
+                  Est-il possible d'obtenir un support technique après la livraison d'un projet ?
+                </button>
+              </h2>
+              <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  Absolument. The Forge offre un support technique et une maintenance après la livraison du projet pour garantir le bon fonctionnement et la pérennité des solutions que nous développons.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Section citation -->
+    <section>
+      <div class="container mt-5 fade-up">
+        <img src="{% static 'Assets/Images/cinematic-image-of-people-working-in-a-start-up-bu-2022-09-07-00-09-49-utc.jpg' %}" width="100%">
+        <button class="btn btn-outline-black w-100 mt-3" style="font-size:35px" data-bs-toggle="modal" data-bs-target="#exampleModal">Nous poser une question</button>
+      </div>
+    </section>
+
+  </Main>
+
+
+  <footer class="footer bg-white text-black" style="margin-top:15rem;">
+  <div class="container">
+    <div class="row m-auto" style="padding-top:50px; padding-bottom:50px;">
+      <div class="col-md-3 mb-3 mb-md-0">
+        <a href="{% url 'Main:index' %}">
+          <img src="{% static 'Logos/Principal/Principal_noir.svg' %}" alt="Logo" height="60">
+        </a>
+      </div>
+      <div class="col-md-2 mb-3 mb-md-0 text-maron">
+        <h5>Services</h5>
+        <ul class="list-unstyled">
+          <li><a href="{% url 'Main:ai' %}" class="text-black">Intelligence artificielle</a></li>
+          <li><a href="{% url 'Main:iot' %}" class="text-black">IOT</a></li>
+          <li><a href="{% url 'Main:cyber' %}" class="text-black">Cybersécurité</a></li>
+        </ul>
+      </div>
+      <div class="col-md-2">
+        <h5>Entreprise</h5>
+        <ul class="list-unstyled">
+          <li><a href="{% url 'Main:join' %}" class="text-black">Nous rejoindre</a></li>
+          <li><a href="{% url 'Main:blog' %}" class="text-black">Blog</a></li>
+          <li><a href="{% url 'Main:faq' %}" class="text-black">FAQ</a></li>
+          <li><a href="{% url 'Main:charte' %}" class="text-black">Charte</a></li>
+        </ul>
+      </div>
+      <div class="col-md-2">
+        <h5>Suivez-nous</h5>
+        <ul class="list-unstyled">
+          <li><a href="{% url 'Main:about' %}" class="text-black">LinkedIn</a></li>
+          <li><a href="{% url 'Main:about' %}" class="text-black">Twitter</a></li>
+          <li><a href="{% url 'Main:about' %}" class="text-black">Facebook</a></li>
+        </ul>
+      </div>
+      <div class="col-md-2">
+        <h5>Nous contacter</h5>
+        <ul class="list-unstyled">
+          <li><a href="mailto:contact@theforge.fr" class="text-black">contact@theforge.fr</a></li>
+          <li><a href="tel:0299123244" class="text-black">02 99 12 32 44</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="borderTop row pt-3 justify-content-around m-auto">
+      <div class="col-6 flex-grow-1">
+        <address class="text-black">
+          <strong>The Forge</strong><br>
+          5 CRS DE VERDUN GENSOUL<br>
+          69002 LYON
+          <abbr title="Phone"></abbr> (123) 456-7890
+        </address>
+      </div>
+      <div class="col-6 align-items-end" style="text-align:right">
+         <a href="{% url 'Main:Conditions' %}" class="text-black" style="text-align:right; margin:0 !important; margin-bottom:0px !important;">Conditions générales d'utilisation</a><br>
+        <a href="{% url 'Main:Mentions' %}" class="text-black" style="text-align:right; margin:0 !important; margin-bottom:0px !important;">Mentions légales</a>
+      </div>
+    </div>
+  </div>
+    <img src="{% static 'Assets/Motifs/horizontale/footer_noir.png' %}" width="100%" style="">
+</footer>
+
+
+   <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content" style="background-color:white; border-color:black">
+        <div class="modal-header" style="border-color:black">
+          <h1 class="modal-title fs-5 text-bleu" id="exampleModalLabel">Nous poser une question</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style=""></button>
+        </div>
+        <div class="modal-body text-black">
+          <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mb-3 mt-4">
+                <label for="exampleFormControlInput1" class="form-label text-bleu">Votre adresse email</label>
+                <input type="email" class="form-control" name='email' id="exampleFormControlInput1" placeholder="nom@exemple.com" style="background-color:transparent; color:black; border-color:black; outline: none;box-shadow: none;" required>
+            </div>
+
+            <div class="mb-3 mt-4">
+                <label for="firstName" class="form-label">Votre prénom</label>
+                <input type="text" class="form-control" name='first_name' id="firstName" placeholder="Jane" style="background-color:transparent; color:black; border-color:black; outline: none;box-shadow: none;" required>
+            </div>
+
+            <div class="mb-3 mt-4">
+                <label for="lastName" class="form-label">Votre nom</label>
+                <input type="text" class="form-control" name='last_name' id="lastName" placeholder="Doe" style="background-color:transparent; color:black; border-color:black; outline: none;box-shadow: none;" required>
+            </div>
+
+            <div class="mb-3 mt-4">
+                <label for="companyName" class="form-label">Votre Entreprise</label>
+                <input type="text" class="form-control" name='company' id="companyName" placeholder="Company.ltd" style="background-color:transparent; color:black; border-color:black; outline: none;box-shadow: none;" required>
+            </div>
+
+
+            <div class="mb-3 mt-4">
+                <label for="contentTextArea" class="form-label">Vos besoins</label>
+                <textarea class="form-control" name='content' id="contentTextArea" placeholder="Décrivez vos besoins" style="background-color:transparent; color:black; border-color:black; outline: none;box-shadow: none;" required></textarea>
+            </div>
+
+            <button class="btn btn-outline-black w-100 mt-2">Envoyer</button>
+        </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal -->
+  <script>
+  function closeMessage() {
+    document.getElementById('messageBox').style.display = 'none';
+    };
+   </script>
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+
+  </body>
+</html>

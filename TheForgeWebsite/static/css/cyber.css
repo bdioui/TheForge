@@ -91,7 +91,7 @@
         }
 
         .navbar-toggler-icon {
-          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(1, 73, 72)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(236, 254, 140)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
           /* Remplacez la couleur stroke par white ou #014948 pour un icône blanc */
         }
 
@@ -112,7 +112,7 @@
         }
 
         .btn-outline-vert-clair:hover {
-          color: #FFF0D6 !important; /* Couleur du texte du bouton au survol */
+          color: #014948 !important; /* Couleur du texte du bouton au survol */
           background-color: #ECFE8C; /* Couleur de fond du bouton au survol */
           border-color: #ECFE8C; /* Couleur de la bordure du bouton au survol */
         }
@@ -191,6 +191,32 @@
             color:#ECFE8C !important;
             text-decoration:none !important;
         }
+
+        /* CSS pour changer la couleur des placeholders */
+        input::placeholder, textarea::placeholder {
+            color: #ECFE8C !important; /* Remplacez #VotreCouleur par le code hexadécimal de votre choix */
+            opacity: 1 !important; /* Pour certains navigateurs, vous pourriez avoir besoin de régler l'opacité */
+        }
+
+        .btn-close {
+            filter: invert(40%) sepia(100%) saturate(1500%) hue-rotate(150deg) brightness(100%) contrast(100%);
+        }
+
+        .fade-up {
+          opacity: 0;
+          transform: translateY(20px);
+          visibility: hidden;
+          transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+          will-change: opacity, visibility, transform;
+        }
+
+        /* Lorsque l'élément entre dans le viewport, il remonte et devient visible */
+        .fade-up.visible {
+          opacity: 1;
+          transform: translateY(0);
+          visibility: visible;
+        }
+
 
 
 

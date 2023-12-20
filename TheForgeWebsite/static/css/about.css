@@ -153,6 +153,32 @@
         }
         }
 
+         /* CSS pour changer la couleur des placeholders */
+        input::placeholder, textarea::placeholder {
+            color: #FFC98A !important; /* Remplacez #VotreCouleur par le code hexadécimal de votre choix */
+            opacity: 1 !important; /* Pour certains navigateurs, vous pourriez avoir besoin de régler l'opacité */
+        }
+
+         .btn-close {
+            filter: invert(40%) sepia(100%) saturate(1500%) hue-rotate(150deg) brightness(100%) contrast(100%);
+        }
+
+        .fade-up {
+          opacity: 0;
+          transform: translateY(20px);
+          visibility: hidden;
+          transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+          will-change: opacity, visibility, transform;
+        }
+
+        /* Lorsque l'élément entre dans le viewport, il remonte et devient visible */
+        .fade-up.visible {
+          opacity: 1;
+          transform: translateY(0);
+          visibility: visible;
+        }
+
+
 
 
 

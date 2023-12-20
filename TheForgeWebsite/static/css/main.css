@@ -1,8 +1,11 @@
+{% load static %}
 <style>
 
-      body {
-        background-color:#00000 !important;
-      }
+
+        body {
+          background-color: #000000 !important; /* Correct the color code to six digits */
+          font-family: 'articulat-cf' !important;
+        }
 
       .pointer {
         cursor:pointer !important;
@@ -123,6 +126,21 @@
             color:white;
             border-color:white;
             border-style:solid;
+        }
+
+        .fade-up {
+          opacity: 0;
+          transform: translateY(20px);
+          visibility: hidden;
+          transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+          will-change: opacity, visibility, transform;
+        }
+
+        /* Lorsque l'élément entre dans le viewport, il remonte et devient visible */
+        .fade-up.visible {
+          opacity: 1;
+          transform: translateY(0);
+          visibility: visible;
         }
 
 
