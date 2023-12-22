@@ -69,7 +69,7 @@
           <!-- Menu déroulant pour les services -->
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Services
+              Expertise
             </a>
            <ul class="dropdown-menu" style="background-color:white; border-style:none;">
               <li><a class="nav-link" href="{% url 'Main:ai' %}">Intelligence artificielle</a></li>
@@ -90,7 +90,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'Main:join' %}">Nous rejoindre</a>
+            <a class="nav-link" href="{% url 'Main:join' %}">L'équipe</a>
           </li>
         </ul>
           <a type="button" class="btn btn-outline-black contact-item" href="{% url 'Main:join' %}">Nous contacter</a>
@@ -235,15 +235,15 @@
           <img src="{% static 'Logos/Principal/Principal_noir.svg' %}" alt="Logo" height="60">
         </a>
       </div>
-      <div class="col-md-2 mb-3 mb-md-0 text-maron">
-        <h5>Services</h5>
+      <div class="col-md-3 mb-3 mb-md-0 text-maron">
+        <h5>Expertise</h5>
         <ul class="list-unstyled">
           <li><a href="{% url 'Main:ai' %}" class="text-black">Intelligence artificielle</a></li>
           <li><a href="{% url 'Main:iot' %}" class="text-black">IOT</a></li>
           <li><a href="{% url 'Main:cyber' %}" class="text-black">Cybersécurité</a></li>
         </ul>
       </div>
-      <div class="col-md-2">
+      <div class="col-md-3">
         <h5>Entreprise</h5>
         <ul class="list-unstyled">
           <li><a href="{% url 'Main:join' %}" class="text-black">Nous rejoindre</a></li>
@@ -252,19 +252,11 @@
           <li><a href="{% url 'Main:charte' %}" class="text-black">Charte</a></li>
         </ul>
       </div>
-      <div class="col-md-2">
-        <h5>Suivez-nous</h5>
-        <ul class="list-unstyled">
-          <li><a href="{% url 'Main:about' %}" class="text-black">LinkedIn</a></li>
-          <li><a href="{% url 'Main:about' %}" class="text-black">Twitter</a></li>
-          <li><a href="{% url 'Main:about' %}" class="text-black">Facebook</a></li>
-        </ul>
-      </div>
-      <div class="col-md-2">
+      <div class="col-md-3">
         <h5>Nous contacter</h5>
         <ul class="list-unstyled">
           <li><a href="mailto:contact@theforge.fr" class="text-black">contact@theforge.fr</a></li>
-          <li><a href="tel:0299123244" class="text-black">02 99 12 32 44</a></li>
+          <li><a href="https://www.linkedin.com/company/theforgefr/about/?viewAsMember=true" class="text-black">LinkedIn</a></li>
         </ul>
       </div>
     </div>
@@ -274,7 +266,6 @@
           <strong>The Forge</strong><br>
           5 CRS DE VERDUN GENSOUL<br>
           69002 LYON
-          <abbr title="Phone"></abbr> (123) 456-7890
         </address>
       </div>
       <div class="col-6 align-items-end" style="text-align:right">

@@ -1,7 +1,7 @@
 <style>
 
       body {
-        background-color:#F5F6F1 !important;
+        background-color:#014948 !important;
       }
 
       .pointer {
@@ -10,13 +10,13 @@
 
       .borderTop {
         border-style:solid none none none;
-        border-color:#0000FF !important; ;
+        border-color:#015453 !important; ;
         border-width:1px;
       }
 
       .borderTopBottom {
         border-style:solid none solid none;
-        border-color:#0000FF !important; ;
+        border-color:#015453 !important; ;
         border-width:1px;
       }
 
@@ -25,17 +25,17 @@
       }
 
       .nav-link {
-        color:#0000FF; !important;
+        color:#015453; !important;
         text-decoration:None;
       }
 
       .nav-item{
-        color:#0000FF; !important;
+        color:#015453; !important;
         margin-left:70px;
       }
 
       .nav-link:hover {
-        color:#0000FF !important;
+        color:#015453 !important;
         text-decoration:underline;
       }
 
@@ -56,7 +56,7 @@
       }
 
       .footer {
-        background-color: #F5F6F1; /* Couleur de fond du footer */
+        background-color: #1D1D1D; /* Couleur de fond du footer */
         color: #015453; /* Couleur du texte */
       }
 
@@ -79,11 +79,11 @@
       }
 
       .nav-link, .nav-link:visited {
-          color: #0000FF !important; /* Assure que les liens restent blancs même après avoir été visités */
+          color: #015453 !important; /* Assure que les liens restent blancs même après avoir été visités */
         }
 
       a:visited{
-        color:#0000FF; !important;
+        color:#015453; !important;
       }
 
       .navbar-toggler {
@@ -91,7 +91,7 @@
         }
 
         .navbar-toggler-icon {
-          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(0, 0, 255)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(1, 73, 72)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
           /* Remplacez la couleur stroke par white ou #014948 pour un icône blanc */
         }
 
@@ -106,26 +106,26 @@
           box-shadow: none;
         }
 
-        .btn-outline-bleu {
-          color: #0000FF; /* Couleur du texte du bouton */
-          border-color: #0000FF; /* Couleur de la bordure du bouton */
+        .btn-outline-vert {
+          color: #015453; /* Couleur du texte du bouton */
+          border-color: #015453; /* Couleur de la bordure du bouton */
         }
 
-        .btn-outline-bleu:hover {
+        .btn-outline-vert:hover {
           color: #FFF0D6 !important; /* Couleur du texte du bouton au survol */
-          background-color: #0000FF; /* Couleur de fond du bouton au survol */
-          border-color: #0000FF; /* Couleur de la bordure du bouton au survol */
+          background-color: #015453; /* Couleur de fond du bouton au survol */
+          border-color: #015453; /* Couleur de la bordure du bouton au survol */
         }
 
-        .text-bleu{
-            color:#0000FF !important;
+        .text-vert{
+            color:#015453 !important;
         }
 
-        a.text-bleu {
+        a.text-vert {
             text-decoration:none !important;
         }
 
-        a.text-bleu:hover {
+        a.text-vert:hover {
             text-decoration:underline !important;
         }
 
@@ -154,48 +154,7 @@
 
         .job:hover {
           text-decoration: underline; /* Ajoute un soulignement au survol */
-          text-decoration-color:#0000FF;
-        }
-
-        textarea {
-          background-color:transparent !important;
-          border-color: #014948; /* Light blue border on focus */
-          width: 100%; /* Full width */
-          height: 150px; /* Adjust height as needed */
-          padding: 12px 20px; /* Some padding inside the textarea */
-          box-sizing: border-box; /* Include padding in total width and height */
-          border: 2px solid #ccc; /* Light grey border */
-          border-radius: 4px; /* Rounded borders */
-          resize: vertical; /* Allow the user to vertically resize the textarea (not horizontally) */
-          font-size: 16px; /* Increase font size for readability */
-          color: #333; /* Dark grey text color */
-        }
-
-        /* Style for when the user clicks into the textarea */
-        textarea:focus {
-          outline: none; /* Removes the default focus outline */
-          border-color: #014948; /* Light blue border on focus */
-          box-shadow: 0 0 0px transparent; /* Adds a glow effect on focus */
-        }
-
-        .ql-toolbar.ql-snow {
-            background-color:white !important;
-        }
-
-        a.link-bleu{
-            color:#0000FF !important;
-            text-decoration:underline !important;
-        }
-
-        a.link-bleu:hover{
-            color:#0000FF !important;
-            text-decoration:none !important;
-        }
-
-        /* CSS pour changer la couleur des placeholders */
-        input::placeholder, textarea::placeholder {
-            color: #0000FF !important; /* Remplacez #VotreCouleur par le code hexadécimal de votre choix */
-            opacity: 1 !important; /* Pour certains navigateurs, vous pourriez avoir besoin de régler l'opacité */
+          text-decoration-color:#015453;
         }
 
         .fade-up {
@@ -213,10 +172,26 @@
           visibility: visible;
         }
 
+        .fade-left {
+          opacity: 0;
+          transform: translateX(-20px);
+          visibility: hidden;
+          transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+          will-change: opacity, visibility, transform;
+        }
 
+        /* Lorsque l'élément entre dans le viewport, il remonte et devient visible */
+        .fade-left.visible {
+          opacity: 1;
+          transform: translateX(0);
+          visibility: visible;
+        }
 
-
-
+        @media only screen and (max-width: 768px) {
+              .padding-sm-left {
+                padding-left: 10px;
+              }
+            }
 
 
 </style>

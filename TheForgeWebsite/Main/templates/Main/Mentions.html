@@ -30,7 +30,7 @@
 
     <title>Bienvenue chez The Forge </title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link href="{% static 'css/Charte.css' %}" rel="stylesheet">
+    <link href="{% static 'css/charte.css' %}" rel="stylesheet">
     <link rel="stylesheet" href="https://use.typekit.net/eqx7rzk.css">
 
   </head>
@@ -55,7 +55,7 @@
           <!-- Menu déroulant pour les services -->
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Services
+              Expertise
             </a>
             <ul class="dropdown-menu" style="background-color:#E5EEFF; border-style:none;">
               <li><a class="nav-link" href="{% url 'Main:ai' %}">Intelligence artificielle</a></li>
@@ -123,7 +123,7 @@
                 <strong> As Consulting, </strong> <br>
                 5 CRS DE VERDUN GENSOUL <br>
                 69002 LYON 2EME <br>
-                SIRET : 97822166100017
+                SIRET : 97822166100017 <br>
                 Numéro RCS : 978 221 661 R.C.S. Lyon
               </p>
               <br>
@@ -131,7 +131,7 @@
 
               <h1>Hébergement</h1>
               <p>
-                Le site www.theforge.fr est hébergé sur un serveur digital ocean : 15 rue de l'hébergement, 35000 Rennes, France.
+                Le site www.theforge.fr est hébergé sur un serveur OVH en France métropolitaine, respectant les lois et reglementations en vigueur.
               </p>
               <br>
               <br>
@@ -173,15 +173,15 @@
           <img src="{% static 'Logos/Principal/Principal_bleu_foncé.svg' %}" alt="Logo" height="60">
         </a>
       </div>
-      <div class="col-md-2 mb-3 mb-md-0 text-bleu_foncé">
-        <h5>Services</h5>
+      <div class="col-md-3 mb-3 mb-md-0 text-bleu_foncé">
+        <h5>Expertise</h5>
         <ul class="list-unstyled">
           <li><a href="{% url 'Main:ai' %}" class="text-bleu_foncé">Intelligence artificielle</a></li>
           <li><a href="{% url 'Main:cyber' %}" class="text-bleu_foncé">Cybersécurité</a></li>
           <li><a href="{% url 'Main:iot' %}" class="text-bleu_foncé">IOT</a></li>
         </ul>
       </div>
-      <div class="col-md-2">
+      <div class="col-md-3">
         <h5>Entreprise</h5>
         <ul class="list-unstyled">
           <li><a href="{% url 'Main:join' %}" class="text-bleu_foncé">Nous rejoindre</a></li>
@@ -190,19 +190,11 @@
           <li><a href="{% url 'Main:charte' %}" class="text-bleu_foncé">Charte</a></li>
         </ul>
       </div>
-      <div class="col-md-2">
-        <h5>Suivez-nous</h5>
-        <ul class="list-unstyled">
-          <li><a href="#" class="text-bleu_foncé">LinkedIn</a></li>
-          <li><a href="#" class="text-bleu_foncé">Twitter</a></li>
-          <li><a href="#" class="text-bleu_foncé">Facebook</a></li>
-        </ul>
-      </div>
-      <div class="col-md-2">
+      <div class="col-md-3">
         <h5>Nous contacter</h5>
         <ul class="list-unstyled">
           <li><a href="mailto:contact@theforge.fr" class="text-bleu_foncé">contact@theforge.fr</a></li>
-          <li><a href="tel:0299123244" class="text-bleu_foncé">02 99 12 32 44</a></li>
+          <li><a href="https://www.linkedin.com/company/theforgefr/about/?viewAsMember=true" class="text-bleu_foncé">LinkedIn</a></li>
         </ul>
       </div>
     </div>
@@ -212,7 +204,6 @@
           <strong>The Forge ltd</strong><br>
           5 CRS DE VERDUN GENSOUL<br>
           69002 LYON
-          <abbr title="Phone"></abbr> (123) 456-7890
         </address>
       </div>
       <div class="col-6 align-items-end" style="text-align:right">
@@ -247,8 +238,6 @@
 
     </script>
 
-
-    </script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
 

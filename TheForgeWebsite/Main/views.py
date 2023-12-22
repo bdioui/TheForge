@@ -9,7 +9,7 @@ import os
 
 # Create your views here.
 def Index(request):
-    posts = Post.objects.all()
+    posts = Post.objects.all().order_by('-created_at')[:6]
     return render(request, 'Main/Index.html', {'posts':posts})
 def Charte(request):
     return render(request, 'Main/Charte.html')

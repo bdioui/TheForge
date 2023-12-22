@@ -55,7 +55,7 @@
           <!-- Menu déroulant pour les services -->
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Services
+              Expertise
             </a>
             <ul class="dropdown-menu" style="background-color:#FFF0D6; border-style:none;">
               <li><a class="nav-link" href="{% url 'Main:ai' %}">Intelligence artificielle</a></li>
@@ -75,7 +75,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'Main:join' %}">Nous rejoindre</a>
+            <a class="nav-link" href="{% url 'Main:join' %}">L'équipe</a>
           </li>
         </ul>
           <a type="button" class="btn btn-outline-vert contact-item" href="{% url 'Main:contact' %}">Nous contacter</a>
@@ -103,28 +103,214 @@
     {% endif %}
       <div class="mt-5 container HeroContainer text-vert m-auto fade-up">
         <div class="row justify-content-between align-items-center">
-          <div class="col-sm-12 col-md-6 display-2">Rejoindre l'équipe</div>
+          <div class="col-sm-12 col-md-6 display-2">L'équipe The Forge</div>
           <div class="col-sm-12 col-md-6 mt-4">
-            <p style="font-size:20px !important;">Nous cherchons des esprits créatifs et passionnés, désireux de repousser les frontières de la technologie et de contribuer à construire un avenir numérique sûr et inclusif. Chez nous, vous trouverez un environnement où l'innovation, la collaboration, et la croissance personnelle ne sont pas seulement valorisées, mais essentielles. </p>
-            <button class="btn btn-outline-vert" onclick="scrollDown()">Voir les postes ouverts</button>
+            <p style="font-size:20px !important;">Nous sommes une équipes créative et passionnée, désireuse de repousser les frontières de la technologie et de contribuer à construire un avenir numérique sûr et inclusif.  </p>
+            <button data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-outline-vert" onclick="scrollDown()">Nous rejoindre</button>
           </div>
         </div>
-          <img class='mt-5' src="{% static 'Assets/Images/conseil.JPG' %}" alt="L'équipe de The Forge en session brainstorm" width="100%">
       </div>
     </section>
     <!-- Section Hero -->
 
+    <section>
+      <div class="container text-vert m-auto borderTop py-4">
+        <div class="row justify-content-between">
+          <div class="col-sm-12 col-md-6 col-lg-6 fade-up">
+             <h1>Innovation, Intégrité et Collaboration</h1>
+             <p>Formée de professionnels passionnés et dévoués, notre collectif travaille harmonieusement pour apporter des solutions innovantes et fiables à nos clients. Chaque projet est une opportunité pour nous de démontrer notre engagement et notre passion. </p>
+          </div>
+          <div class="col-sm-12 col-md-6 col-lg-6">
+            <div class="fade-up">
+              <h3> <svg class='me-3' xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 64 64" fill="none" stroke-width="1px" stroke="#000"><path d="M16 32h32L36 20 48 8H16v48"/></svg>Innovation Continue</h3>
+              <p>Nous croyons en une amélioration continue et en l'importance de tester de nouvelles choses. Notre équipe s'engage à explorer, à repousser les limites de l'existant et à constamment apporter des solutions innovantes.</p>
+            </div>
+            <hr>
+            <div class="fade-up">
+              <h3><svg class='me-3' xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 64 64" fill="none" stroke-width="1px" stroke="#000"><circle cx="32" cy="32" r="8"/><path d="M56 32s-8 16-24 16S8 32 8 32s8-16 24-16 24 16 24 16z"/></svg></svg>Intégrité et transparence</h3>
+              <p>L'intégrité est essentielle. Nous opérons avec transparence, éthique et responsabilité, assurant à nos clients autant qu'à nos équipes des partenariats basés sur la confiance et le respect mutuel. </p>
+            </div>
+            <hr>
+            <div class="fade-up">
+              <h3><svg class='me-3' xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 64 64" fill="none" stroke-width="1px" stroke="#000"><path d="M28 44h-8A12 12 0 0 1 8 32h0a12 12 0 0 1 12-12h8M36 20h8a12 12 0 0 1 12 12h0a12 12 0 0 1-12 12h-8M20 32h24"/></svg>Collaboration et Esprit d'Équipe</h3>
+              <p>Nous valorisons la collaboration, le partage des connaissances et le travail d'équipe, convaincus que c'est ensemble que nous créons le meilleur. </p>
+            </div>
+            <hr>
+            <div class="fade-up">
+              <h3><svg class='me-3' xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 64 64" fill="none" stroke-width="1px" stroke="#000"><circle cx="32" cy="32" r="24"/><path d="M40.49 40a12 12 0 0 1-3.82 2.57 12.07 12.07 0 0 1-9.34 0A12 12 0 0 1 23.51 40M40 24h-4M28 24h-4"/></svg>Développement Professionnel et Personnel</h3>
+              <p>L'épanouissement de nos collaborateurs est primordial. Nous investissons dans le développement professionnel et personnel, car nous savons que le bien-être et la croissance de notre équipe sont directement liés à la qualité de notre travail.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container text-vert m-auto borderTop py-4" style="margin-top:4rem;">
+      <div class='mb-5 text-center fade-up'>
+        <p>career path</p>
+        <h1 class="m-auto mb-2">Tracez Votre Voie</h1>
+        <h4 class="m-auto mb-5" style="max-width:600px;">nous nous engageons à cultiver le potentiel de chaque membre de notre équipe. Nous offrons un parcours professionnel clair et évolutif, conçu pour accompagner nos talents dans leur développement et les aider à atteindre de nouveaux sommets de réussite. </h4>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-md-3">
+            <div class="row fade-up">
+              <div class="col-auto col-md-12" style="padding-right:0 !important; padding-left:0 !important;">
+
+                <!-- Step -->
+                <div class="row gx-0 align-items-center mb-md-5">
+                  <div class="col-auto">
+
+                    <a href="#!" class="btn btn-sm btn-rounded-circle btn-gray-400 disabled opacity-1">
+                      <span>1</span>
+                    </a>
+
+                  </div>
+                  <div class="col">
+
+                    <hr class="d-none d-md-block me-n7">
+
+                  </div>
+                </div> <!-- / .row -->
+
+              </div>
+
+              <div class="col col-md-12 ms-n5 ms-md-0" style="padding-left:0 !important; padding-right:30px !important;">
+
+                <!-- Heading -->
+                <h3 class="padding-sm-left">
+                  Stages : apprendre aux côtés de développeurs passionnés
+                </h3>
+
+                <!-- Text -->
+                <p class="text-muted mb-6 mb-md-0 p-0">
+                  Commencez votre parcours en immersion dans le monde réel de la technologie. En tant que stagiaire, vous aurez l'opportunité d'apprendre aux côtés de mentors expérimentés et de contribuer à des projets significatifs, posant ainsi les fondations solides de votre future carrière.
+                </p>
+                <br>
+                <!-- Text -->
+
+
+              </div>
+            </div> <!-- / .row -->
+          </div>
+          <div class="col-12 col-md-3">
+            <div class="row fade-up">
+              <div class="col-auto col-md-12" style="padding-left:0 !important; padding-right:0 !important;">
+
+                <!-- Step -->
+                <div class="row gx-0 align-items-center mb-md-5" style="padding-right:0 !important;">
+                  <div class="col-auto">
+
+                    <a href="#!" class="btn btn-sm btn-rounded-circle btn-gray-400 disabled opacity-1">
+                      <span>2</span>
+                    </a>
+
+                  </div>
+                  <div class="col">
+
+                    <hr class="d-none d-md-block me-n7">
+
+                  </div>
+                </div> <!-- / .row -->
+              </div>
+              <div class="col col-md-12 ms-n5 ms-md-0 p-0" style="padding-left:0 !important; padding-right:30px !important;">
+
+                <!-- Heading -->
+                <h3 class="padding-sm-left">
+                  Développeur : Codez, Innovez, Progressez
+                </h3>
+
+                <!-- Text -->
+                <p class="text-muted mb-6 mb-md-0">
+                  Participez à des projets complexes, affinez votre expertise technique en collaborant avec des ingénieurs passionés et commencez à laisser votre empreinte dans l'industrie en participant à des solutions qui ont un impact.
+                </p>
+                <br>
+
+              </div>
+            </div> <!-- / .row -->
+          </div>
+
+          <div class="col-12 col-md-3">
+            <div class="row fade-up">
+              <div class="col-auto col-md-12" style="padding-left:0 !important; padding-right:0 !important;">
+
+                <!-- Step -->
+                <div class="row gx-0 align-items-center mb-md-5" style="padding-right:0 !important;">
+                  <div class="col-auto">
+
+                    <a href="#!" class="btn btn-sm btn-rounded-circle btn-gray-400 disabled opacity-1">
+                      <span>3</span>
+                    </a>
+
+                  </div>
+                  <div class="col">
+
+                    <hr class="d-none d-md-block me-n7">
+
+                  </div>
+                </div> <!-- / .row -->
+              </div>
+              <div class="col col-md-12 ms-n5 ms-md-0 p-0" style="padding-left:0 !important; padding-right:30px !important;">
+
+                <!-- Heading -->
+                <h3 class="padding-sm-left">
+                  Lead Développeur : prenez les choses en main
+                </h3>
+
+                <!-- Text -->
+                <p class="text-muted mb-6 mb-md-0">
+                  En tant que lead développeur, vous dirigerez des équipes, piloterez des initiatives de développement et prendrez des décisions critiques qui façonneront l'avenir de nos solutions. </p>
+                <br>
+
+              </div>
+            </div> <!-- / .row -->
+          </div>
+
+          <div class="col-12 col-md-3">
+            <div class="row fade-up">
+              <div class="col-auto col-md-12" style="padding-left:0 !important;">
+
+                <!-- Step -->
+                <div class="row gx-0 align-items-center mb-md-5">
+                  <div class="col-auto">
+
+                    <a href="#!" class="btn btn-sm btn-rounded-circle btn-gray-400 disabled opacity-1">
+                      <span>4</span>
+                    </a>
+
+                  </div>
+                </div> <!-- / .row -->
+
+              </div>
+              <div class="col col-md-12 ms-n5 ms-md-0 p-0" style="padding-left:0 !important; padding-right:30px !important;">
+
+                <!-- Heading -->
+                <h3>
+                  Partenaire The Forge
+                </h3>
+
+                <!-- Text -->
+                <p class="text-muted mb-0">
+                  En tant que partenaire, vous avez la liberté de proposer et de diriger de nouveaux projets de développement, en utilisant votre expertise et votre vision pour façonner l'avenir de l'entreprise. Cette position privilégiée vous permet d'injecter vos idées dans le flux créatif de nos solutions internes et d'explorer de nouvelles avenues technologiques.</p>
+              </div>
+            </div> <!-- / .row -->
+          </div>
+        </div> <!-- / .row -->
+      </div> <!-- / .container -->
+    </section>
+
     <!-- Section citation -->
     <section>
       <div class="container py-4 borderTopBottom text-vert m-auto fade-up">
-        <div class="display-1 fst-italic m-auto">
-          « L’innovation est un travail d’équipe. Parce que personne ne peut réussir tout seul, nous mettons tout en oeuvre pour que nos équipes puissent travailler ensemble dans les meilleures conditions »
+        <div class="m-auto">
+          <div class="display-4 fst-italic">« L’innovation est un travail d’équipe. Parce que personne ne peut réussir tout seul, nous mettons tout en oeuvre pour que nos équipes puissent travailler ensemble dans les meilleures conditions »</div>
+          <h4 class="mt-2">Adrien Schwartzentruber, fondateur de The Forge</h4>
         </div>
       </div>
     </section>
     <!-- Section citation -->
 
-    <!-- Section Postes ouverts -->
+    <!--
    <section id="PostesOuverts">
      <div class="container m-auto mt-5 fade-up">
        <h1 class="text-vert">Postes ouverts</h1>
@@ -149,7 +335,7 @@
      </div>
 
    </section>
-    <!-- Section citation -->
+  -->
 
 
 
@@ -158,18 +344,19 @@
   <footer class="footer text-vert" style="margin-top:15rem; background-color:#FFF0D6;">
   <div class="container text-vert borderTop">
     <div class="row m-auto text-vert" style="padding-top:50px; padding-bottom:50px;">
+    <div class="row m-auto text-vert" style="padding-top:50px; padding-bottom:50px;">
       <div class="col-md-3 mb-3 mb-md-0 text-vert">
         <img src="{% static 'Logos/Principal/Principal_vert.svg' %}" alt="Logo" height="60">
       </div>
-      <div class="col-md-2 mb-3 mb-md-0 bleu">
-        <h5>Services</h5>
+      <div class="col-md-3 mb-3 mb-md-0 bleu">
+        <h5>Expertise</h5>
         <ul class="list-unstyled">
           <li><a href="{% url 'Main:ai' %}" class="text-vert">Intelligence artificielle</a></li>
           <li><a href="{% url 'Main:iot' %}" class="text-vert">IOT</a></li>
           <li><a href="{% url 'Main:cyber' %}" class="text-vert">Cybersécurité</a></li>
         </ul>
       </div>
-      <div class="col-md-2">
+      <div class="col-md-3">
         <h5>Entreprise</h5>
         <ul class="list-unstyled">
           <li><a href="{% url 'Main:join' %}" class="text-vert">Nous rejoindre</a></li>
@@ -178,19 +365,11 @@
           <li><a href="{% url 'Main:charte' %}" class="text-vert">Charte</a></li>
         </ul>
       </div>
-      <div class="col-md-2">
-        <h5>Suivez-nous</h5>
-        <ul class="list-unstyled">
-          <li><a href="#" class="text-vert">LinkedIn</a></li>
-          <li><a href="#" class="text-vert">Twitter</a></li>
-          <li><a href="#" class="text-vert">Facebook</a></li>
-        </ul>
-      </div>
-      <div class="col-md-2">
+      <div class="col-md-3">
         <h5>Nous contacter</h5>
         <ul class="list-unstyled">
           <li><a href="mailto:contact@theforge.fr" class="text-vert">contact@theforge.fr</a></li>
-          <li><a href="tel:0299123244" class="text-vert">02 99 12 32 44</a></li>
+          <li><a href="https://www.linkedin.com/company/theforgefr/about/?viewAsMember=true" class="text-vert">LinkedIn</a></li>
         </ul>
       </div>
     </div>
@@ -200,7 +379,6 @@
           <strong>The Forge</strong><br>
           5 CRS DE VERDUN GENSOUL<br>
           69002 LYON
-          <abbr title="Phone"></abbr> (123) 456-7890
         </address>
       </div>
       <div class="col-6 align-items-end" style="text-align:right">
@@ -208,6 +386,7 @@
         <a href="{% url 'Main:Mentions' %}" class="text-vert unstyled" style="text-align:right; margin:0 !important; margin-bottom:0px !important;">Mentions légales</a>
       </div>
     </div>
+  </div>
   </div>
     <img src="{% static 'Assets/Motifs/horizontale/footer_vert.png' %}" width="100%" style="">
 </footer>

@@ -39,15 +39,15 @@
   <header>
   <!-- Barre de navigation -->
   <div class="container">
-    <nav class="navbar navbar-expand-lg fixed-top navbar-light" id="mainNavbar" style="background-color:#F5F6F1 !important; color:#015453 !important;">
+    <nav class="navbar navbar-expand-lg fixed-top navbar-light" id="mainNavbar" style="background-color:#F5F6F1 !important; color:black !important;">
       <div class="container">
       <a class="navbar-brand" href="{% url 'Main:index' %}">
-        <img src="{% static 'Logos/Principal/Principal_bleu.svg' %}" alt="Logo The Forge" width="150">
+        <img src="{% static 'Logos/Principal/Principal_noir.svg' %}" alt="Logo The Forge" width="150">
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse m-auto" id="navbarNavDropdown">
+      <div class="collapse navbar-collapse m-auto" id="navbarNavDropdown" style="color:black !important">
         <ul class="navbar-nav m-auto">
           <li class="nav-item">
             <a class="nav-link" href="{% url 'Main:index' %}">Accueil</a>
@@ -55,7 +55,7 @@
           <!-- Menu déroulant pour les services -->
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Services
+              Expertise
             </a>
             <ul class="dropdown-menu" style="background-color:#F5F6F1; border-style:none;">
               <li><a class="nav-link" href="{% url 'Main:ai' %}">Intelligence artificielle</a></li>
@@ -76,10 +76,10 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'Main:join' %}">Nous rejoindre</a>
+            <a class="nav-link" href="{% url 'Main:join' %}">L'équipe</a>
           </li>
         </ul>
-          <a type="button" class="btn btn-outline-bleu contact-item" href="{% url 'Main:contact' %}">Nous contacter</a>
+          <a type="button" class="btn btn-outline-black contact-item" href="{% url 'Main:contact' %}">Nous contacter</a>
       </div>
     </div>
     </nav>
@@ -91,7 +91,7 @@
     <!-- Section Hero -->
     <section>
       {% if messages %}
-      <div class="messages row justify-content-center align-items-center" id='messageBox' style="position:fixed; top:100px; right:25px; text-align:center; background-color:#F5F6F1; border-style:solid; border-width:1px; border-color:#0000FF; color:#0000FF; padding:10px">
+      <div class="messages row justify-content-center align-items-center" id='messageBox' style="position:fixed; top:100px; right:25px; text-align:center; background-color:#F5F6F1; border-style:solid; border-width:1px; border-color:#0000FF; color:black; padding:10px">
         <a type="button" onclick="closeMessage()" style="--bs-btn-close-color:white; position:absolute; left:5px; top:5px; color:#0000FF; width:5px;">X</a>
         {% for message in messages %}
           <div>
@@ -103,13 +103,13 @@
       </div>
     {% endif %}
 
-      <div class="mt-5 container HeroContainer text-bleu m-auto fade-up">
+      <div class="mt-5 container HeroContainer text-black m-auto fade-up">
         <div class="row justify-content-between align-items-center">
-          <div class="col-md-6 col-lg-6 col-sm-12 ">
-            <div class="display-1">Déployer le potentiel de l'IA</div>
+          <div class="col-md-7 col-lg-7 col-sm-12 ">
+            <div class="display-1">Déployez tout le potentiel de l'IA</div>
           </div>
           <div class="col-md-6 col-lg-6 col-sm-12">
-            <p class="mt-4" style="font-size:25px">Notre équipe d'experts en IA est dédiée à transformer les défis technologiques complexes de nos clients en solutions intelligentes et efficaces. </p>
+            <!--<p class="mt-4" style="font-size:25px">Notre équipe d'experts en IA est dédiée à transformer les défis technologiques complexes de nos clients en solutions intelligentes et efficaces. </p>-->
           </div>
         </div>
       </div>
@@ -118,174 +118,275 @@
 
     <!-- Section sur mesure -->
     <section>
-      <div class="container text-bleu m-auto borderTop py-4 fade-up">
+      <div class="container text-black m-auto borderTop py-4 fade-up">
         <div class="row justify-content-between align-items-top">
-          <div class="col-md-6 col-lg-6 col-sm-12 mb-4">
-            <h3>Solution IA sur mesure</h3>
-            <p class="mt-4" style="width:20rem;">Notre équipe d'experts en IA est dédiée à transformer les défis technologiques complexes de nos clients en solutions intelligentes et efficaces. De l'automatisation avancée à l'analyse prédictive, nous façonnons l'avenir numérique pour offrir des avantages tangibles et durables.</p>
-            <a class="btn btn-outline-bleu" data-bs-toggle="modal" data-bs-target="#exampleModal">Nous parler de vos besoins</a>
+          <div class="col-md-3 col-lg-3 col-sm-12 mb-4">
+            <div class="text-left" style="margin-bottom:2.5rem;">
+              <img src="{% static 'Assets/Motifs/illustration_AI_machine_learning.webp' %}" style="width:60%">
+            </div>
+
+            <h3> Machine learning</h3>
+            <p class="mt-5" style="width:20rem;">Notre expertise en Machine Learning nous permet de développer des algorithmes sophistiqués qui apprennent de façon recursive à partir d'un ensemble de données complexes. Nous apportons notre expertise dans la création de solutions pour la prédiction de tendances, la détection de fraudes, et l'optimisation des processus.</p>
+            <p><strong>Exemple de projet :</strong> développement de systèmes prédictifs pour l'analyse financière, solutions de détection de fraudes pour les banques, optimisation des chaînes d'approvisionnement.</p>
           </div>
-          <div class="col-md-6 col-lg-6 col-sm-12">
-            <img src="{% static 'Assets/Images/cinematic-image-of-people-working-in-a-start-up-bu-2023-11-27-04-55-35-utc.jpg' %}" width="100%"/>
+          <div class="col-md-3 col-lg-3 col-sm-12 mb-4">
+             <div class="text-left" style="margin-bottom:2.5rem;">
+              <img src="{% static 'Assets/Motifs/illustration_AI_Deep_learning.webp' %}" style="width:60%">
+            </div>
+
+            <h3>Deep learning</h3>
+            <p class="mt-5" style="width:20rem;">Le Deep Learning, un domaine avancé du Machine Learning, est au cœur de notre expertise, utilisant des réseaux de neurones artificiels profonds pour analyser des ensembles de données complexes. Cette technologie nous permet de développer des solutions en reconnaissance d'images, synthèse vocale, traduction automatique ou encore génération de texte. </p>
+            <p><strong>Exemple de projet :</strong> systèmes de reconnaissance faciale, analyse et génération automatique d'images, modèles de traitement automatique de la parole pour les assistants vocaux.</p>
+          </div>
+          <div class="col-md-3 col-lg-3 col-sm-12 mb-4">
+            <div class="text-left" style="margin-bottom:2.5rem;">
+              <img src="{% static 'Assets/Motifs/illustration_AI_NLP.webp' %}" style="width:60%">
+            </div>
+
+            <h3>Traitement du Langage Naturel (NLP)</h3>
+            <p class="mt-4" style="width:20rem;">Nous développons des systèmes qui comprennent le langage humain, transformant la manière dont les entreprises et les institutions interagissent et comprennent leur environnement et les acteurs qui y évoluent.</p>
+            <p><strong>Exemple de projet : </strong> développement de chatbots pour le service client, systèmes de traduction automatique, outils d'analyse de sentiments.</p>
           </div>
         </div>
       </div>
     </section>
     <!-- Section Hero -->
 
-    <!-- Section sur Automatisation -->
-    <section>
-      <div class="container text-bleu m-auto borderTop py-4 fade-up">
-        <div class="row justify-content-between align-items-top">
-          <div class="col-md-6 col-lg-6 col-sm-12 mb-4">
-            <img src="{% static 'Assets/Images/automated-warehouse-agv-robots-with-delivering-2023-11-27-05-01-18-utc.jpg' %}" width="100%"/>
-          </div>
-          <div class="col-md-6 col-lg-6 col-sm-12">
-            <h3>Automatisation Intelligente</h3>
-            <p class="mt-4" style="width:20rem;">Améliorez l'efficacité et réduisez les coûts avec nos solutions d'automatisation alimentées par l'IA. De l'automatisation des processus métier à la robotique intelligente, nous aidons les entreprises à simplifier les opérations, à minimiser les erreurs humaines et à augmenter la productivité.</p>
-            <a class="btn btn-outline-bleu" data-bs-toggle="modal" data-bs-target="#exampleModal">Nous parler de vos besoins</a>
-          </div>
-        </div>
+    <section class="container text-black m-auto borderTop py-4" style="margin-top:4rem;">
+      <div class='mb-5 m-auto text-center fade-up' style="max-width:600px;">
+        <h1>Notre methode</h1>
+        <h4>Chaque projet est unique. Nous vous accompagons pour trouver des solutions adaptées à vos besoins en accord avec vos objectifs.</h4>
       </div>
+      <div class="container m-auto ps-3 fade-up">
+        <div class="row">
+          <div class="col-12 col-md-4">
+            <div class="row">
+              <div class="col-auto col-md-12" style="padding-right:0 !important; padding-left:0 !important;">
+
+                <!-- Step -->
+                <div class="row gx-0 align-items-center mb-md-5">
+                  <div class="col-auto">
+
+                    <a href="#!" class="btn btn-sm btn-rounded-circle btn-gray-400 disabled opacity-1">
+                      <span>1</span>
+                    </a>
+
+                  </div>
+                  <div class="col">
+
+                    <hr class="d-none d-md-block me-n7">
+
+                  </div>
+                </div> <!-- / .row -->
+
+              </div>
+              <div class="col col-md-12 ms-n5 ms-md-0" style="padding-left:0 !important; padding-right:30px !important;">
+
+                <!-- Heading -->
+                <h3 class="padding-sm-left">
+                  Comprendre votre besoin et cadrer votre projet
+                </h3>
+
+                <!-- Text -->
+                <p class="text-muted mb-6 mb-md-0 p-0">
+                  Chaque projet démarre par un entretien qui vise à définir et cadrer précisement vos besoins. Cette première phase est cruciale pour comprendre les défis spécifiques de votre structure et déterminer des objectifs concrets alignés sur vos données et vos attentes.
+                </p>
+                <br>
+                <!-- Text -->
+                <p class="text-muted mb-6 mb-md-0 p-0">
+                  Nous plongeons dans vos processus pour identifier les opportunités d'automatisation et d'amélioration grâce au Machine Learning et au Deep Learning. C'est le moment où nous établissons les fondations d'un modèle d'IA personnalisé, conçu pour s'intégrer harmonieusement avec vos flux de travail existants et pour apporter une valeur ajoutée mesurable.
+                </p>
+
+              </div>
+            </div> <!-- / .row -->
+          </div>
+          <div class="col-12 col-md-4">
+            <div class="row">
+              <div class="col-auto col-md-12" style="padding-left:0 !important; padding-right:0 !important;">
+
+                <!-- Step -->
+                <div class="row gx-0 align-items-center mb-md-5" style="padding-right:0 !important;">
+                  <div class="col-auto">
+
+                    <a href="#!" class="btn btn-sm btn-rounded-circle btn-gray-400 disabled opacity-1">
+                      <span>2</span>
+                    </a>
+
+                  </div>
+                  <div class="col">
+
+                    <hr class="d-none d-md-block me-n7">
+
+                  </div>
+                </div> <!-- / .row -->
+              </div>
+              <div class="col col-md-12 ms-n5 ms-md-0 p-0" style="padding-left:0 !important; padding-right:30px !important;">
+
+                <!-- Heading -->
+                <h3 class="padding-sm-left">
+                  Design et développement d'une solution sur mesure
+                </h3>
+
+                <!-- Text -->
+                <p class="text-muted mb-6 mb-md-0">
+                  La conception et le développement sont les étapes où vos données prennent vie. Notre équipe construit des modèles prédictifs précis et des systèmes autonomes intelligents à partir de données pertinentes pour votre activité.
+                </p>
+                <br>
+                 <p class="text-muted mb-6 mb-md-0">
+                  En adoptant une approche agile, nous itérons rapidement pour affiner les algorithmes, optimiser les performances et garantir une intégration transparente dans vos opérations. Chaque sprint de développement est une étape vers une solution d'IA robuste.
+                </p>
+
+              </div>
+            </div> <!-- / .row -->
+          </div>
+          <div class="col-12 col-md-4">
+            <div class="row">
+              <div class="col-auto col-md-12" style="padding-left:0 !important;">
+
+                <!-- Step -->
+                <div class="row gx-0 align-items-center mb-md-5">
+                  <div class="col-auto">
+
+                    <a href="#!" class="btn btn-sm btn-rounded-circle btn-gray-400 disabled opacity-1">
+                      <span>3</span>
+                    </a>
+
+                  </div>
+                </div> <!-- / .row -->
+
+              </div>
+              <div class="col col-md-12 ms-n5 ms-md-0 p-0" style="padding-left:0 !important; padding-right:30px !important;">
+
+                <!-- Heading -->
+                <h3>
+                  Accompagnement et évolutions du projet
+                </h3>
+
+                <!-- Text -->
+                <p class="text-muted mb-0">
+                  Le déploiement de votre solution n'est que le début de notre partenariat. Nous nous engageons à vous accompagner au-delà de la mise en production avec un support continu et des conseils stratégiques. En évaluant les performances et en recueillant des retours, nous affinons le système pour qu'il s'adapte aux nouvelles données et aux conditions changeantes du marché. Notre vision à long terme pour votre solution d'IA inclut des mises à jour régulières, l'ajout de fonctionnalités et une optimisation continue pour garantir que votre entreprise reste en tête avec les technologies d'intelligence artificielle les plus avancées.
+                </p>
+              </div>
+            </div> <!-- / .row -->
+          </div>
+        </div> <!-- / .row -->
+      </div> <!-- / .container -->
     </section>
-    <!-- Section Hero -->
 
     <!-- Section sur Automatisation -->
-    <section>
-      <div class="container text-bleu m-auto borderTop py-4 fade-up">
+    <section class="container text-black m-auto borderTop py-4 fade-up" style="margin-top:4rem;">
+      <div>
         <div class="row justify-content-between align-items-top">
-          <div class="col-md-6 col-lg-6 col-sm-12 mb-4" style="width:20rem;">
-            <h3>Analyse de Données et Insights Prédictifs</h3>
-            <p class="mt-4">Transformez vos données en insights actionnables avec notre expertise en analyse de données et en apprentissage automatique. Nous vous aidons à déchiffrer les tendances, à prévoir les comportements du marché et à prendre des décisions éclairées grâce à des modèles prédictifs avancés.</p>
-            <a class="btn btn-outline-bleu" data-bs-toggle="modal" data-bs-target="#exampleModal">Nous parler de vos besoins</a>
-          </div>
-          <div class="col-md-6 col-lg-6 col-sm-12">
-            <img src="{% static 'Assets/Images/it-specialist-developing-software-at-office-2022-07-20-07-58-08-utc.jpg' %}" width="80%"/>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- Section Hero -->
-
-    <!-- Section sur Automatisation -->
-    <section>
-      <div class="container text-bleu m-auto borderTop py-4 fade-up">
-          <div class="col-12 display-1 fst-italic">
-            "Science sans conscience n'est que ruine de l'âme"
-          </div>
-          <p>Rabelais</p>
-      </div>
-    </section>
-    <!-- Section Hero -->
-
-    <!-- Section sur Automatisation -->
-    <section>
-      <div class="container text-bleu m-auto borderTop py-4 fade-up">
-        <div class="row justify-content-between align-items-top">
-          <div class="col-md-6 col-sm-12 col-lg-6"><h3>Solutions d'IA Éthiques et Responsables</h3></div>
+          <div class="col-md-6 col-sm-12 col-lg-6"><h3>Solutions éthiques et responsables</h3></div>
           <div class="col-md-6 col-sm-12 col-lg-6">
             <p>Chez The Forge, nous croyons que l'IA doit être utilisée pour le bien. C'est pourquoi nous nous engageons à développer des solutions d'IA éthiques, transparentes et responsables. Nous nous assurons que nos technologies respectent les normes les plus strictes en matière de confidentialité et de sécurité des données.</p>
-            <a class="link-bleu" href="{% url 'Main:charte' %}">Consulter notre charte</a>
+            <a class="link-black" href="{% url 'Main:charte' %}">Consulter notre charte</a>
+
           </div>
         </div>
+      </div>
+    </section>
+    <!-- Section Hero -->
+
+    <!-- Section sur Automatisation -->
+    <section class="container text-black m-auto borderTop py-4 fade-up" style="margin-top:4rem;">
+      <div>
+        <div class="m-auto text-center">
+          <h3>Posez nous vos questions</h3>
+          <p class='text-center m-auto mb-4' style="max-width:400px;"> Vous avez une question sur un ou plusieurs de nos services, contactez-nous et nous répondrons à votre question au plus vite. </p>
+          <a class="btn btn-outline-black" data-bs-toggle="modal" data-bs-target="#exampleModal">Nous parler de vos besoins</a><br>
+          <img class="mt-4 fade-up text-center" src="{% static 'Assets/Images/cinematic-image-of-people-working-in-a-start-up-bu-2023-11-27-04-57-08-utc.jpg' %}" width="50%">
+        </div>
+
       </div>
     </section>
     <!-- Section Hero -->
   </Main>
 
-  <footer class="footer text-bleu" style="margin-top:15rem; background-color:#F5F6F1;">
-  <div class="container text-bleu borderTop">
-    <div class="row m-auto text-bleu" style="padding-top:50px; padding-bottom:50px;">
-      <div class="col-md-3 mb-3 mb-md-0 text-bleu">
+  <footer class="footer text-black" style="margin-top:4rem; background-color:#F5F6F1;">
+  <div class="container text-black borderTop">
+    <div class="row m-auto text-black" style="padding-top:50px; padding-bottom:50px;">
+      <div class="col-md-3 mb-3 mb-md-0 text-black">
         <a href="{% url 'Main:index' %}">
-         <img src="{% static 'Logos/Principal/Principal_bleu.svg' %}" alt="Logo" height="60">
+         <img src="{% static 'Logos/Principal/Principal_noir.svg' %}" alt="Logo" height="60">
         </a>
       </div>
-      <div class="col-md-2 mb-3 mb-md-0 text-bleu">
-        <h5>Services</h5>
+      <div class="col-md-3 mb-3 mb-md-0 text-black">
+        <h5>Expertise</h5>
         <ul class="list-unstyled">
-          <li><a href="{% url 'Main:ai' %}" class="text-bleu">Intelligence artificielle</a></li>
-          <li><a href="{% url 'Main:iot' %}" class="text-bleu">IOT</a></li>
-          <li><a href="{% url 'Main:cyber' %}" class="text-bleu">Cybersécurité</a></li>
+          <li><a href="{% url 'Main:ai' %}" class="text-black">Intelligence artificielle</a></li>
+          <li><a href="{% url 'Main:iot' %}" class="text-black">IOT</a></li>
+          <li><a href="{% url 'Main:cyber' %}" class="text-black">Cybersécurité</a></li>
         </ul>
       </div>
-      <div class="col-md-2">
+      <div class="col-md-3">
         <h5>Entreprise</h5>
         <ul class="list-unstyled">
-          <li><a href="{% url 'Main:join' %}" class="text-bleu">Nous rejoindre</a></li>
-          <li><a href="{% url 'Main:blog' %}" class="text-bleu">Blog</a></li>
-          <li><a href="{% url 'Main:faq' %}" class="text-bleu">FAQ</a></li>
-          <li><a href="{% url 'Main:charte' %}" class="text-bleu">Charte</a></li>
+          <li><a href="{% url 'Main:join' %}" class="text-black">L'équipe</a></li>
+          <li><a href="{% url 'Main:blog' %}" class="text-black">Blog</a></li>
+          <li><a href="{% url 'Main:faq' %}" class="text-black">FAQ</a></li>
+          <li><a href="{% url 'Main:charte' %}" class="text-black">Charte</a></li>
         </ul>
       </div>
-      <div class="col-md-2">
-        <h5>Suivez-nous</h5>
-        <ul class="list-unstyled">
-          <li><a href="{% url 'Main:join' %}" class="text-bleu">LinkedIn</a></li>
-          <li><a href="{% url 'Main:join' %}" class="text-bleu">Twitter</a></li>
-          <li><a href="{% url 'Main:join' %}" class="text-bleu">Facebook</a></li>
-        </ul>
-      </div>
-      <div class="col-md-2">
+      <div class="col-md-3">
         <h5>Nous contacter</h5>
         <ul class="list-unstyled">
-          <li><a href="mailto:contact@theforge.fr" class="text-bleu">contact@theforge.fr</a></li>
-          <li><a href="tel:0299123244" class="text-bleu">02 99 12 32 44</a></li>
+          <li><a href="mailto:contact@theforge.fr" class="text-black">contact@theforge.fr</a></li>
+          <li><a href="https://www.linkedin.com/company/theforgefr/about/?viewAsMember=true" class="text-black">LinkedIn</a></li>
         </ul>
       </div>
     </div>
     <div class="borderTop row pt-3 justify-content-around m-auto">
       <div class="col-6 flex-grow-1">
-        <address class="text-bleu">
+        <address class="text-black">
           <strong>The Forge</strong><br>
           5 CRS DE VERDUN GENSOUL<br>
           69002 LYON
-          <abbr title="Phone"></abbr> (123) 456-7890
         </address>
       </div>
       <div class="col-6 align-items-end" style="text-align:right">
-         <a href="{% url 'Main:Conditions' %}" class="text-bleu unstyled" style="text-align:right; margin:0 !important; margin-bottom:0px !important;">Conditions générales d'utilisation</a><br>
-        <a href="{% url 'Main:Mentions' %}" class="text-bleu unstyled" style="text-align:right; margin:0 !important; margin-bottom:0px !important;">Mentions légales</a>
+         <a href="{% url 'Main:Conditions' %}" class="text-black unstyled" style="text-align:right; margin:0 !important; margin-bottom:0px !important;">Conditions générales d'utilisation</a><br>
+        <a href="{% url 'Main:Mentions' %}" class="text-black unstyled" style="text-align:right; margin:0 !important; margin-bottom:0px !important;">Mentions légales</a>
       </div>
     </div>
   </div>
-    <img src="{% static 'Assets/Motifs/horizontale/footer_bleu.png' %}" width="100%" style=" outline: none;box-shadow: none;">
+    <img src="{% static 'Assets/Motifs/horizontale/footer_noir.png' %}" width="100%" style=" outline: none;box-shadow: none;">
 </footer>
 
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-      <div class="modal-content" style="background-color:#F5F6F1; border-color:#0000FF">
+      <div class="modal-content" style="background-color:#F5F6F1; border-color:black">
         <div class="modal-header">
-          <h1 class="modal-title fs-5 text-bleu" id="exampleModalLabel">Parlez-nous de vos besoins !</h1>
+          <h1 class="modal-title fs-5 text-black" id="exampleModalLabel">Parlez-nous de vos besoins !</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body text-bleu">
+        <div class="modal-body text-black">
           <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="mb-3 mt-4">
-                <label for="exampleFormControlInput1" class="form-label text-bleu">Votre adresse email</label>
-                <input type="email" class="form-control" name='email' id="exampleFormControlInput1" placeholder="nom@exemple.com" style="background-color:transparent; color:#0000FF; border-color:#0000FF; outline: none;box-shadow: none;" required>
+                <label for="exampleFormControlInput1" class="form-label text-black">Votre adresse email</label>
+                <input type="email" class="form-control" name='email' id="exampleFormControlInput1" style="background-color:transparent; color:black; border-color:black; outline: none;box-shadow: none;" required>
             </div>
 
             <div class="mb-3 mt-4">
                 <label for="firstName" class="form-label">Votre prénom</label>
-                <input type="text" class="form-control" name='first_name' id="firstName" placeholder="Jane" style="background-color:transparent; color:#0000FF; border-color:#0000FF; outline: none;box-shadow: none;" required>
+                <input type="text" class="form-control" name='first_name' id="firstName" style="background-color:transparent; color:black; border-color:black; outline: none;box-shadow: none;" required>
             </div>
 
             <div class="mb-3 mt-4">
                 <label for="lastName" class="form-label">Votre nom</label>
-                <input type="text" class="form-control" name='last_name' id="lastName" placeholder="Doe" style="background-color:transparent; color:#0000FF; border-color:#0000FF; outline: none;box-shadow: none;" required>
+                <input type="text" class="form-control" name='last_name' id="lastName" style="background-color:transparent; color:black; border-color:black; outline: none;box-shadow: none;" required>
             </div>
 
             <div class="mb-3 mt-4">
                 <label for="companyName" class="form-label">Votre Entreprise</label>
-                <input type="text" class="form-control" name='company' id="companyName" placeholder="Company.ltd" style="background-color:transparent; color:#0000FF; border-color:#0000FF; outline: none;box-shadow: none;" required>
+                <input type="text" class="form-control" name='company' id="companyName" style="background-color:transparent; color:black; border-color:black; outline: none;box-shadow: none;" required>
             </div>
 
             <div class="mb-3 mt-4">
                 <label for="sectorSelect" class="form-label">Votre secteur d'activité</label>
-                <select class="form-control" name='field' id="sectorSelect" style="background-color:transparent; color:#0000FF; border-color:#0000FF; outline: none;box-shadow: none;" required>
+                <select class="form-control" name='field' id="sectorSelect" style="background-color:transparent; color:black; border-color:black; outline: none;box-shadow: none;" required>
                     <option value="">>> Sélectionnez votre secteur <<</option>
                     <!-- Liste exhaustive des secteurs -->
                     <option value="technologie">Technologie et Informatique</option>
@@ -313,7 +414,7 @@
 
             <div class="mb-3 mt-4">
                 <label for="contentTextArea" class="form-label">Vos besoins</label>
-                <textarea class="form-control" name='content' id="contentTextArea" placeholder="Décrivez vos besoins" style="background-color:transparent; color:#0000FF; border-color:#0000FF; outline: none;box-shadow: none;" required></textarea>
+                <textarea class="form-control" name='content' id="contentTextArea" style="background-color:transparent; color:black; border-color:black; outline: none;box-shadow: none;" required></textarea>
             </div>
 
             <div class="mb-3 form-check">
@@ -321,7 +422,7 @@
                 <label class="form-check-label" for="callbackRequest">Être rappelé ?</label>
             </div>
 
-            <button class="btn btn-outline-bleu w-100 mt-2">Envoyer</button>
+            <button class="btn btn-outline-black w-100 mt-2">Envoyer</button>
         </form>
 
         </div>

@@ -26,28 +26,28 @@
     <meta name="twitter:image" content="URL de l'image à afficher sur Twitter">
 
     <!-- Favicon -->
-     <link rel="icon" href="{% static 'Logos/Icones/Icones-vert-vert_clair.png' %}" type="image/x-icon">
+     <link rel="icon" href="{% static 'Logos/Icones/Icones_gris_bleu.png' %}" type="image/x-icon">
 
-    <title>The Forge - Cybersécurité</title>
+    <title>The Forge - IoT </title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link href="{% static 'css/cyber.css' %}" rel="stylesheet">
+    <link href="{% static 'css/AI.css' %}" rel="stylesheet">
     <link rel="stylesheet" href="https://use.typekit.net/eqx7rzk.css">
 
   </head>
-  <body style="background-color:#014948 !important; color: #ECFE8C !important; font-family: 'articulat-cf' !important;">
+  <body style="background-color:#F5F6F1 !important; color: #015453 !important; font-family: 'articulat-cf' !important;">
 
   <header>
   <!-- Barre de navigation -->
   <div class="container">
-    <nav class="navbar navbar-expand-lg fixed-top navbar-light" id="mainNavbar" style="background-color:#014948 !important; color:#014948 !important;">
+    <nav class="navbar navbar-expand-lg fixed-top navbar-light" id="mainNavbar" style="background-color:#F5F6F1 !important; color:black !important;">
       <div class="container">
       <a class="navbar-brand" href="{% url 'Main:index' %}">
-        <img src="{% static 'Logos/Principal/Principal_vert_clair.svg' %}" alt="Logo The Forge" width="150">
+        <img src="{% static 'Logos/Principal/Principal_noir.svg' %}" alt="Logo The Forge" width="150">
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse m-auto" id="navbarNavDropdown">
+      <div class="collapse navbar-collapse m-auto" id="navbarNavDropdown" style="color:black !important">
         <ul class="navbar-nav m-auto">
           <li class="nav-item">
             <a class="nav-link" href="{% url 'Main:index' %}">Accueil</a>
@@ -55,12 +55,12 @@
           <!-- Menu déroulant pour les services -->
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Services
+              Expertise
             </a>
-            <ul class="dropdown-menu" style="background-color:#014948; border-style:none;">
+            <ul class="dropdown-menu" style="background-color:#F5F6F1; border-style:none;">
               <li><a class="nav-link" href="{% url 'Main:ai' %}">Intelligence artificielle</a></li>
-              <li><a class="nav-link" href="{% url 'Main:cyber' %}">Cybersécurité</a></li>
               <li><a class="nav-link" href="{% url 'Main:iot' %}">IOT et matériel embarqué</a></li>
+              <li><a class="nav-link" href="{% url 'Main:cyber' %}">Cybersécurité</a></li>
             </ul>
           </li>
 
@@ -68,7 +68,7 @@
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Entreprise
             </a>
-            <ul class="dropdown-menu" style="background-color:#014948; border-style:none;">
+            <ul class="dropdown-menu" style="background-color:#F5F6F1; border-style:none;">
               <li><a class="nav-link" href="{% url 'Main:about' %}">À propos</a></li>
               <li><a class="nav-link" href="{% url 'Main:blog' %}">Blog</a></li>
               <li><a class="nav-link" href="{% url 'Main:faq' %}">FAQ</a></li>
@@ -76,10 +76,10 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'Main:join' %}">Nous rejoindre</a>
+            <a class="nav-link" href="{% url 'Main:join' %}">L'équipe</a>
           </li>
         </ul>
-          <a type="button" class="btn btn-outline-vert-clair contact-item" href="{% url 'Main:contact' %}">Nous contacter</a>
+          <a type="button" class="btn btn-outline-black contact-item" href="{% url 'Main:contact' %}">Nous contacter</a>
       </div>
     </div>
     </nav>
@@ -88,843 +88,278 @@
 
   <!-- Section services -->
   <Main>
-    {% if messages %}
-      <div class="messages row justify-content-center align-items-center" id='messageBox' style="position:fixed; top:100px; right:25px; text-align:center; background-color:#014948; border-style:solid; border-width:1px; border-color:#ECFE8C; color:#ECFE8C; padding:10px">
-        <a type="button" onclick="closeMessage()" style="--bs-btn-close-color:white; position:absolute; left:5px; top:5px; color:#ECFE8C; width:5px;">X</a>
+    <!-- Section Hero -->
+    <section>
+      {% if messages %}
+      <div class="messages row justify-content-center align-items-center" id='messageBox' style="position:fixed; top:100px; right:25px; text-align:center; background-color:#F5F6F1; border-style:solid; border-width:1px; border-color:#0000FF; color:black; padding:10px">
+        <a type="button" onclick="closeMessage()" style="--bs-btn-close-color:white; position:absolute; left:5px; top:5px; color:#0000FF; width:5px;">X</a>
         {% for message in messages %}
           <div>
-             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 64 64" fill="none" stroke-width="2px" stroke="#ECFE8C"><path d="M8 12h48v40H8z"/><path d="M56 20L32 36 8 20"/></svg>
+             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 64 64" fill="none" stroke-width="2px" stroke="#0000FF"><path d="M8 12h48v40H8z"/><path d="M56 20L32 36 8 20"/></svg>
              <h3>Merci !</h3>
              <p>{{ message }}</p>
           </div>
         {% endfor %}
       </div>
     {% endif %}
-    <!-- Section Hero -->
-    <section>
-      <div class="mt-5 container HeroContainer text-vert-clair m-auto fade-up">
+
+      <div class="mt-5 container HeroContainer text-black m-auto fade-up">
         <div class="row justify-content-between align-items-center">
-          <div class="col-md-6 col-lg-6 col-sm-12 ">
-            <div class="display-1">Créer ensemble un environement digital responsable et sécurisé</div>
+          <div class="col-md-7 col-lg-7 col-sm-12 ">
+            <div class="display-1">Déployez en toute sécurité</div>
           </div>
           <div class="col-md-6 col-lg-6 col-sm-12">
-            <p class="mt-4" style="font-size:25px">À l'ère du numérique, la sécurité n'est pas une option, c'est une nécessité. Chez The Forge, nous comprenons les défis uniques de la cybersécurité dans un monde connecté. Nos services de cybersécurité sont conçus pour protéger votre entreprise contre les menaces numériques en constante évolution.</p>
+            <!--<p class="mt-4" style="font-size:25px">Notre équipe d'experts en IA est dédiée à transformer les défis technologiques complexes de nos clients en solutions intelligentes et efficaces. </p>-->
           </div>
         </div>
       </div>
     </section>
     <!-- Section Hero -->
 
-    <!-- Section sur évaluation -->
+    <!-- Section sur mesure -->
     <section>
-      <div class="container text-vert-clair m-auto borderTop py-4 fade-up">
-        <div class="row justify-content-between align-items-top">
-          <div class="col-md-6 col-lg-6 col-sm-12" style="width:20rem;">
-            <h3>Évaluation et Gestion des Risques</h3>
-            <p class="mt-4">Nous commençons par une évaluation complète de votre infrastructure numérique pour identifier les vulnérabilités potentielles. Notre équipe utilise des techniques avancées pour analyser et gérer les risques, assurant une protection solide contre les attaques et les violations de données.</p>
-            <a class="btn btn-outline-vert-clair mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Nous parler de vos besoins</a>
-          </div>
-          <div class="col-md-6 col-lg-6 col-sm-12">
-            <img src="{% static 'Assets/Images/cinematic-image-of-people-working-in-a-start-up-bu-2023-11-27-04-50-49-utc.jpg' %}" width="100%"/>
+      <div class="container text-black m-auto borderTop py-4">
+        <div class="text-center m-auto fade-up">
+             <h1 class='m-auto'>"Safety is first"</h1>
+             <p class='m-auto mt-3' style="max-width:600px;">De l'architecture initiale à la production finale, la sécurité est au cœur de notre processus de conception. Nous élaborons des dispositifs qui s'intègrent sans risque à votre environnement numérique, soutenant votre infrastructure sans compromettre la sécurité. </p>
+          <div class="row justify-content-between mt-5">
+            <div class="col-sm-12 col-md-3 col-lg-3">
+              <svg class="mb-4" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none" stroke-width="1px" stroke="#000"><path d="M20 28v-8a12 12 0 0 1 24 0v8H16a4 4 0 0 0-4 4v20a4 4 0 0 0 4 4h32a4 4 0 0 0 4-4V40"/><path d="M56 28L32 48l-8-8"/></svg><path d="M30.28 44L29 28.27a1.85 1.85 0 0 0-3.32-1h0a1.85 1.85 0 0 0 1.48 3h9.74a1.85 1.85 0 0 0 1.48-3h0a1.85 1.85 0 0 0-3.32 1L33.72 44"/><path d="M37.41 44c0-5.41 4.35-10.27 6.6-13.66a14.34 14.34 0 0 0 2.38-8.81C46 14.35 41 8 32 8s-14.41 6.08-14.41 14.38a14.33 14.33 0 0 0 2.48 8.09c2.3 3.38 6.52 8.12 6.52 13.53M28 52a4 4 0 0 0 8 0"/><rect x="24" y="44" width="16" height="8" rx="3"/></svg>
+              <h3> Sécurité à la conception</h3>
+              <p>Nous intégrons des protocoles de sécurité dès la phase de conception, veillant à ce que chaque dispositif respecte les normes de sécurité les plus strictes pour protéger votre infrastructure.</p>
+            </div>
+            <div class="col-sm-12 col-md-3 col-lg-3">
+              <svg class="mb-4" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none" stroke-width="1px" stroke="#000"><circle cx="20" cy="32" r="12"/><path d="M56 44V32H32"/></svg><circle cx="32" cy="32" r="24"/><circle cx="32" cy="32" r="8"/><path d="M48.97 48.97L37.66 37.66M26.34 26.34L15.03 15.03M37.66 26.34l11.31-11.31M26.34 37.66L15.03 48.97"/></svg>
+              <h3>Authentification Robuste</h3>
+              <p>Nos dispositifs sont équipés de systèmes d'authentification avancés, assurant que seuls les utilisateurs autorisés y ont accès et que les données restent sécurisées. </p>
+            </div>
+            <div class="col-sm-12 col-md-3 col-lg-3">
+              <svg class="mb-4" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none" stroke-width="1px" stroke="#000"><circle cx="32" cy="32" r="8"/><path d="M56 32s-8 16-24 16S8 32 8 32s8-16 24-16 24 16 24 16z"/></svg>              <h3>Maintenance de la Sécurité</h3>
+              <p>Nous offrons une surveillance constante et des mises à jour de sécurité pour nos dispositifs, assurant leur résilience face aux menaces évolutives et leur fonctionnement optimal au fil du temps.</p>
+            </div>
           </div>
         </div>
       </div>
     </section>
-    <!-- Section évaluation -->
+    <!-- Section Hero -->
 
-    <!-- Section sur Cyberattaque -->
+    <!-- ABOUT -->
     <section>
-      <div class="container text-vert-clair m-auto borderTop py-4 fade-up">
-        <div class="row justify-content-between align-items-top">
-          <div class="col-md-6 col-lg-6 col-sm-12">
-            <img src="{% static 'Assets/Motifs/horizontale/grille_horizontale_vert_clair.png' %}" width="100%"/>
+      <div class="container text-black m-auto borderTop py-4">
+        <div class="row justify-content-between align-items-start">
+          <div class="col-12 col-md-4 col-lg-4 mt-3 fade-up">
+            <h1>
+              Élevez Votre Standard de Sécurité
+            </h1>
+
+            <!-- Text -->
+            <p class="fs-lg text-gray-700 mb-5">
+              Notre expertise en sécurité garantit que chaque dispositif que nous déployons renforce et protège l'infrastructure de nos clients.
+            </p>
           </div>
-          <div class="col-md-6 col-lg-6 col-sm-12" style="width:20rem;">
-            <h3>Protection contre les Cyberattaques</h3>
-            <p class="mt-4">Notre approche proactive de la cybersécurité comprend la mise en place de barrières robustes contre les cyberattaques. De la détection d'intrusion à la prévention des fuites de données, nos solutions sont conçues pour offrir une sécurité multicouche.</p>
-            <a class="btn btn-outline-vert-clair mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Nous parler de vos besoins</a>
+          <div class="col-12 col-md-7 col-lg-7 order-md-1 pt-md-12 text-black">
+            <!-- List -->
+            <div class="row mt-3">
+              <div class="col-12 col-lg-6">
+
+                <!-- Item -->
+                <div class="d-flex fade-up">
+
+                  <!-- Check -->
+                  <div class="me-3" style="margin-top:-5px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 64 64" fill="none" stroke-width="1px" stroke="#000"><circle cx="32" cy="32" r="24"/><path d="M44 24L28 40l-8-8"/></svg>
+                  </div>
+
+                  <!-- Text -->
+                  <p class="text-black">
+                    <strong>Intégration Sécuritaire :</strong> Nos dispositifs s'intègrent en toute sécurité dans votre environnement technologique, sans compromettre la performance ou la protection.
+                  </p>
+
+                </div>
+
+                <!-- Item -->
+                <div class="d-flex fade-up">
+
+                  <!-- Check -->
+                  <div class="me-3" style="margin-top:-5px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 64 64" fill="none" stroke-width="1px" stroke="#000"><circle cx="32" cy="32" r="24"/><path d="M44 24L28 40l-8-8"/></svg>
+                  </div>
+
+                  <p class="text-black mb-lg-0">
+                    <strong>Protocoles de Sécurité :</strong> Chaque produit est bâti sur des protocoles de sécurité rigoureux, minimisant les risques de failles et d'attaques.
+                  </p>
+
+                </div>
+
+                <!-- Item -->
+                <div class="d-flex mt-3 fade-up">
+
+                  <!-- Check -->
+                  <div class="me-3" style="margin-top:-5px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 64 64" fill="none" stroke-width="1px" stroke="#000"><circle cx="32" cy="32" r="24"/><path d="M44 24L28 40l-8-8"/></svg>
+                  </div>
+
+                  <p class="text-black mb-lg-0">
+                    <strong>Tests de Vulnérabilité :</strong> Nous effectuons des tests réguliers pour identifier et corriger les vulnérabilités, renforçant ainsi la robustesse des dispositifs.
+                  </p>
+
+                </div>
+
+              </div>
+              <div class="col-12 col-lg-6">
+
+                <!-- Item -->
+                <div class="d-flex fade-up">
+
+                  <!-- Check -->
+                   <div class="me-3" style="margin-top:-5px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 64 64" fill="none" stroke-width="1px" stroke="#000"><circle cx="32" cy="32" r="24"/><path d="M44 24L28 40l-8-8"/></svg>
+                  </div>
+
+                  <!-- Text -->
+                  <p class="text-black">
+                    <strong>Mises à Jour Continues :</strong> Les dispositifs reçoivent des mises à jour de sécurité régulières pour se prémunir contre les menaces les plus récentes.
+                  </p>
+
+                </div>
+
+                <!-- Item -->
+                <div class="d-flex fade-up">
+
+                  <!-- Check -->
+                  <div class="me-3" style="margin-top:-5px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 64 64" fill="none" stroke-width="1px" stroke="#000"><circle cx="32" cy="32" r="24"/><path d="M44 24L28 40l-8-8"/></svg>
+                  </div>
+
+                  <!-- Text -->
+                  <p class="text-black mb-0">
+                    <strong>Support et Formation :</strong> Nous offrons un support continu et des formations pour que les utilisateurs soient au fait des meilleures pratiques de sécurité.
+                  </p>
+
+                </div>
+
+                <!-- Item -->
+                <div class="d-flex mt-3 fade-up">
+
+                  <!-- Check -->
+                  <div class="me-3" style="margin-top:-5px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 64 64" fill="none" stroke-width="1px" stroke="#000"><circle cx="32" cy="32" r="24"/><path d="M44 24L28 40l-8-8"/></svg>
+                  </div>
+
+                  <!-- Text -->
+                  <p class="text-black mb-0">
+                    <strong>Réponse aux Incidents :</strong> En cas de sécurité compromise, nous réagissons rapidement pour contenir les menaces et restaurer la sécurité.
+                  </p>
+
+                </div>
+
+              </div>
+            </div> <!-- / .row -->
+
           </div>
-        </div>
-      </div>
+        </div> <!-- / .row -->
+      </div> <!-- / .container -->
     </section>
-    <!-- Section cyberattaque -->
-
-    <!-- Section sur Conformité -->
-    <section>
-      <div class="container text-vert-clair m-auto borderTop py-4 fade-up">
-        <div class="row justify-content-between align-items-top">
-          <div class="col-md-6 col-lg-6 col-sm-12" style="width:20rem;">
-            <h3>Conformité et Sécurité des Données</h3>
-            <p class="mt-4">Respecter les réglementations de confidentialité et de protection des données est essentiel. Nous aidons votre entreprise à se conformer aux normes internationales, minimisant les risques légaux et renforçant la confiance de vos clients.</p>
-            <a class="btn btn-outline-vert-clair mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Nous parler de vos besoins</a>
-          </div>
-          <div class="col-md-6 col-lg-6 col-sm-12">
-            <svg id="Calque_1" data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 425.2 425.2">
-                <defs>
-                  <style>
-                    .cls-1 {
-                      fill: #e7e88b;
-                    }
-
-                    .cls-1, .cls-2 {
-                      stroke-width: 0px;
-                    }
-
-                    .cls-2 {
-                      fill: #004948;
-                    }
-                  </style>
-                </defs>
-                <rect class="cls-1" x="-2.69" width="427.89" height="425.2"/>
-                <g>
-                  <rect class="cls-2" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="13.5" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="27" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="40.49" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="53.99" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="80.99" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="94.49" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="148.48" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="161.98" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="175.48" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="27" y="13.5" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="40.49" y="13.5" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="67.49" y="13.5" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="94.49" y="13.5" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="121.48" y="13.5" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="134.98" y="13.5" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="148.48" y="13.5" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="202.47" y="13.5" width="13.5" height="13.5"/>
-                  <rect class="cls-2" y="27" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="27" y="27" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="40.49" y="27" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="53.99" y="27" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="67.49" y="27" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="107.99" y="27" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="175.48" y="27" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="188.98" y="27" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="202.47" y="27" width="13.5" height="13.5"/>
-                  <rect class="cls-2" y="40.49" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="13.5" y="40.49" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="27" y="40.49" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="40.49" y="40.49" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="53.99" y="40.49" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="94.49" y="40.49" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="107.99" y="40.49" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="121.48" y="40.49" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="148.48" y="40.49" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="175.48" y="40.49" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="188.98" y="40.49" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="27" y="53.99" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="40.49" y="53.99" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="53.99" y="53.99" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="67.49" y="53.99" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="80.99" y="53.99" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="94.49" y="53.99" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="107.99" y="53.99" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="121.48" y="53.99" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="175.48" y="53.99" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="188.98" y="53.99" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="202.47" y="53.99" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="27" y="67.49" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="67.49" y="67.49" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="80.99" y="67.49" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="94.49" y="67.49" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="107.99" y="67.49" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="148.48" y="67.49" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="161.98" y="67.49" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="175.48" y="67.49" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="202.47" y="67.49" width="13.5" height="13.5"/>
-                  <rect class="cls-2" y="80.99" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="67.49" y="80.99" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="134.98" y="80.99" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="148.48" y="80.99" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="161.98" y="80.99" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="175.48" y="80.99" width="13.5" height="13.5"/>
-                  <rect class="cls-2" y="94.49" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="27" y="94.49" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="40.49" y="94.49" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="53.99" y="94.49" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="67.49" y="94.49" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="94.49" y="94.49" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="121.48" y="94.49" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="134.98" y="94.49" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="148.48" y="94.49" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="161.98" y="94.49" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="202.47" y="94.49" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="215.97" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="229.47" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="242.97" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="256.47" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="283.46" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="296.96" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="310.46" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="377.95" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="404.95" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="418.45" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="215.97" y="13.5" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="229.47" y="13.5" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="242.97" y="13.5" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="256.47" y="13.5" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="269.97" y="13.5" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="283.46" y="13.5" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="296.96" y="13.5" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="310.46" y="13.5" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="323.96" y="13.5" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="337.46" y="13.5" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="350.96" y="13.5" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="377.95" y="13.5" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="404.95" y="13.5" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="229.47" y="27" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="269.97" y="27" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="283.46" y="27" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="310.46" y="27" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="337.46" y="27" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="350.96" y="27" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="377.95" y="27" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="215.97" y="40.49" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="229.47" y="40.49" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="242.97" y="40.49" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="269.97" y="40.49" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="283.46" y="40.49" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="296.96" y="40.49" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="337.46" y="40.49" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="350.96" y="40.49" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="377.95" y="40.49" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="391.45" y="40.49" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="404.95" y="40.49" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="229.47" y="53.99" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="242.97" y="53.99" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="269.97" y="53.99" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="283.46" y="53.99" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="296.96" y="53.99" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="310.46" y="53.99" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="337.46" y="53.99" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="350.96" y="53.99" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="242.97" y="67.49" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="256.47" y="67.49" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="269.97" y="67.49" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="296.96" y="67.49" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="337.46" y="67.49" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="350.96" y="67.49" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="391.45" y="67.49" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="215.97" y="80.99" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="229.47" y="80.99" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="242.97" y="80.99" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="256.47" y="80.99" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="323.96" y="80.99" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="337.46" y="80.99" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="350.96" y="80.99" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="377.95" y="80.99" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="229.47" y="94.49" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="242.97" y="94.49" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="256.47" y="94.49" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="283.46" y="94.49" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="296.96" y="94.49" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="310.46" y="94.49" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="323.96" y="94.49" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="337.46" y="94.49" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="350.96" y="94.49" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="364.45" y="94.49" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="377.95" y="94.49" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="391.45" y="94.49" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="404.95" y="94.49" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="418.45" y="94.49" width="13.5" height="13.5"/>
-                </g>
-                <g>
-                  <rect class="cls-2" x="418.45" y="202.47" width="13.5" height="13.5" transform="translate(850.39 418.45) rotate(180)"/>
-                  <rect class="cls-2" x="404.95" y="202.47" width="13.5" height="13.5" transform="translate(823.4 418.45) rotate(180)"/>
-                  <rect class="cls-2" x="391.45" y="202.47" width="13.5" height="13.5" transform="translate(796.4 418.45) rotate(180)"/>
-                  <rect class="cls-2" x="377.95" y="202.47" width="13.5" height="13.5" transform="translate(769.4 418.45) rotate(180)"/>
-                  <rect class="cls-2" x="364.45" y="202.47" width="13.5" height="13.5" transform="translate(742.41 418.45) rotate(180)"/>
-                  <rect class="cls-2" x="337.46" y="202.47" width="13.5" height="13.5" transform="translate(688.41 418.45) rotate(180)"/>
-                  <rect class="cls-2" x="323.96" y="202.47" width="13.5" height="13.5" transform="translate(661.42 418.45) rotate(180)"/>
-                  <rect class="cls-2" x="269.97" y="202.47" width="13.5" height="13.5" transform="translate(553.43 418.45) rotate(180)"/>
-                  <rect class="cls-2" x="256.47" y="202.47" width="13.5" height="13.5" transform="translate(526.43 418.45) rotate(180)"/>
-                  <rect class="cls-2" x="242.97" y="202.47" width="13.5" height="13.5" transform="translate(499.44 418.45) rotate(180)"/>
-                  <rect class="cls-2" x="391.45" y="188.98" width="13.5" height="13.5" transform="translate(796.4 391.45) rotate(180)"/>
-                  <rect class="cls-2" x="377.95" y="188.98" width="13.5" height="13.5" transform="translate(769.4 391.45) rotate(180)"/>
-                  <rect class="cls-2" x="350.96" y="188.98" width="13.5" height="13.5" transform="translate(715.41 391.45) rotate(180)"/>
-                  <rect class="cls-2" x="323.96" y="188.98" width="13.5" height="13.5" transform="translate(661.42 391.45) rotate(180)"/>
-                  <rect class="cls-2" x="296.96" y="188.98" width="13.5" height="13.5" transform="translate(607.42 391.45) rotate(180)"/>
-                  <rect class="cls-2" x="283.46" y="188.98" width="13.5" height="13.5" transform="translate(580.43 391.45) rotate(180)"/>
-                  <rect class="cls-2" x="269.97" y="188.98" width="13.5" height="13.5" transform="translate(553.43 391.45) rotate(180)"/>
-                  <rect class="cls-2" x="215.97" y="188.98" width="13.5" height="13.5" transform="translate(445.44 391.45) rotate(180)"/>
-                  <rect class="cls-2" x="418.45" y="175.48" width="13.5" height="13.5" transform="translate(850.39 364.45) rotate(180)"/>
-                  <rect class="cls-2" x="391.45" y="175.48" width="13.5" height="13.5" transform="translate(796.4 364.45) rotate(180)"/>
-                  <rect class="cls-2" x="377.95" y="175.48" width="13.5" height="13.5" transform="translate(769.4 364.45) rotate(180)"/>
-                  <rect class="cls-2" x="364.45" y="175.48" width="13.5" height="13.5" transform="translate(742.41 364.45) rotate(180)"/>
-                  <rect class="cls-2" x="350.96" y="175.48" width="13.5" height="13.5" transform="translate(715.41 364.45) rotate(180)"/>
-                  <rect class="cls-2" x="310.46" y="175.48" width="13.5" height="13.5" transform="translate(634.42 364.45) rotate(180)"/>
-                  <rect class="cls-2" x="242.97" y="175.48" width="13.5" height="13.5" transform="translate(499.44 364.45) rotate(180)"/>
-                  <rect class="cls-2" x="229.47" y="175.48" width="13.5" height="13.5" transform="translate(472.44 364.45) rotate(180)"/>
-                  <rect class="cls-2" x="215.97" y="175.48" width="13.5" height="13.5" transform="translate(445.44 364.45) rotate(180)"/>
-                  <rect class="cls-2" x="418.45" y="161.98" width="13.5" height="13.5" transform="translate(850.39 337.46) rotate(180)"/>
-                  <rect class="cls-2" x="404.95" y="161.98" width="13.5" height="13.5" transform="translate(823.4 337.46) rotate(180)"/>
-                  <rect class="cls-2" x="391.45" y="161.98" width="13.5" height="13.5" transform="translate(796.4 337.46) rotate(180)"/>
-                  <rect class="cls-2" x="377.95" y="161.98" width="13.5" height="13.5" transform="translate(769.4 337.46) rotate(180)"/>
-                  <rect class="cls-2" x="364.45" y="161.98" width="13.5" height="13.5" transform="translate(742.41 337.46) rotate(180)"/>
-                  <rect class="cls-2" x="323.96" y="161.98" width="13.5" height="13.5" transform="translate(661.42 337.46) rotate(180)"/>
-                  <rect class="cls-2" x="310.46" y="161.98" width="13.5" height="13.5" transform="translate(634.42 337.46) rotate(180)"/>
-                  <rect class="cls-2" x="296.96" y="161.98" width="13.5" height="13.5" transform="translate(607.42 337.46) rotate(180)"/>
-                  <rect class="cls-2" x="269.97" y="161.98" width="13.5" height="13.5" transform="translate(553.43 337.46) rotate(180)"/>
-                  <rect class="cls-2" x="242.97" y="161.98" width="13.5" height="13.5" transform="translate(499.44 337.46) rotate(180)"/>
-                  <rect class="cls-2" x="229.47" y="161.98" width="13.5" height="13.5" transform="translate(472.44 337.46) rotate(180)"/>
-                  <rect class="cls-2" x="391.45" y="148.48" width="13.5" height="13.5" transform="translate(796.4 310.46) rotate(180)"/>
-                  <rect class="cls-2" x="377.95" y="148.48" width="13.5" height="13.5" transform="translate(769.4 310.46) rotate(180)"/>
-                  <rect class="cls-2" x="364.45" y="148.48" width="13.5" height="13.5" transform="translate(742.41 310.46) rotate(180)"/>
-                  <rect class="cls-2" x="350.96" y="148.48" width="13.5" height="13.5" transform="translate(715.41 310.46) rotate(180)"/>
-                  <rect class="cls-2" x="337.46" y="148.48" width="13.5" height="13.5" transform="translate(688.41 310.46) rotate(180)"/>
-                  <rect class="cls-2" x="323.96" y="148.48" width="13.5" height="13.5" transform="translate(661.42 310.46) rotate(180)"/>
-                  <rect class="cls-2" x="310.46" y="148.48" width="13.5" height="13.5" transform="translate(634.42 310.46) rotate(180)"/>
-                  <rect class="cls-2" x="296.96" y="148.48" width="13.5" height="13.5" transform="translate(607.42 310.46) rotate(180)"/>
-                  <rect class="cls-2" x="242.97" y="148.48" width="13.5" height="13.5" transform="translate(499.44 310.46) rotate(180)"/>
-                  <rect class="cls-2" x="229.47" y="148.48" width="13.5" height="13.5" transform="translate(472.44 310.46) rotate(180)"/>
-                  <rect class="cls-2" x="215.97" y="148.48" width="13.5" height="13.5" transform="translate(445.44 310.46) rotate(180)"/>
-                  <rect class="cls-2" x="391.45" y="134.98" width="13.5" height="13.5" transform="translate(796.4 283.46) rotate(180)"/>
-                  <rect class="cls-2" x="350.96" y="134.98" width="13.5" height="13.5" transform="translate(715.41 283.46) rotate(180)"/>
-                  <rect class="cls-2" x="337.46" y="134.98" width="13.5" height="13.5" transform="translate(688.41 283.46) rotate(180)"/>
-                  <rect class="cls-2" x="323.96" y="134.98" width="13.5" height="13.5" transform="translate(661.42 283.46) rotate(180)"/>
-                  <rect class="cls-2" x="310.46" y="134.98" width="13.5" height="13.5" transform="translate(634.42 283.46) rotate(180)"/>
-                  <rect class="cls-2" x="269.97" y="134.98" width="13.5" height="13.5" transform="translate(553.43 283.46) rotate(180)"/>
-                  <rect class="cls-2" x="256.47" y="134.98" width="13.5" height="13.5" transform="translate(526.43 283.46) rotate(180)"/>
-                  <rect class="cls-2" x="242.97" y="134.98" width="13.5" height="13.5" transform="translate(499.44 283.46) rotate(180)"/>
-                  <rect class="cls-2" x="215.97" y="134.98" width="13.5" height="13.5" transform="translate(445.44 283.46) rotate(180)"/>
-                  <rect class="cls-2" x="418.45" y="121.48" width="13.5" height="13.5" transform="translate(850.39 256.47) rotate(180)"/>
-                  <rect class="cls-2" x="350.96" y="121.48" width="13.5" height="13.5" transform="translate(715.41 256.47) rotate(180)"/>
-                  <rect class="cls-2" x="283.46" y="121.48" width="13.5" height="13.5" transform="translate(580.43 256.47) rotate(180)"/>
-                  <rect class="cls-2" x="269.97" y="121.48" width="13.5" height="13.5" transform="translate(553.43 256.47) rotate(180)"/>
-                  <rect class="cls-2" x="256.47" y="121.48" width="13.5" height="13.5" transform="translate(526.43 256.47) rotate(180)"/>
-                  <rect class="cls-2" x="242.97" y="121.48" width="13.5" height="13.5" transform="translate(499.44 256.47) rotate(180)"/>
-                  <rect class="cls-2" x="418.45" y="107.99" width="13.5" height="13.5" transform="translate(850.39 229.47) rotate(180)"/>
-                  <rect class="cls-2" x="391.45" y="107.99" width="13.5" height="13.5" transform="translate(796.4 229.47) rotate(180)"/>
-                  <rect class="cls-2" x="377.95" y="107.99" width="13.5" height="13.5" transform="translate(769.4 229.47) rotate(180)"/>
-                  <rect class="cls-2" x="364.45" y="107.99" width="13.5" height="13.5" transform="translate(742.41 229.47) rotate(180)"/>
-                  <rect class="cls-2" x="350.96" y="107.99" width="13.5" height="13.5" transform="translate(715.41 229.47) rotate(180)"/>
-                  <rect class="cls-2" x="323.96" y="107.99" width="13.5" height="13.5" transform="translate(661.42 229.47) rotate(180)"/>
-                  <rect class="cls-2" x="296.96" y="107.99" width="13.5" height="13.5" transform="translate(607.42 229.47) rotate(180)"/>
-                  <rect class="cls-2" x="283.46" y="107.99" width="13.5" height="13.5" transform="translate(580.43 229.47) rotate(180)"/>
-                  <rect class="cls-2" x="269.97" y="107.99" width="13.5" height="13.5" transform="translate(553.43 229.47) rotate(180)"/>
-                  <rect class="cls-2" x="256.47" y="107.99" width="13.5" height="13.5" transform="translate(526.43 229.47) rotate(180)"/>
-                  <rect class="cls-2" x="215.97" y="107.99" width="13.5" height="13.5" transform="translate(445.44 229.47) rotate(180)"/>
-                  <rect class="cls-2" x="202.47" y="202.47" width="13.5" height="13.5" transform="translate(418.45 418.45) rotate(180)"/>
-                  <rect class="cls-2" x="188.98" y="202.47" width="13.5" height="13.5" transform="translate(391.45 418.45) rotate(180)"/>
-                  <rect class="cls-2" x="175.48" y="202.47" width="13.5" height="13.5" transform="translate(364.45 418.45) rotate(180)"/>
-                  <rect class="cls-2" x="161.98" y="202.47" width="13.5" height="13.5" transform="translate(337.46 418.45) rotate(180)"/>
-                  <rect class="cls-2" x="134.98" y="202.47" width="13.5" height="13.5" transform="translate(283.46 418.45) rotate(180)"/>
-                  <rect class="cls-2" x="121.48" y="202.47" width="13.5" height="13.5" transform="translate(256.47 418.45) rotate(180)"/>
-                  <rect class="cls-2" x="107.99" y="202.47" width="13.5" height="13.5" transform="translate(229.47 418.45) rotate(180)"/>
-                  <rect class="cls-2" x="40.49" y="202.47" width="13.5" height="13.5" transform="translate(94.49 418.45) rotate(180)"/>
-                  <rect class="cls-2" x="13.5" y="202.47" width="13.5" height="13.5" transform="translate(40.49 418.45) rotate(180)"/>
-                  <rect class="cls-2" y="202.47" width="13.5" height="13.5" transform="translate(13.5 418.45) rotate(180)"/>
-                  <rect class="cls-2" x="202.47" y="188.98" width="13.5" height="13.5" transform="translate(418.45 391.45) rotate(180)"/>
-                  <rect class="cls-2" x="188.98" y="188.98" width="13.5" height="13.5" transform="translate(391.45 391.45) rotate(180)"/>
-                  <rect class="cls-2" x="175.48" y="188.98" width="13.5" height="13.5" transform="translate(364.45 391.45) rotate(180)"/>
-                  <rect class="cls-2" x="161.98" y="188.98" width="13.5" height="13.5" transform="translate(337.46 391.45) rotate(180)"/>
-                  <rect class="cls-2" x="148.48" y="188.98" width="13.5" height="13.5" transform="translate(310.46 391.45) rotate(180)"/>
-                  <rect class="cls-2" x="134.98" y="188.98" width="13.5" height="13.5" transform="translate(283.46 391.45) rotate(180)"/>
-                  <rect class="cls-2" x="121.48" y="188.98" width="13.5" height="13.5" transform="translate(256.47 391.45) rotate(180)"/>
-                  <rect class="cls-2" x="107.99" y="188.98" width="13.5" height="13.5" transform="translate(229.47 391.45) rotate(180)"/>
-                  <rect class="cls-2" x="94.49" y="188.98" width="13.5" height="13.5" transform="translate(202.47 391.45) rotate(180)"/>
-                  <rect class="cls-2" x="80.99" y="188.98" width="13.5" height="13.5" transform="translate(175.48 391.45) rotate(180)"/>
-                  <rect class="cls-2" x="67.49" y="188.98" width="13.5" height="13.5" transform="translate(148.48 391.45) rotate(180)"/>
-                  <rect class="cls-2" x="40.49" y="188.98" width="13.5" height="13.5" transform="translate(94.49 391.45) rotate(180)"/>
-                  <rect class="cls-2" x="13.5" y="188.98" width="13.5" height="13.5" transform="translate(40.49 391.45) rotate(180)"/>
-                  <rect class="cls-2" x="188.98" y="175.48" width="13.5" height="13.5" transform="translate(391.45 364.45) rotate(180)"/>
-                  <rect class="cls-2" x="148.48" y="175.48" width="13.5" height="13.5" transform="translate(310.46 364.45) rotate(180)"/>
-                  <rect class="cls-2" x="134.98" y="175.48" width="13.5" height="13.5" transform="translate(283.46 364.45) rotate(180)"/>
-                  <rect class="cls-2" x="107.99" y="175.48" width="13.5" height="13.5" transform="translate(229.47 364.45) rotate(180)"/>
-                  <rect class="cls-2" x="80.99" y="175.48" width="13.5" height="13.5" transform="translate(175.48 364.45) rotate(180)"/>
-                  <rect class="cls-2" x="67.49" y="175.48" width="13.5" height="13.5" transform="translate(148.48 364.45) rotate(180)"/>
-                  <rect class="cls-2" x="40.49" y="175.48" width="13.5" height="13.5" transform="translate(94.49 364.45) rotate(180)"/>
-                  <rect class="cls-2" x="202.47" y="161.98" width="13.5" height="13.5" transform="translate(418.45 337.46) rotate(180)"/>
-                  <rect class="cls-2" x="188.98" y="161.98" width="13.5" height="13.5" transform="translate(391.45 337.46) rotate(180)"/>
-                  <rect class="cls-2" x="175.48" y="161.98" width="13.5" height="13.5" transform="translate(364.45 337.46) rotate(180)"/>
-                  <rect class="cls-2" x="148.48" y="161.98" width="13.5" height="13.5" transform="translate(310.46 337.46) rotate(180)"/>
-                  <rect class="cls-2" x="134.98" y="161.98" width="13.5" height="13.5" transform="translate(283.46 337.46) rotate(180)"/>
-                  <rect class="cls-2" x="121.48" y="161.98" width="13.5" height="13.5" transform="translate(256.47 337.46) rotate(180)"/>
-                  <rect class="cls-2" x="80.99" y="161.98" width="13.5" height="13.5" transform="translate(175.48 337.46) rotate(180)"/>
-                  <rect class="cls-2" x="67.49" y="161.98" width="13.5" height="13.5" transform="translate(148.48 337.46) rotate(180)"/>
-                  <rect class="cls-2" x="40.49" y="161.98" width="13.5" height="13.5" transform="translate(94.49 337.46) rotate(180)"/>
-                  <rect class="cls-2" x="27" y="161.98" width="13.5" height="13.5" transform="translate(67.49 337.46) rotate(180)"/>
-                  <rect class="cls-2" x="13.5" y="161.98" width="13.5" height="13.5" transform="translate(40.49 337.46) rotate(180)"/>
-                  <rect class="cls-2" x="188.98" y="148.48" width="13.5" height="13.5" transform="translate(391.45 310.46) rotate(180)"/>
-                  <rect class="cls-2" x="175.48" y="148.48" width="13.5" height="13.5" transform="translate(364.45 310.46) rotate(180)"/>
-                  <rect class="cls-2" x="148.48" y="148.48" width="13.5" height="13.5" transform="translate(310.46 310.46) rotate(180)"/>
-                  <rect class="cls-2" x="134.98" y="148.48" width="13.5" height="13.5" transform="translate(283.46 310.46) rotate(180)"/>
-                  <rect class="cls-2" x="121.48" y="148.48" width="13.5" height="13.5" transform="translate(256.47 310.46) rotate(180)"/>
-                  <rect class="cls-2" x="107.99" y="148.48" width="13.5" height="13.5" transform="translate(229.47 310.46) rotate(180)"/>
-                  <rect class="cls-2" x="80.99" y="148.48" width="13.5" height="13.5" transform="translate(175.48 310.46) rotate(180)"/>
-                  <rect class="cls-2" x="67.49" y="148.48" width="13.5" height="13.5" transform="translate(148.48 310.46) rotate(180)"/>
-                  <rect class="cls-2" x="175.48" y="134.98" width="13.5" height="13.5" transform="translate(364.45 283.46) rotate(180)"/>
-                  <rect class="cls-2" x="161.98" y="134.98" width="13.5" height="13.5" transform="translate(337.46 283.46) rotate(180)"/>
-                  <rect class="cls-2" x="148.48" y="134.98" width="13.5" height="13.5" transform="translate(310.46 283.46) rotate(180)"/>
-                  <rect class="cls-2" x="121.48" y="134.98" width="13.5" height="13.5" transform="translate(256.47 283.46) rotate(180)"/>
-                  <rect class="cls-2" x="80.99" y="134.98" width="13.5" height="13.5" transform="translate(175.48 283.46) rotate(180)"/>
-                  <rect class="cls-2" x="67.49" y="134.98" width="13.5" height="13.5" transform="translate(148.48 283.46) rotate(180)"/>
-                  <rect class="cls-2" x="27" y="134.98" width="13.5" height="13.5" transform="translate(67.49 283.46) rotate(180)"/>
-                  <rect class="cls-2" x="202.47" y="121.48" width="13.5" height="13.5" transform="translate(418.45 256.47) rotate(180)"/>
-                  <rect class="cls-2" x="188.98" y="121.48" width="13.5" height="13.5" transform="translate(391.45 256.47) rotate(180)"/>
-                  <rect class="cls-2" x="175.48" y="121.48" width="13.5" height="13.5" transform="translate(364.45 256.47) rotate(180)"/>
-                  <rect class="cls-2" x="161.98" y="121.48" width="13.5" height="13.5" transform="translate(337.46 256.47) rotate(180)"/>
-                  <rect class="cls-2" x="94.49" y="121.48" width="13.5" height="13.5" transform="translate(202.47 256.47) rotate(180)"/>
-                  <rect class="cls-2" x="80.99" y="121.48" width="13.5" height="13.5" transform="translate(175.48 256.47) rotate(180)"/>
-                  <rect class="cls-2" x="67.49" y="121.48" width="13.5" height="13.5" transform="translate(148.48 256.47) rotate(180)"/>
-                  <rect class="cls-2" x="40.49" y="121.48" width="13.5" height="13.5" transform="translate(94.49 256.47) rotate(180)"/>
-                  <rect class="cls-2" x="188.98" y="107.99" width="13.5" height="13.5" transform="translate(391.45 229.47) rotate(180)"/>
-                  <rect class="cls-2" x="175.48" y="107.99" width="13.5" height="13.5" transform="translate(364.45 229.47) rotate(180)"/>
-                  <rect class="cls-2" x="161.98" y="107.99" width="13.5" height="13.5" transform="translate(337.46 229.47) rotate(180)"/>
-                  <rect class="cls-2" x="134.98" y="107.99" width="13.5" height="13.5" transform="translate(283.46 229.47) rotate(180)"/>
-                  <rect class="cls-2" x="121.48" y="107.99" width="13.5" height="13.5" transform="translate(256.47 229.47) rotate(180)"/>
-                  <rect class="cls-2" x="107.99" y="107.99" width="13.5" height="13.5" transform="translate(229.47 229.47) rotate(180)"/>
-                  <rect class="cls-2" x="94.49" y="107.99" width="13.5" height="13.5" transform="translate(202.47 229.47) rotate(180)"/>
-                  <rect class="cls-2" x="80.99" y="107.99" width="13.5" height="13.5" transform="translate(175.48 229.47) rotate(180)"/>
-                  <rect class="cls-2" x="67.49" y="107.99" width="13.5" height="13.5" transform="translate(148.48 229.47) rotate(180)"/>
-                  <rect class="cls-2" x="53.99" y="107.99" width="13.5" height="13.5" transform="translate(121.48 229.47) rotate(180)"/>
-                  <rect class="cls-2" x="40.49" y="107.99" width="13.5" height="13.5" transform="translate(94.49 229.47) rotate(180)"/>
-                  <rect class="cls-2" x="27" y="107.99" width="13.5" height="13.5" transform="translate(67.49 229.47) rotate(180)"/>
-                  <rect class="cls-2" x="13.5" y="107.99" width="13.5" height="13.5" transform="translate(40.49 229.47) rotate(180)"/>
-                  <rect class="cls-2" y="107.99" width="13.5" height="13.5" transform="translate(13.5 229.47) rotate(180)"/>
-                </g>
-                <g>
-                  <rect class="cls-2" y="209.22" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="13.5" y="209.22" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="27" y="209.22" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="40.49" y="209.22" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="53.99" y="209.22" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="80.99" y="209.22" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="94.49" y="209.22" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="148.48" y="209.22" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="161.98" y="209.22" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="175.48" y="209.22" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="27" y="222.72" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="40.49" y="222.72" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="67.49" y="222.72" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="94.49" y="222.72" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="121.48" y="222.72" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="134.98" y="222.72" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="148.48" y="222.72" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="202.47" y="222.72" width="13.5" height="13.5"/>
-                  <rect class="cls-2" y="236.22" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="27" y="236.22" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="40.49" y="236.22" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="53.99" y="236.22" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="67.49" y="236.22" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="107.99" y="236.22" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="175.48" y="236.22" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="188.98" y="236.22" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="202.47" y="236.22" width="13.5" height="13.5"/>
-                  <rect class="cls-2" y="249.72" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="13.5" y="249.72" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="27" y="249.72" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="40.49" y="249.72" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="53.99" y="249.72" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="94.49" y="249.72" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="107.99" y="249.72" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="121.48" y="249.72" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="148.48" y="249.72" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="175.48" y="249.72" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="188.98" y="249.72" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="27" y="263.22" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="40.49" y="263.22" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="53.99" y="263.22" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="67.49" y="263.22" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="80.99" y="263.22" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="94.49" y="263.22" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="107.99" y="263.22" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="121.48" y="263.22" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="175.48" y="263.22" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="188.98" y="263.22" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="202.47" y="263.22" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="27" y="276.72" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="67.49" y="276.72" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="80.99" y="276.72" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="94.49" y="276.72" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="107.99" y="276.72" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="148.48" y="276.72" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="161.98" y="276.72" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="175.48" y="276.72" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="202.47" y="276.72" width="13.5" height="13.5"/>
-                  <rect class="cls-2" y="290.21" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="67.49" y="290.21" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="134.98" y="290.21" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="148.48" y="290.21" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="161.98" y="290.21" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="175.48" y="290.21" width="13.5" height="13.5"/>
-                  <rect class="cls-2" y="303.71" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="27" y="303.71" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="40.49" y="303.71" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="53.99" y="303.71" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="67.49" y="303.71" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="94.49" y="303.71" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="121.48" y="303.71" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="134.98" y="303.71" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="148.48" y="303.71" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="161.98" y="303.71" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="202.47" y="303.71" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="215.97" y="209.22" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="229.47" y="209.22" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="242.97" y="209.22" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="256.47" y="209.22" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="283.46" y="209.22" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="296.96" y="209.22" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="310.46" y="209.22" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="377.95" y="209.22" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="404.95" y="209.22" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="418.45" y="209.22" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="215.97" y="222.72" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="229.47" y="222.72" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="242.97" y="222.72" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="256.47" y="222.72" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="269.97" y="222.72" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="283.46" y="222.72" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="296.96" y="222.72" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="310.46" y="222.72" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="323.96" y="222.72" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="337.46" y="222.72" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="350.96" y="222.72" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="377.95" y="222.72" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="404.95" y="222.72" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="229.47" y="236.22" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="269.97" y="236.22" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="283.46" y="236.22" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="310.46" y="236.22" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="337.46" y="236.22" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="350.96" y="236.22" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="377.95" y="236.22" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="215.97" y="249.72" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="229.47" y="249.72" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="242.97" y="249.72" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="269.97" y="249.72" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="283.46" y="249.72" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="296.96" y="249.72" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="337.46" y="249.72" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="350.96" y="249.72" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="377.95" y="249.72" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="391.45" y="249.72" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="404.95" y="249.72" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="229.47" y="263.22" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="242.97" y="263.22" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="269.97" y="263.22" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="283.46" y="263.22" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="296.96" y="263.22" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="310.46" y="263.22" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="337.46" y="263.22" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="350.96" y="263.22" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="242.97" y="276.72" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="256.47" y="276.72" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="269.97" y="276.72" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="296.96" y="276.72" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="337.46" y="276.72" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="350.96" y="276.72" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="391.45" y="276.72" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="215.97" y="290.21" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="229.47" y="290.21" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="242.97" y="290.21" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="256.47" y="290.21" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="323.96" y="290.21" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="337.46" y="290.21" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="350.96" y="290.21" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="377.95" y="290.21" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="229.47" y="303.71" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="242.97" y="303.71" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="256.47" y="303.71" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="283.46" y="303.71" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="296.96" y="303.71" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="310.46" y="303.71" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="323.96" y="303.71" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="337.46" y="303.71" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="350.96" y="303.71" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="364.45" y="303.71" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="377.95" y="303.71" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="391.45" y="303.71" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="404.95" y="303.71" width="13.5" height="13.5"/>
-                  <rect class="cls-2" x="418.45" y="303.71" width="13.5" height="13.5"/>
-                </g>
-                <g>
-                  <rect class="cls-2" x="418.45" y="411.7" width="13.5" height="13.5" transform="translate(850.39 836.9) rotate(180)"/>
-                  <rect class="cls-2" x="404.95" y="411.7" width="13.5" height="13.5" transform="translate(823.4 836.9) rotate(180)"/>
-                  <rect class="cls-2" x="391.45" y="411.7" width="13.5" height="13.5" transform="translate(796.4 836.9) rotate(180)"/>
-                  <rect class="cls-2" x="377.95" y="411.7" width="13.5" height="13.5" transform="translate(769.4 836.9) rotate(180)"/>
-                  <rect class="cls-2" x="364.45" y="411.7" width="13.5" height="13.5" transform="translate(742.41 836.9) rotate(180)"/>
-                  <rect class="cls-2" x="337.46" y="411.7" width="13.5" height="13.5" transform="translate(688.41 836.9) rotate(180)"/>
-                  <rect class="cls-2" x="323.96" y="411.7" width="13.5" height="13.5" transform="translate(661.42 836.9) rotate(180)"/>
-                  <rect class="cls-2" x="269.97" y="411.7" width="13.5" height="13.5" transform="translate(553.43 836.9) rotate(180)"/>
-                  <rect class="cls-2" x="256.47" y="411.7" width="13.5" height="13.5" transform="translate(526.43 836.9) rotate(180)"/>
-                  <rect class="cls-2" x="242.97" y="411.7" width="13.5" height="13.5" transform="translate(499.44 836.9) rotate(180)"/>
-                  <rect class="cls-2" x="391.45" y="398.2" width="13.5" height="13.5" transform="translate(796.4 809.9) rotate(180)"/>
-                  <rect class="cls-2" x="377.95" y="398.2" width="13.5" height="13.5" transform="translate(769.4 809.9) rotate(180)"/>
-                  <rect class="cls-2" x="350.96" y="398.2" width="13.5" height="13.5" transform="translate(715.41 809.9) rotate(180)"/>
-                  <rect class="cls-2" x="323.96" y="398.2" width="13.5" height="13.5" transform="translate(661.42 809.9) rotate(180)"/>
-                  <rect class="cls-2" x="296.96" y="398.2" width="13.5" height="13.5" transform="translate(607.42 809.9) rotate(180)"/>
-                  <rect class="cls-2" x="283.46" y="398.2" width="13.5" height="13.5" transform="translate(580.43 809.9) rotate(180)"/>
-                  <rect class="cls-2" x="269.97" y="398.2" width="13.5" height="13.5" transform="translate(553.43 809.9) rotate(180)"/>
-                  <rect class="cls-2" x="215.97" y="398.2" width="13.5" height="13.5" transform="translate(445.44 809.9) rotate(180)"/>
-                  <rect class="cls-2" x="418.45" y="384.7" width="13.5" height="13.5" transform="translate(850.39 782.9) rotate(180)"/>
-                  <rect class="cls-2" x="391.45" y="384.7" width="13.5" height="13.5" transform="translate(796.4 782.9) rotate(180)"/>
-                  <rect class="cls-2" x="377.95" y="384.7" width="13.5" height="13.5" transform="translate(769.4 782.9) rotate(180)"/>
-                  <rect class="cls-2" x="364.45" y="384.7" width="13.5" height="13.5" transform="translate(742.41 782.9) rotate(180)"/>
-                  <rect class="cls-2" x="350.96" y="384.7" width="13.5" height="13.5" transform="translate(715.41 782.9) rotate(180)"/>
-                  <rect class="cls-2" x="310.46" y="384.7" width="13.5" height="13.5" transform="translate(634.42 782.9) rotate(180)"/>
-                  <rect class="cls-2" x="242.97" y="384.7" width="13.5" height="13.5" transform="translate(499.44 782.9) rotate(180)"/>
-                  <rect class="cls-2" x="229.47" y="384.7" width="13.5" height="13.5" transform="translate(472.44 782.9) rotate(180)"/>
-                  <rect class="cls-2" x="215.97" y="384.7" width="13.5" height="13.5" transform="translate(445.44 782.9) rotate(180)"/>
-                  <rect class="cls-2" x="418.45" y="371.2" width="13.5" height="13.5" transform="translate(850.39 755.91) rotate(180)"/>
-                  <rect class="cls-2" x="404.95" y="371.2" width="13.5" height="13.5" transform="translate(823.4 755.91) rotate(180)"/>
-                  <rect class="cls-2" x="391.45" y="371.2" width="13.5" height="13.5" transform="translate(796.4 755.91) rotate(180)"/>
-                  <rect class="cls-2" x="377.95" y="371.2" width="13.5" height="13.5" transform="translate(769.4 755.91) rotate(180)"/>
-                  <rect class="cls-2" x="364.45" y="371.2" width="13.5" height="13.5" transform="translate(742.41 755.91) rotate(180)"/>
-                  <rect class="cls-2" x="323.96" y="371.2" width="13.5" height="13.5" transform="translate(661.42 755.91) rotate(180)"/>
-                  <rect class="cls-2" x="310.46" y="371.2" width="13.5" height="13.5" transform="translate(634.42 755.91) rotate(180)"/>
-                  <rect class="cls-2" x="296.96" y="371.2" width="13.5" height="13.5" transform="translate(607.42 755.91) rotate(180)"/>
-                  <rect class="cls-2" x="269.97" y="371.2" width="13.5" height="13.5" transform="translate(553.43 755.91) rotate(180)"/>
-                  <rect class="cls-2" x="242.97" y="371.2" width="13.5" height="13.5" transform="translate(499.44 755.91) rotate(180)"/>
-                  <rect class="cls-2" x="229.47" y="371.2" width="13.5" height="13.5" transform="translate(472.44 755.91) rotate(180)"/>
-                  <rect class="cls-2" x="391.45" y="357.71" width="13.5" height="13.5" transform="translate(796.4 728.91) rotate(180)"/>
-                  <rect class="cls-2" x="377.95" y="357.71" width="13.5" height="13.5" transform="translate(769.4 728.91) rotate(180)"/>
-                  <rect class="cls-2" x="364.45" y="357.71" width="13.5" height="13.5" transform="translate(742.41 728.91) rotate(180)"/>
-                  <rect class="cls-2" x="350.96" y="357.71" width="13.5" height="13.5" transform="translate(715.41 728.91) rotate(180)"/>
-                  <rect class="cls-2" x="337.46" y="357.71" width="13.5" height="13.5" transform="translate(688.41 728.91) rotate(180)"/>
-                  <rect class="cls-2" x="323.96" y="357.71" width="13.5" height="13.5" transform="translate(661.42 728.91) rotate(180)"/>
-                  <rect class="cls-2" x="310.46" y="357.71" width="13.5" height="13.5" transform="translate(634.42 728.91) rotate(180)"/>
-                  <rect class="cls-2" x="296.96" y="357.71" width="13.5" height="13.5" transform="translate(607.42 728.91) rotate(180)"/>
-                  <rect class="cls-2" x="242.97" y="357.71" width="13.5" height="13.5" transform="translate(499.44 728.91) rotate(180)"/>
-                  <rect class="cls-2" x="229.47" y="357.71" width="13.5" height="13.5" transform="translate(472.44 728.91) rotate(180)"/>
-                  <rect class="cls-2" x="215.97" y="357.71" width="13.5" height="13.5" transform="translate(445.44 728.91) rotate(180)"/>
-                  <rect class="cls-2" x="391.45" y="344.21" width="13.5" height="13.5" transform="translate(796.4 701.91) rotate(180)"/>
-                  <rect class="cls-2" x="350.96" y="344.21" width="13.5" height="13.5" transform="translate(715.41 701.91) rotate(180)"/>
-                  <rect class="cls-2" x="337.46" y="344.21" width="13.5" height="13.5" transform="translate(688.41 701.91) rotate(180)"/>
-                  <rect class="cls-2" x="323.96" y="344.21" width="13.5" height="13.5" transform="translate(661.42 701.91) rotate(180)"/>
-                  <rect class="cls-2" x="310.46" y="344.21" width="13.5" height="13.5" transform="translate(634.42 701.91) rotate(180)"/>
-                  <rect class="cls-2" x="269.97" y="344.21" width="13.5" height="13.5" transform="translate(553.43 701.91) rotate(180)"/>
-                  <rect class="cls-2" x="256.47" y="344.21" width="13.5" height="13.5" transform="translate(526.43 701.91) rotate(180)"/>
-                  <rect class="cls-2" x="242.97" y="344.21" width="13.5" height="13.5" transform="translate(499.44 701.91) rotate(180)"/>
-                  <rect class="cls-2" x="215.97" y="344.21" width="13.5" height="13.5" transform="translate(445.44 701.91) rotate(180)"/>
-                  <rect class="cls-2" x="418.45" y="330.71" width="13.5" height="13.5" transform="translate(850.39 674.92) rotate(180)"/>
-                  <rect class="cls-2" x="350.96" y="330.71" width="13.5" height="13.5" transform="translate(715.41 674.92) rotate(180)"/>
-                  <rect class="cls-2" x="283.46" y="330.71" width="13.5" height="13.5" transform="translate(580.43 674.92) rotate(180)"/>
-                  <rect class="cls-2" x="269.97" y="330.71" width="13.5" height="13.5" transform="translate(553.43 674.92) rotate(180)"/>
-                  <rect class="cls-2" x="256.47" y="330.71" width="13.5" height="13.5" transform="translate(526.43 674.92) rotate(180)"/>
-                  <rect class="cls-2" x="242.97" y="330.71" width="13.5" height="13.5" transform="translate(499.44 674.92) rotate(180)"/>
-                  <rect class="cls-2" x="418.45" y="317.21" width="13.5" height="13.5" transform="translate(850.39 647.92) rotate(180)"/>
-                  <rect class="cls-2" x="391.45" y="317.21" width="13.5" height="13.5" transform="translate(796.4 647.92) rotate(180)"/>
-                  <rect class="cls-2" x="377.95" y="317.21" width="13.5" height="13.5" transform="translate(769.4 647.92) rotate(180)"/>
-                  <rect class="cls-2" x="364.45" y="317.21" width="13.5" height="13.5" transform="translate(742.41 647.92) rotate(180)"/>
-                  <rect class="cls-2" x="350.96" y="317.21" width="13.5" height="13.5" transform="translate(715.41 647.92) rotate(180)"/>
-                  <rect class="cls-2" x="323.96" y="317.21" width="13.5" height="13.5" transform="translate(661.42 647.92) rotate(180)"/>
-                  <rect class="cls-2" x="296.96" y="317.21" width="13.5" height="13.5" transform="translate(607.42 647.92) rotate(180)"/>
-                  <rect class="cls-2" x="283.46" y="317.21" width="13.5" height="13.5" transform="translate(580.43 647.92) rotate(180)"/>
-                  <rect class="cls-2" x="269.97" y="317.21" width="13.5" height="13.5" transform="translate(553.43 647.92) rotate(180)"/>
-                  <rect class="cls-2" x="256.47" y="317.21" width="13.5" height="13.5" transform="translate(526.43 647.92) rotate(180)"/>
-                  <rect class="cls-2" x="215.97" y="317.21" width="13.5" height="13.5" transform="translate(445.44 647.92) rotate(180)"/>
-                  <rect class="cls-2" x="202.47" y="411.7" width="13.5" height="13.5" transform="translate(418.45 836.9) rotate(180)"/>
-                  <rect class="cls-2" x="188.98" y="411.7" width="13.5" height="13.5" transform="translate(391.45 836.9) rotate(180)"/>
-                  <rect class="cls-2" x="175.48" y="411.7" width="13.5" height="13.5" transform="translate(364.45 836.9) rotate(180)"/>
-                  <rect class="cls-2" x="161.98" y="411.7" width="13.5" height="13.5" transform="translate(337.46 836.9) rotate(180)"/>
-                  <rect class="cls-2" x="134.98" y="411.7" width="13.5" height="13.5" transform="translate(283.46 836.9) rotate(180)"/>
-                  <rect class="cls-2" x="121.48" y="411.7" width="13.5" height="13.5" transform="translate(256.47 836.9) rotate(180)"/>
-                  <rect class="cls-2" x="107.99" y="411.7" width="13.5" height="13.5" transform="translate(229.47 836.9) rotate(180)"/>
-                  <rect class="cls-2" x="40.49" y="411.7" width="13.5" height="13.5" transform="translate(94.49 836.9) rotate(180)"/>
-                  <rect class="cls-2" x="13.5" y="411.7" width="13.5" height="13.5" transform="translate(40.49 836.9) rotate(180)"/>
-                  <rect class="cls-2" y="411.7" width="13.5" height="13.5" transform="translate(13.5 836.9) rotate(180)"/>
-                  <rect class="cls-2" x="202.47" y="398.2" width="13.5" height="13.5" transform="translate(418.45 809.9) rotate(180)"/>
-                  <rect class="cls-2" x="188.98" y="398.2" width="13.5" height="13.5" transform="translate(391.45 809.9) rotate(180)"/>
-                  <rect class="cls-2" x="175.48" y="398.2" width="13.5" height="13.5" transform="translate(364.45 809.9) rotate(180)"/>
-                  <rect class="cls-2" x="161.98" y="398.2" width="13.5" height="13.5" transform="translate(337.46 809.9) rotate(180)"/>
-                  <rect class="cls-2" x="148.48" y="398.2" width="13.5" height="13.5" transform="translate(310.46 809.9) rotate(180)"/>
-                  <rect class="cls-2" x="134.98" y="398.2" width="13.5" height="13.5" transform="translate(283.46 809.9) rotate(180)"/>
-                  <rect class="cls-2" x="121.48" y="398.2" width="13.5" height="13.5" transform="translate(256.47 809.9) rotate(180)"/>
-                  <rect class="cls-2" x="107.99" y="398.2" width="13.5" height="13.5" transform="translate(229.47 809.9) rotate(180)"/>
-                  <rect class="cls-2" x="94.49" y="398.2" width="13.5" height="13.5" transform="translate(202.47 809.9) rotate(180)"/>
-                  <rect class="cls-2" x="80.99" y="398.2" width="13.5" height="13.5" transform="translate(175.48 809.9) rotate(180)"/>
-                  <rect class="cls-2" x="67.49" y="398.2" width="13.5" height="13.5" transform="translate(148.48 809.9) rotate(180)"/>
-                  <rect class="cls-2" x="40.49" y="398.2" width="13.5" height="13.5" transform="translate(94.49 809.9) rotate(180)"/>
-                  <rect class="cls-2" x="13.5" y="398.2" width="13.5" height="13.5" transform="translate(40.49 809.9) rotate(180)"/>
-                  <rect class="cls-2" x="188.98" y="384.7" width="13.5" height="13.5" transform="translate(391.45 782.9) rotate(180)"/>
-                  <rect class="cls-2" x="148.48" y="384.7" width="13.5" height="13.5" transform="translate(310.46 782.9) rotate(180)"/>
-                  <rect class="cls-2" x="134.98" y="384.7" width="13.5" height="13.5" transform="translate(283.46 782.9) rotate(180)"/>
-                  <rect class="cls-2" x="107.99" y="384.7" width="13.5" height="13.5" transform="translate(229.47 782.9) rotate(180)"/>
-                  <rect class="cls-2" x="80.99" y="384.7" width="13.5" height="13.5" transform="translate(175.48 782.9) rotate(180)"/>
-                  <rect class="cls-2" x="67.49" y="384.7" width="13.5" height="13.5" transform="translate(148.48 782.9) rotate(180)"/>
-                  <rect class="cls-2" x="40.49" y="384.7" width="13.5" height="13.5" transform="translate(94.49 782.9) rotate(180)"/>
-                  <rect class="cls-2" x="202.47" y="371.2" width="13.5" height="13.5" transform="translate(418.45 755.91) rotate(180)"/>
-                  <rect class="cls-2" x="188.98" y="371.2" width="13.5" height="13.5" transform="translate(391.45 755.91) rotate(180)"/>
-                  <rect class="cls-2" x="175.48" y="371.2" width="13.5" height="13.5" transform="translate(364.45 755.91) rotate(180)"/>
-                  <rect class="cls-2" x="148.48" y="371.2" width="13.5" height="13.5" transform="translate(310.46 755.91) rotate(180)"/>
-                  <rect class="cls-2" x="134.98" y="371.2" width="13.5" height="13.5" transform="translate(283.46 755.91) rotate(180)"/>
-                  <rect class="cls-2" x="121.48" y="371.2" width="13.5" height="13.5" transform="translate(256.47 755.91) rotate(180)"/>
-                  <rect class="cls-2" x="80.99" y="371.2" width="13.5" height="13.5" transform="translate(175.48 755.91) rotate(180)"/>
-                  <rect class="cls-2" x="67.49" y="371.2" width="13.5" height="13.5" transform="translate(148.48 755.91) rotate(180)"/>
-                  <rect class="cls-2" x="40.49" y="371.2" width="13.5" height="13.5" transform="translate(94.49 755.91) rotate(180)"/>
-                  <rect class="cls-2" x="27" y="371.2" width="13.5" height="13.5" transform="translate(67.49 755.91) rotate(180)"/>
-                  <rect class="cls-2" x="13.5" y="371.2" width="13.5" height="13.5" transform="translate(40.49 755.91) rotate(180)"/>
-                  <rect class="cls-2" x="188.98" y="357.71" width="13.5" height="13.5" transform="translate(391.45 728.91) rotate(180)"/>
-                  <rect class="cls-2" x="175.48" y="357.71" width="13.5" height="13.5" transform="translate(364.45 728.91) rotate(180)"/>
-                  <rect class="cls-2" x="148.48" y="357.71" width="13.5" height="13.5" transform="translate(310.46 728.91) rotate(180)"/>
-                  <rect class="cls-2" x="134.98" y="357.71" width="13.5" height="13.5" transform="translate(283.46 728.91) rotate(180)"/>
-                  <rect class="cls-2" x="121.48" y="357.71" width="13.5" height="13.5" transform="translate(256.47 728.91) rotate(180)"/>
-                  <rect class="cls-2" x="107.99" y="357.71" width="13.5" height="13.5" transform="translate(229.47 728.91) rotate(180)"/>
-                  <rect class="cls-2" x="80.99" y="357.71" width="13.5" height="13.5" transform="translate(175.48 728.91) rotate(180)"/>
-                  <rect class="cls-2" x="67.49" y="357.71" width="13.5" height="13.5" transform="translate(148.48 728.91) rotate(180)"/>
-                  <rect class="cls-2" x="175.48" y="344.21" width="13.5" height="13.5" transform="translate(364.45 701.91) rotate(180)"/>
-                  <rect class="cls-2" x="161.98" y="344.21" width="13.5" height="13.5" transform="translate(337.46 701.91) rotate(180)"/>
-                  <rect class="cls-2" x="148.48" y="344.21" width="13.5" height="13.5" transform="translate(310.46 701.91) rotate(180)"/>
-                  <rect class="cls-2" x="121.48" y="344.21" width="13.5" height="13.5" transform="translate(256.47 701.91) rotate(180)"/>
-                  <rect class="cls-2" x="80.99" y="344.21" width="13.5" height="13.5" transform="translate(175.48 701.91) rotate(180)"/>
-                  <rect class="cls-2" x="67.49" y="344.21" width="13.5" height="13.5" transform="translate(148.48 701.91) rotate(180)"/>
-                  <rect class="cls-2" x="27" y="344.21" width="13.5" height="13.5" transform="translate(67.49 701.91) rotate(180)"/>
-                  <rect class="cls-2" x="202.47" y="330.71" width="13.5" height="13.5" transform="translate(418.45 674.92) rotate(180)"/>
-                  <rect class="cls-2" x="188.98" y="330.71" width="13.5" height="13.5" transform="translate(391.45 674.92) rotate(180)"/>
-                  <rect class="cls-2" x="175.48" y="330.71" width="13.5" height="13.5" transform="translate(364.45 674.92) rotate(180)"/>
-                  <rect class="cls-2" x="161.98" y="330.71" width="13.5" height="13.5" transform="translate(337.46 674.92) rotate(180)"/>
-                  <rect class="cls-2" x="94.49" y="330.71" width="13.5" height="13.5" transform="translate(202.47 674.92) rotate(180)"/>
-                  <rect class="cls-2" x="80.99" y="330.71" width="13.5" height="13.5" transform="translate(175.48 674.92) rotate(180)"/>
-                  <rect class="cls-2" x="67.49" y="330.71" width="13.5" height="13.5" transform="translate(148.48 674.92) rotate(180)"/>
-                  <rect class="cls-2" x="40.49" y="330.71" width="13.5" height="13.5" transform="translate(94.49 674.92) rotate(180)"/>
-                  <rect class="cls-2" x="188.98" y="317.21" width="13.5" height="13.5" transform="translate(391.45 647.92) rotate(180)"/>
-                  <rect class="cls-2" x="175.48" y="317.21" width="13.5" height="13.5" transform="translate(364.45 647.92) rotate(180)"/>
-                  <rect class="cls-2" x="161.98" y="317.21" width="13.5" height="13.5" transform="translate(337.46 647.92) rotate(180)"/>
-                  <rect class="cls-2" x="134.98" y="317.21" width="13.5" height="13.5" transform="translate(283.46 647.92) rotate(180)"/>
-                  <rect class="cls-2" x="121.48" y="317.21" width="13.5" height="13.5" transform="translate(256.47 647.92) rotate(180)"/>
-                  <rect class="cls-2" x="107.99" y="317.21" width="13.5" height="13.5" transform="translate(229.47 647.92) rotate(180)"/>
-                  <rect class="cls-2" x="94.49" y="317.21" width="13.5" height="13.5" transform="translate(202.47 647.92) rotate(180)"/>
-                  <rect class="cls-2" x="80.99" y="317.21" width="13.5" height="13.5" transform="translate(175.48 647.92) rotate(180)"/>
-                  <rect class="cls-2" x="67.49" y="317.21" width="13.5" height="13.5" transform="translate(148.48 647.92) rotate(180)"/>
-                  <rect class="cls-2" x="53.99" y="317.21" width="13.5" height="13.5" transform="translate(121.48 647.92) rotate(180)"/>
-                  <rect class="cls-2" x="40.49" y="317.21" width="13.5" height="13.5" transform="translate(94.49 647.92) rotate(180)"/>
-                  <rect class="cls-2" x="27" y="317.21" width="13.5" height="13.5" transform="translate(67.49 647.92) rotate(180)"/>
-                  <rect class="cls-2" x="13.5" y="317.21" width="13.5" height="13.5" transform="translate(40.49 647.92) rotate(180)"/>
-                  <rect class="cls-2" y="317.21" width="13.5" height="13.5" transform="translate(13.5 647.92) rotate(180)"/>
-                </g>
-              </svg>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- Section Conformité -->
-
-     <!-- Section sur Sensibilisation -->
-    <section>
-      <div class="container text-vert-clair m-auto borderTop py-4 fade-up">
-        <div class="row justify-content-between align-items-top">
-          <div class="col-md-6 col-lg-6 col-sm-12 mb-2">
-            <img src="{% static 'Assets/Images/cinematic-image-of-people-working-in-a-start-up-bu-2023-11-27-05-04-54-utc.jpg' %}" width="100%"/>
-          </div>
-          <div class="col-md-6 col-lg-6 col-sm-12" style="width:20rem;">
-            <h3>Formation et Sensibilisation à la Sécurité</h3>
-            <p class="mt-4">Une grande partie de la sécurité dépend de la sensibilisation. Nous offrons des formations spécialisées pour vos équipes, leur enseignant les meilleures pratiques de cybersécurité et les sensibilisant aux méthodes courantes de piratage et de fraude.</p>
-            <a class="btn btn-outline-vert-clair mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Nous parler de vos besoins</a>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- Section Sensibilisation -->
 
     <!-- Section sur Automatisation -->
-    <section>
-      <div class="container text-vert-clair m-auto borderTop py-4 fade-up">
-          <div class="col-12 display-1 fst-italic">
-            "Nous nous concentrons sur des solutions de cybersécurité innovantes qui renforcent la protection et la résilience face aux menaces en constante évolution, pour un monde connecté plus sûr pour tous."
-          </div>
-          <p>Adrien Schwartzentruber, <span style="font-style:italic">Fondateur de The Forge</span></p>
+    <section class="container text-black m-auto borderTop py-4 fade-up" style="margin-top:4rem;">
+      <div>
+        <div class="m-auto text-center">
+          <h3>Posez nous vos questions</h3>
+          <p class='text-center m-auto mb-4' style="max-width:400px;"> Vous avez une question sur un ou plusieurs de nos services, contactez-nous et nous répondrons à votre question au plus vite. </p>
+          <a class="btn btn-outline-black" data-bs-toggle="modal" data-bs-target="#exampleModal">Nous parler de vos besoins</a><br>
+          <img class="mt-4 fade-up text-center" src="{% static 'Assets/Images/cinematic-image-of-people-working-in-a-start-up-bu-2023-11-27-04-57-08-utc.jpg' %}" width="50%">
+        </div>
+
       </div>
     </section>
     <!-- Section Hero -->
   </Main>
 
-  <footer class="footer text-vert-clair" style="margin-top:15rem; background-color:#014948;">
-  <div class="container text-vert-clair borderTop">
-    <div class="row m-auto text-vert-clair" style="padding-top:50px; padding-bottom:50px;">
-      <div class="col-md-3 mb-3 mb-md-0 text-vert-clair">
+  <footer class="footer text-black" style="margin-top:4rem; background-color:#F5F6F1;">
+  <div class="container text-black borderTop">
+    <div class="row m-auto text-black" style="padding-top:50px; padding-bottom:50px;">
+      <div class="col-md-3 mb-3 mb-md-0 text-black">
         <a href="{% url 'Main:index' %}">
-         <img src="{% static 'Logos/Principal/Principal_vert_clair.svg' %}" alt="Logo" height="60">
+         <img src="{% static 'Logos/Principal/Principal_noir.svg' %}" alt="Logo" height="60">
         </a>
       </div>
-      <div class="col-md-2 mb-3 mb-md-0 text-bleu">
-        <h5>Services</h5>
+      <div class="col-md-3 mb-3 mb-md-0 text-black">
+        <h5>Expertise</h5>
         <ul class="list-unstyled">
-          <li><a href="{% url 'Main:ai' %}" class="text-vert-clair">Intelligence artificielle</a></li>
-          <li><a href="{% url 'Main:cyber' %}" class="text-vert-clair">Cybersécurité</a></li>
-          <li><a href="{% url 'Main:iot' %}" class="text-vert-clair">IOT</a></li>
+          <li><a href="{% url 'Main:ai' %}" class="text-black">Intelligence artificielle</a></li>
+          <li><a href="{% url 'Main:iot' %}" class="text-black">IOT</a></li>
+          <li><a href="{% url 'Main:cyber' %}" class="text-black">Cybersécurité</a></li>
         </ul>
       </div>
-      <div class="col-md-2">
+      <div class="col-md-3">
         <h5>Entreprise</h5>
         <ul class="list-unstyled">
-          <li><a href="{% url 'Main:join' %}" class="text-vert-clair">Nous rejoindre</a></li>
-          <li><a href="{% url 'Main:blog' %}" class="text-vert-clair">Blog</a></li>
-          <li><a href="{% url 'Main:faq' %}" class="text-vert-clair">FAQ</a></li>
-          <li><a href="{% url 'Main:charte' %}" class="text-vert-clair">Charte</a></li>
+          <li><a href="{% url 'Main:join' %}" class="text-black">Nous rejoindre</a></li>
+          <li><a href="{% url 'Main:blog' %}" class="text-black">Blog</a></li>
+          <li><a href="{% url 'Main:faq' %}" class="text-black">FAQ</a></li>
+          <li><a href="{% url 'Main:charte' %}" class="text-black">Charte</a></li>
         </ul>
       </div>
-      <div class="col-md-2">
-        <h5>Suivez-nous</h5>
-        <ul class="list-unstyled">
-          <li><a href="{% url 'Main:join' %}" class="text-vert-clair">LinkedIn</a></li>
-          <li><a href="{% url 'Main:join' %}" class="text-vert-clair">Twitter</a></li>
-          <li><a href="{% url 'Main:join' %}" class="text-vert-clair">Facebook</a></li>
-        </ul>
-      </div>
-      <div class="col-md-2">
+      <div class="col-md-3">
         <h5>Nous contacter</h5>
         <ul class="list-unstyled">
-          <li><a href="mailto:contact@theforge.fr" class="text-vert-clair">contact@theforge.fr</a></li>
-          <li><a href="tel:0299123244" class="text-vert-clair">02 99 12 32 44</a></li>
+          <li><a href="mailto:contact@theforge.fr" class="text-black">contact@theforge.fr</a></li>
+          <li><a href="https://www.linkedin.com/company/theforgefr/about/?viewAsMember=true" class="text-black">LinkedIn</a></li>
         </ul>
       </div>
     </div>
     <div class="borderTop row pt-3 justify-content-around m-auto">
       <div class="col-6 flex-grow-1">
-        <address class="text-vert-clair">
-          <strong>The Forge ltd</strong><br>
+        <address class="text-black">
+          <strong>The Forge</strong><br>
           5 CRS DE VERDUN GENSOUL<br>
           69002 LYON
-          <abbr title="Phone"></abbr> (123) 456-7890
         </address>
       </div>
       <div class="col-6 align-items-end" style="text-align:right">
-         <a href="{% url 'Main:Conditions' %}" class="text-vert-clair unstyled" style="text-align:right; margin:0 !important; margin-bottom:0px !important;">Conditions générales d'utilisation</a><br>
-        <a href="{% url 'Main:Mentions' %}" class="text-vert-clair unstyled" style="text-align:right; margin:0 !important; margin-bottom:0px !important;">Mentions légales</a>
+         <a href="{% url 'Main:Conditions' %}" class="text-black unstyled" style="text-align:right; margin:0 !important; margin-bottom:0px !important;">Conditions générales d'utilisation</a><br>
+        <a href="{% url 'Main:Mentions' %}" class="text-black unstyled" style="text-align:right; margin:0 !important; margin-bottom:0px !important;">Mentions légales</a>
       </div>
     </div>
   </div>
-    <img src="{% static 'Assets/Motifs/horizontale/footer_vert_clair.png' %}" width="100%" style="">
+    <img src="{% static 'Assets/Motifs/horizontale/footer_noir.png' %}" width="100%" style=" outline: none;box-shadow: none;">
 </footer>
 
-   <!-- Modal -->
+  <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-      <div class="modal-content" style="background-color:#014948; border-color:#ECFE8C">
-        <div class="modal-header" style="border-color:#ECFE8C">
-          <h1 class="modal-title fs-5 text-bleu" id="exampleModalLabel">Parlez-nous de vos besoins !</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style=""></button>
+      <div class="modal-content" style="background-color:#F5F6F1; border-color:black">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5 text-black" id="exampleModalLabel">Parlez-nous de vos besoins !</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body text-vert_clair">
+        <div class="modal-body text-black">
           <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="mb-3 mt-4">
-                <label for="exampleFormControlInput1" class="form-label text-bleu">Votre adresse email</label>
-                <input type="email" class="form-control" name='email' id="exampleFormControlInput1" placeholder="nom@exemple.com" style="background-color:transparent; color:#ECFE8C; border-color:#ECFE8C; outline: none;box-shadow: none;" required>
+                <label for="exampleFormControlInput1" class="form-label text-black">Votre adresse email</label>
+                <input type="email" class="form-control" name='email' id="exampleFormControlInput1" style="background-color:transparent; color:black; border-color:black; outline: none;box-shadow: none;" required>
             </div>
 
             <div class="mb-3 mt-4">
                 <label for="firstName" class="form-label">Votre prénom</label>
-                <input type="text" class="form-control" name='first_name' id="firstName" placeholder="Jane" style="background-color:transparent; color:#ECFE8C; border-color:#ECFE8C; outline: none;box-shadow: none;" required>
+                <input type="text" class="form-control" name='first_name' id="firstName" style="background-color:transparent; color:black; border-color:black; outline: none;box-shadow: none;" required>
             </div>
 
             <div class="mb-3 mt-4">
                 <label for="lastName" class="form-label">Votre nom</label>
-                <input type="text" class="form-control" name='last_name' id="lastName" placeholder="Doe" style="background-color:transparent; color:#ECFE8C; border-color:#ECFE8C; outline: none;box-shadow: none;" required>
+                <input type="text" class="form-control" name='last_name' id="lastName" style="background-color:transparent; color:black; border-color:black; outline: none;box-shadow: none;" required>
             </div>
 
             <div class="mb-3 mt-4">
                 <label for="companyName" class="form-label">Votre Entreprise</label>
-                <input type="text" class="form-control" name='company' id="companyName" placeholder="Company.ltd" style="background-color:transparent; color:#ECFE8C; border-color:#ECFE8C; outline: none;box-shadow: none;" required>
+                <input type="text" class="form-control" name='company' id="companyName" style="background-color:transparent; color:black; border-color:black; outline: none;box-shadow: none;" required>
             </div>
 
             <div class="mb-3 mt-4">
                 <label for="sectorSelect" class="form-label">Votre secteur d'activité</label>
-                <select class="form-control" name='field' id="sectorSelect" style="background-color:transparent; color:#ECFE8C; border-color:#ECFE8C; outline: none;box-shadow: none;" required>
+                <select class="form-control" name='field' id="sectorSelect" style="background-color:transparent; color:black; border-color:black; outline: none;box-shadow: none;" required>
                     <option value="">>> Sélectionnez votre secteur <<</option>
                     <!-- Liste exhaustive des secteurs -->
                     <option value="technologie">Technologie et Informatique</option>
@@ -952,7 +387,7 @@
 
             <div class="mb-3 mt-4">
                 <label for="contentTextArea" class="form-label">Vos besoins</label>
-                <textarea class="form-control" name='content' id="contentTextArea" placeholder="Décrivez vos besoins" style="background-color:transparent; color:#ECFE8C; border-color:#ECFE8C; outline: none;box-shadow: none;" required></textarea>
+                <textarea class="form-control" name='content' id="contentTextArea" style="background-color:transparent; color:black; border-color:black; outline: none;box-shadow: none;" required></textarea>
             </div>
 
             <div class="mb-3 form-check">
@@ -960,7 +395,7 @@
                 <label class="form-check-label" for="callbackRequest">Être rappelé ?</label>
             </div>
 
-            <button class="btn btn-outline-vert-clair w-100 mt-2">Envoyer</button>
+            <button class="btn btn-outline-black w-100 mt-2">Envoyer</button>
         </form>
 
         </div>
@@ -989,7 +424,7 @@
         });
     });
 
-     function closeMessage() {
+      function closeMessage() {
     document.getElementById('messageBox').style.display = 'none';
     };
 

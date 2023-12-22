@@ -26,28 +26,28 @@
     <meta name="twitter:image" content="URL de l'image à afficher sur Twitter">
 
     <!-- Favicon -->
-     <link rel="icon" href="{% static 'Logos/Icones/Icones-cyan-marron.png' %}" type="image/x-icon">
+     <link rel="icon" href="{% static 'Logos/Icones/Icones_gris_bleu.png' %}" type="image/x-icon">
 
-    <title>The Forge - IoT</title>
+    <title>The Forge - IoT </title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link href="{% static 'css/iot.css' %}" rel="stylesheet">
+    <link href="{% static 'css/AI.css' %}" rel="stylesheet">
     <link rel="stylesheet" href="https://use.typekit.net/eqx7rzk.css">
 
   </head>
-  <body style="background-color:#CAFFFF !important; color: #823712 !important; font-family: 'articulat-cf' !important;">
+  <body style="background-color:#F5F6F1 !important; color: #015453 !important; font-family: 'articulat-cf' !important;">
 
   <header>
   <!-- Barre de navigation -->
   <div class="container">
-    <nav class="navbar navbar-expand-lg fixed-top navbar-light" id="mainNavbar" style="background-color:#CAFFFF !important; color:#823712 !important;">
+    <nav class="navbar navbar-expand-lg fixed-top navbar-light" id="mainNavbar" style="background-color:#F5F6F1 !important; color:black !important;">
       <div class="container">
       <a class="navbar-brand" href="{% url 'Main:index' %}">
-        <img src="{% static 'Logos/Principal/Principal_marron.svg' %}" alt="Logo The Forge" width="150">
+        <img src="{% static 'Logos/Principal/Principal_noir.svg' %}" alt="Logo The Forge" width="150">
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse m-auto" id="navbarNavDropdown">
+      <div class="collapse navbar-collapse m-auto" id="navbarNavDropdown" style="color:black !important">
         <ul class="navbar-nav m-auto">
           <li class="nav-item">
             <a class="nav-link" href="{% url 'Main:index' %}">Accueil</a>
@@ -55,9 +55,9 @@
           <!-- Menu déroulant pour les services -->
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Services
+              Expertise
             </a>
-            <ul class="dropdown-menu" style="background-color:#CAFFFF; border-style:none;">
+            <ul class="dropdown-menu" style="background-color:#F5F6F1; border-style:none;">
               <li><a class="nav-link" href="{% url 'Main:ai' %}">Intelligence artificielle</a></li>
               <li><a class="nav-link" href="{% url 'Main:iot' %}">IOT et matériel embarqué</a></li>
               <li><a class="nav-link" href="{% url 'Main:cyber' %}">Cybersécurité</a></li>
@@ -68,18 +68,18 @@
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Entreprise
             </a>
-            <ul class="dropdown-menu" style="background-color:#CAFFFF; border-style:none;">
+            <ul class="dropdown-menu" style="background-color:#F5F6F1; border-style:none;">
               <li><a class="nav-link" href="{% url 'Main:about' %}">À propos</a></li>
               <li><a class="nav-link" href="{% url 'Main:blog' %}">Blog</a></li>
-              <li><a class="nav-link" href="{% url 'Main:faq'%}">FAQ</a></li>
+              <li><a class="nav-link" href="{% url 'Main:faq' %}">FAQ</a></li>
               <li><a class="nav-link" href="{% url 'Main:charte' %}">Charte</a></li>
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'Main:join' %}">Nous rejoindre</a>
+            <a class="nav-link" href="{% url 'Main:join' %}">L'équipe</a>
           </li>
         </ul>
-          <a type="button" class="btn btn-outline-marron contact-item" href="{% url 'Main:contact' %}">Nous contacter</a>
+          <a type="button" class="btn btn-outline-black contact-item" href="{% url 'Main:contact' %}">Nous contacter</a>
       </div>
     </div>
     </nav>
@@ -88,196 +88,449 @@
 
   <!-- Section services -->
   <Main>
-    {% if messages %}
-      <div class="messages row justify-content-center align-items-center" id='messageBox' style="position:fixed; top:100px; right:25px; text-align:center; background-color:#CAFFFF; border-style:solid; border-width:1px; border-color:#823712; color:#823712; padding:10px">
-        <a type="button" onclick="closeMessage()" style="--bs-btn-close-color:#823712; position:absolute; left:5px; top:5px; color:#823712; width:5px;">X</a>
+    <!-- Section Hero -->
+    <section>
+      {% if messages %}
+      <div class="messages row justify-content-center align-items-center" id='messageBox' style="position:fixed; top:100px; right:25px; text-align:center; background-color:#F5F6F1; border-style:solid; border-width:1px; border-color:#0000FF; color:black; padding:10px">
+        <a type="button" onclick="closeMessage()" style="--bs-btn-close-color:white; position:absolute; left:5px; top:5px; color:#0000FF; width:5px;">X</a>
         {% for message in messages %}
           <div>
-             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 64 64" fill="none" stroke-width="2px" stroke="#823712"><path d="M8 12h48v40H8z"/><path d="M56 20L32 36 8 20"/></svg>
+             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 64 64" fill="none" stroke-width="2px" stroke="#0000FF"><path d="M8 12h48v40H8z"/><path d="M56 20L32 36 8 20"/></svg>
              <h3>Merci !</h3>
              <p>{{ message }}</p>
           </div>
         {% endfor %}
       </div>
     {% endif %}
-    <!-- Section Hero -->
-    <section>
-      <div class="mt-5 container HeroContainer text-marron m-auto fade-up">
+
+      <div class="mt-5 container HeroContainer text-black m-auto fade-up">
         <div class="row justify-content-between align-items-center">
-          <div class="col-md-6 col-lg-6 col-sm-12 ">
-            <div class="display-1">Innovation et Technologie au Cœur de l'IoT</div>
+          <div class="col-md-7 col-lg-7 col-sm-12 ">
+            <div class="display-1">Solutions IoT et Matériel Embarqué</div>
           </div>
           <div class="col-md-6 col-lg-6 col-sm-12">
-            <p class="mt-4" style="font-size:25px">Chez The Forge, nous fusionnons innovation et technologie pour transformer la façon dont les industries interagissent avec le matériel embarqué et l'IoT. Notre mission est d'élaborer des solutions qui non seulement connectent le monde physique et numérique, mais le font de manière intelligente, sécurisée et efficace.</p>
+            <!--<p class="mt-4" style="font-size:25px">Notre équipe d'experts en IA est dédiée à transformer les défis technologiques complexes de nos clients en solutions intelligentes et efficaces. </p>-->
           </div>
         </div>
       </div>
     </section>
     <!-- Section Hero -->
 
-    <!-- Section sur évaluation -->
+    <!-- Section sur mesure -->
     <section>
-      <div class="container text-marron m-auto borderTop py-4 fade-up">
-        <div class="row justify-content-between align-items-top">
-          <div class="col-md-6 col-lg-6 col-sm-12 mb-4" style="width:20rem;">
-            <h3>Conception et Développement de Dispositifs IoT</h3>
-            <p class="mt-4">Nous concevons et développons des dispositifs IoT sur mesure qui s'intègrent parfaitement dans divers environnements industriels et commerciaux. Nos solutions vont des capteurs intelligents aux appareils de communication, tous conçus pour collecter, analyser et transmettre des données de manière fiable.</p>
-            <a class="btn btn-outline-marron" data-bs-toggle="modal" data-bs-target="#exampleModal">Nous parler de vos besoins</a>
+      <div class="container text-black m-auto borderTop py-4">
+        <div class="row justify-content-between">
+          <div class="col-sm-12 col-md-6 col-lg-6 fade-up">
+             <h1>Proposer des solutions embarquées intelligentes et sécurisées.</h1>
+             <p>Dans le domaine complexe de l'IoT et du matériel embarqué, nous nous appliquons à intégrer l'intelligence artificielle de manière réfléchie pour améliorer la connectivité et la fonctionnalité des dispositifs. </p>
+             <br>
+             <p>Notre expertise pratique dans le développement de solutions intelligentes vise à fournir une performance fiable et une expérience utilisateur enrichie, tout en restant fidèles à notre engagement envers la sécurité et l'innovation durable.</p>
           </div>
-          <div class="col-md-6 col-lg-6 col-sm-12">
-            <img src="{% static 'Assets/Images/electronic-control-kit-diy-boards-2023-11-27-05-17-56-utc.jpg' %}" width="100%"/>
+          <div class="col-sm-12 col-md-6 col-lg-6">
+            <div class="fade-up">
+              <h3> <svg class='me-3' xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 64 64" fill="none" stroke-width="1px" stroke="#000"><path d="M41.94 8H22.06L8 22.06v19.88L22.06 56h19.88L56 41.94V22.06L41.94 8zM16.21 13.85l31.61 36.27M25.92 24.99l8.27-13.55M16.21 13.85l17.98-2.41M41.95 23.28l-16.03 1.71M34.19 11.44l7.76 11.84M41.95 23.28l-3.88 15.65M50.22 16.28l-8.27 7M40.01 8l-5.82 3.44M34.19 11.44l16.03 4.84M27.91 8l6.28 3.44M41.95 23.28l10.64 9.65M50.22 16.28l2.37 16.65M52.59 32.93L56 41.94M56 28.37l-3.41 4.56M38.07 38.93l14.52-6M52.59 32.93l-4.77 17.19M21.78 40.55l4.14-15.56M11.94 30.65l13.98-5.66M16.21 13.85l-4.27 16.8M11.94 30.65l9.84 9.9M21.78 40.55l16.29-1.62M30.04 51.12l8.03-12.19M21.78 40.55l8.26 10.57M47.82 50.12l-17.78 1M25.05 56l4.99-4.88M35.81 56l-5.77-4.88M13.7 47.68l8.08-7.13M13.7 47.68l16.34 3.44M11.94 30.65l1.76 17.03M8 35.23l3.94-4.58M8 22.06l3.94 8.59"/></svg> Packed with AI</h3>
+              <p>Lorsque cela est pertinant nous intégront des dispositifs d'intelligence artificielle dans nos solutions IoT, qu'il s'agisse de rendre plus autonomes les systèmes embarquées ou de faciliter le prélèvement et le traitement des données receuillis par les dispositifs.</p>
+            </div>
+            <hr>
+            <div class="fade-up">
+              <h3><svg class='me-3' xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 64 64" fill="none" stroke-width="1px" stroke="#000"><path d="M56 56H8V36M20 20v36M32 32v24M44 8v48"/></svg>Outils d'analyse avancés</h3>
+              <p>La collecte fiable de données n'est que la première étape ; leur interprétation et leur présentation sont tout aussi cruciales. C'est pourquoi nous mettons l'accent sur la fourniture d'outils conçus pour transformer efficacement ces données en informations utiles et pertinentes. </p>
+            </div>
+            <hr>
+            <div class="fade-up">
+              <h3><svg class='me-3' xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 64 64" fill="none" stroke-width="1px" stroke="#000"><rect x="8" y="8" width="48" height="36" rx="4"/><path d="M16 56h32M28 44l-4 12M36 44l4 12M8 36h48"/></svg>Interface Utilisateur "user friendly"</h3>
+              <p>L'interaction entre l'utilisateur et les dispositifs IoT est simplifiée grâce à des interfaces conviviales et intuitives. </p>
+            </div>
+            <hr>
+            <div class="fade-up">
+              <h3><svg class='me-3' xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 64 64" fill="none" stroke-width="1px" stroke="#000"><rect x="12" y="28" width="40" height="28" rx="4"/><path d="M32 48V36M20 28v-8a12 12 0 0 1 24 0v8"/></svg>Priorité à la sécurité</h3>
+              <p>La sécurité est la pierre angulaire de nos solutions IoT. Nous appliquons des protocoles de cryptage de pointe, des mesures d'authentification robustes et une surveillance constante pour protéger contre les menaces externes et internes. De la conception à la mise en œuvre, chaque couche de nos dispositifs est renforcée pour assurer la confidentialité, l'intégrité et la disponibilité des données.</p>
+            </div>
           </div>
         </div>
       </div>
     </section>
-    <!-- Section évaluation -->
+    <!-- Section Hero -->
 
-    <!-- Section sur Cyberattaque -->
-    <section>
-      <div class="container text-marron m-auto borderTop py-4 fade-up">
-        <div class="row justify-content-between align-items-top">
-          <div class="col-md-6 col-lg-6 col-sm-12 mb-4">
-            <img src="{% static 'Assets/Images/close-up-camera-screen-of-front-car-windshield-2023-11-27-05-29-57-utc.jpg' %}" width="100%"/>
+    <section class="container text-black m-auto borderTop py-4" style="margin-top:4rem;">
+      <div class='mb-5 text-center fade-up'>
+        <h1 class="m-auto mb-2">Application et Intégration des Solutions</h1>
+        <h4 class="m-auto mb-5" style="max-width:600px;">Nos solutions conçues pour s'intégrer harmonieusement avec vos systèmes existants, garantissant une transition en douceur de votre nouveau matériel intelligent.</h4>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-md-3">
+            <div class="row fade-up">
+              <div class="col-auto col-md-12" style="padding-right:0 !important; padding-left:0 !important;">
+
+                <!-- Step -->
+                <div class="row gx-0 align-items-center mb-md-5">
+                  <div class="col-auto">
+
+                    <a href="#!" class="btn btn-sm btn-rounded-circle btn-gray-400 disabled opacity-1">
+                      <span>1</span>
+                    </a>
+
+                  </div>
+                  <div class="col">
+
+                    <hr class="d-none d-md-block me-n7">
+
+                  </div>
+                </div> <!-- / .row -->
+
+              </div>
+
+              <div class="col col-md-12 ms-n5 ms-md-0" style="padding-left:0 !important; padding-right:30px !important;">
+
+                <!-- Heading -->
+                <h3>
+                  À chaque projet sa solution
+                </h3>
+
+                <!-- Text -->
+                <p class="text-muted mb-6 mb-md-0 p-0">
+                  Nous comprenons que chaque structure a des besoins uniques. C'est pourquoi nous personnalisons nos solutions IoT pour qu'elles s'alignent parfaitement avec vos exigences spécifiques, assurant une intégration sans faille et une optimisation des performances.
+                </p>
+                <br>
+                <!-- Text -->
+
+
+              </div>
+            </div> <!-- / .row -->
           </div>
-          <div class="col-md-6 col-lg-6 col-sm-12" style="width:20rem;">
-            <h3>Sécurité des Systèmes Embarqués</h3>
-            <p class="mt-4">La sécurité est une préoccupation majeure dans le domaine de l'IoT. Nos systèmes embarqués sont construits avec des protocoles de sécurité robustes pour protéger contre les intrusions, assurant la confidentialité et l'intégrité des données.</p>
-            <a class="btn btn-outline-marron" data-bs-toggle="modal" data-bs-target="#exampleModal">Nous parler de vos besoins</a>
+          <div class="col-12 col-md-3">
+            <div class="row fade-up">
+              <div class="col-auto col-md-12" style="padding-left:0 !important; padding-right:0 !important;">
+
+                <!-- Step -->
+                <div class="row gx-0 align-items-center mb-md-5" style="padding-right:0 !important;">
+                  <div class="col-auto">
+
+                    <a href="#!" class="btn btn-sm btn-rounded-circle btn-gray-400 disabled opacity-1">
+                      <span>2</span>
+                    </a>
+
+                  </div>
+                  <div class="col">
+
+                    <hr class="d-none d-md-block me-n7">
+
+                  </div>
+                </div> <!-- / .row -->
+              </div>
+              <div class="col col-md-12 ms-n5 ms-md-0 p-0" style="padding-left:0 !important; padding-right:30px !important;">
+
+                <!-- Heading -->
+                <h3>
+                  "When In Rome..."
+                </h3>
+
+                <!-- Text -->
+                <p class="text-muted mb-6 mb-md-0">
+                  Notre approche en matière de conception vise à garantir que nos solutions peuvent être facilement intégrées dans vos opérations existantes. Nous travaillons à réduire les complexités techniques pour assurer une adoption fluide et efficace.
+                </p>
+                <br>
+
+              </div>
+            </div> <!-- / .row -->
+          </div>
+
+          <div class="col-12 col-md-3">
+            <div class="row fade-up">
+              <div class="col-auto col-md-12" style="padding-left:0 !important; padding-right:0 !important;">
+
+                <!-- Step -->
+                <div class="row gx-0 align-items-center mb-md-5" style="padding-right:0 !important;">
+                  <div class="col-auto">
+
+                    <a href="#!" class="btn btn-sm btn-rounded-circle btn-gray-400 disabled opacity-1">
+                      <span>3</span>
+                    </a>
+
+                  </div>
+                  <div class="col">
+
+                    <hr class="d-none d-md-block me-n7">
+
+                  </div>
+                </div> <!-- / .row -->
+              </div>
+              <div class="col col-md-12 ms-n5 ms-md-0 p-0" style="padding-left:0 !important; padding-right:30px !important;">
+
+                <!-- Heading -->
+                <h3>
+                  Assurer des résultats quantifiables
+                </h3>
+
+                <!-- Text -->
+                <p class="text-muted mb-6 mb-md-0">
+                  L'implémentation de nos solutions IoT a un impact direct et mesurable sur l'efficacité opérationnelle. Nous mettons en évidence les améliorations dans la gestion des ressources, la réduction des coûts et l'amélioration des processus de prise de décision.                </p>
+                <br>
+
+              </div>
+            </div> <!-- / .row -->
+          </div>
+
+          <div class="col-12 col-md-3">
+            <div class="row fade-up">
+              <div class="col-auto col-md-12" style="padding-left:0 !important;">
+
+                <!-- Step -->
+                <div class="row gx-0 align-items-center mb-md-5">
+                  <div class="col-auto">
+
+                    <a href="#!" class="btn btn-sm btn-rounded-circle btn-gray-400 disabled opacity-1">
+                      <span>4</span>
+                    </a>
+
+                  </div>
+                </div> <!-- / .row -->
+
+              </div>
+              <div class="col col-md-12 ms-n5 ms-md-0 p-0" style="padding-left:0 !important; padding-right:30px !important;">
+
+                <!-- Heading -->
+                <h3>
+                  Support continue et formation
+                </h3>
+
+                <!-- Text -->
+                <p class="text-muted mb-0">
+                  Nous offrons un accompagnement continu et des formations pour assurer que vous et votre équipe pouvez pleinement tirer parti des capacités de nos solutions. Notre soutien vise à garantir que vous maximisez l'utilisation et les bénéfices de nos technologies.                </p>
+              </div>
+            </div> <!-- / .row -->
+          </div>
+        </div> <!-- / .row -->
+      </div> <!-- / .container -->
+    </section>
+
+     <!-- FAQ -->
+    <section class="container text-black m-auto borderTop py-4" style="margin-top:4rem;">
+      <div class="container pt-8 pt-md-11">
+        <h1>Maintenance et évolution de nos solutions</h1>
+        <p>En fournissant un support continu et en veillant à ce que nos solutions restent modernes et efficaces, nous nous engageons à assurer que votre investissement dans l'IoT continue de générer des bénéfices significatifs à long terme. Nous sommes là pour vous accompagner dans chaque étape de votre parcours IoT.</p>
+        <div class="row mt-5">
+          <div class="col-12 col-md-6">
+
+            <!-- Item -->
+            <div class="d-flex m-4 fade-up">
+
+              <!-- Badge -->
+              <div class="badge badge-lg badge-rounded-circle text-black " style="height:30px; width:30px; border-style:solid; border-color:black; border-width:1px;">
+                <span style="font-size:20px; font-weight:300;">?</span>
+              </div>
+
+              <div class="ms-5">
+
+                <!-- Heading -->
+                <h4 class="text-black">
+                  Quel type de maintenance et d'assistance assure The Forge ?
+                </h4>
+
+                <!-- Text -->
+                <p class="text-muted mb-6 mb-md-8">
+                  Nous offrons une maintenance proactive et un support technique complet pour garantir le fonctionnement optimal de nos solutions IoT. Notre équipe est dédiée à la résolution rapide des problèmes pour réduire au minimum les interruptions et assurer une performance constante.
+                </p>
+
+              </div>
+
+            </div>
+
+            <!-- Item -->
+            <div class="d-flex m-4 fade-up">
+
+              <!-- Badge -->
+              <div class="badge badge-lg badge-rounded-circle text-black " style="height:30px; width:30px; border-style:solid; border-color:black; border-width:1px;">
+                <span style="font-size:20px; font-weight:300;">?</span>
+              </div>
+
+              <div class="ms-5">
+
+                <!-- Heading -->
+                <h4 class="text-black">
+                  Comment gérez-vous les mises à jour et les améliorations des solutions ?
+                </h4>
+
+                <!-- Text -->
+                <p class="text-muted mb-6 mb-md-0">
+                  Nos solutions IoT sont conçues pour évoluer. Nous implémentons des mises à jour régulières et des améliorations, en intégrant les dernières avancées technologiques et en tenant compte des retours des utilisateurs, pour maintenir nos solutions à la pointe de l'innovation.
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+          <div class="col-12 col-md-6">
+
+            <!-- Item -->
+            <div class="d-flex m-4 fade-up">
+
+              <!-- Badge -->
+              <div class="badge badge-lg badge-rounded-circle text-black " style="height:30px; width:30px; border-style:solid; border-color:black; border-width:1px;">
+                <span style="font-size:20px; font-weight:300;">?</span>
+              </div>
+
+              <div class="ms-5">
+
+                <!-- Heading -->
+                <h4 class="text-black">
+                  Vos solutions peuvent-elles s'adapter aux besoins changeants de notre entreprise ?
+                </h4>
+
+                <!-- Text -->
+                <p class="text-muted mb-6 mb-md-8">
+                  Absolument. Nous comprenons que les besoins des entreprises évoluent. Nos solutions sont flexibles et adaptables, ce qui permet des modifications et des extensions pour répondre à vos besoins futurs et aux évolutions du marché."
+                </p>
+
+              </div>
+
+            </div>
+
+            <!-- Item -->
+            <div class="d-flex m-4 fade-up">
+
+              <!-- Badge -->
+              <div class="badge badge-lg badge-rounded-circle text-black " style="height:30px; width:30px; border-style:solid; border-color:black; border-width:1px;">
+                <span style="font-size:20px; font-weight:300;">?</span>
+              </div>
+
+              <div class="ms-5">
+
+                <!-- Heading -->
+                <h4 class="text-black">
+                  Offrez-vous des formations ou des ressources pour aider les utilisateurs à gérer les solutions IoT ?
+                </h4>
+
+                <!-- Text -->
+                <p class="text-muted mb-6 mb-md-0">
+                  Oui, nous croyons en l'importance de l'autonomie des utilisateurs avec nos technologies. C'est pourquoi nous proposons des formations régulières et des ressources d'apprentissage pour aider vos équipes à rester compétentes et efficaces dans la gestion et l'utilisation des solutions IoT.
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+        </div> <!-- / .row -->
+      </div> <!-- / .container -->
+    </section>
+
+    <!-- Section sur Automatisation -->
+    <section class="container text-black m-auto borderTop py-4 fade-up" style="margin-top:4rem;">
+      <div>
+        <div class="row justify-content-between align-items-top">
+          <div class="col-md-6 col-sm-12 col-lg-6"><h3>Solutions éthiques et responsables</h3></div>
+          <div class="col-md-6 col-sm-12 col-lg-6">
+            <p>Chez The Forge, nous croyons que l'IA doit être utilisée pour le bien. C'est pourquoi nous nous engageons à développer des solutions d'IA éthiques, transparentes et responsables. Nous nous assurons que nos technologies respectent les normes les plus strictes en matière de confidentialité et de sécurité des données.</p>
+            <a class="link-black" href="{% url 'Main:charte' %}">Consulter notre charte</a>
+
           </div>
         </div>
       </div>
     </section>
-    <!-- Section cyberattaque -->
+    <!-- Section Hero -->
 
-    <!-- Section sur Conformité -->
-    <section>
-      <div class="container text-marron m-auto borderTop py-4 fade-up">
-        <div class="row justify-content-between align-items-top">
-          <div class="col-md-6 col-lg-6 col-sm-12 mb-4" style="width:20rem;">
-            <h3>Intégration aux systèmes et plateformes existantes</h3>
-            <p class="mt-4">L'intégration transparente de divers dispositifs et plateformes est essentielle pour une solution IoT efficace. Chez The Forge, nous garantissons que nos systèmes embarqués fonctionnent en harmonie avec les infrastructures existantes, permettant une gestion et un contrôle faciles.</p>
-            <a class="btn btn-outline-marron" data-bs-toggle="modal" data-bs-target="#exampleModal">Nous parler de vos besoins</a>
-          </div>
-          <div class="col-md-6 col-lg-6 col-sm-12">
-            <img src="{% static 'Assets/Images/vitre.jpg' %}" width="100%"/>
-          </div>
+    <!-- Section sur Automatisation -->
+    <section class="container text-black m-auto borderTop py-4 fade-up" style="margin-top:4rem;">
+      <div>
+        <div class="m-auto text-center">
+          <h3>Posez nous vos questions</h3>
+          <p class='text-center m-auto mb-4' style="max-width:400px;"> Vous avez une question sur un ou plusieurs de nos services, contactez-nous et nous répondrons à votre question au plus vite. </p>
+          <a class="btn btn-outline-black" data-bs-toggle="modal" data-bs-target="#exampleModal">Nous parler de vos besoins</a><br>
+          <img class="mt-4 fade-up text-center" src="{% static 'Assets/Images/cinematic-image-of-people-working-in-a-start-up-bu-2023-11-27-04-57-08-utc.jpg' %}" width="50%">
         </div>
+
       </div>
     </section>
-    <!-- Section Conformité -->
-
-     <!-- Section sur Sensibilisation -->
-    <section>
-      <div class="container text-marron m-auto borderTop py-4 fade-up">
-        <div class="row justify-content-between align-items-top">
-          <div class="col-md-6 col-lg-6 col-sm-12 mb-4">
-            <img src="{% static 'Assets/Images/autonomous-delivery-robot-on-street-estonian-comp-2023-11-27-05-22-27-utc.jpg' %}" width="100%"/>
-          </div>
-          <div class="col-md-6 col-lg-6 col-sm-12" style="width:20rem;">
-            <h3>Solutions IoT Intelligentes</h3>
-            <p class="mt-4">Nous utilisons les dernières avancées en matière d'intelligence artificielle et d'apprentissage automatique pour rendre nos solutions IoT encore plus intelligentes. Cela permet une prise de décision en temps réel basée sur les données collectées, optimisant les performances et l'efficacité.</p>
-            <a class="btn btn-outline-marron" data-bs-toggle="modal" data-bs-target="#exampleModal">Nous parler de vos besoins</a>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- Section Sensibilisation -->
-
+    <!-- Section Hero -->
   </Main>
 
-  <footer class="footer text-marron" style="margin-top:15rem; background-color:#CAFFFF;">
-  <div class="container text-marron borderTop">
-    <div class="row m-auto text-marron" style="padding-top:50px; padding-bottom:50px;">
-      <div class="col-md-3 mb-3 mb-md-0 text-marron">
+  <footer class="footer text-black" style="margin-top:4rem; background-color:#F5F6F1;">
+  <div class="container text-black borderTop">
+    <div class="row m-auto text-black" style="padding-top:50px; padding-bottom:50px;">
+      <div class="col-md-3 mb-3 mb-md-0 text-black">
         <a href="{% url 'Main:index' %}">
-          <img src="{% static 'Logos/Principal/Principal_marron.svg' %}" alt="Logo" height="60">
+         <img src="{% static 'Logos/Principal/Principal_noir.svg' %}" alt="Logo" height="60">
         </a>
       </div>
-      <div class="col-md-2 mb-3 mb-md-0 text-maron">
-        <h5>Services</h5>
+      <div class="col-md-3 mb-3 mb-md-0 text-black">
+        <h5>Expertise</h5>
         <ul class="list-unstyled">
-          <li><a href="{% url 'Main:ai' %}" class="text-marron">Intelligence artificielle</a></li>
-          <li><a href="{% url 'Main:iot' %}" class="text-marron">IOT</a></li>
-          <li><a href="{% url 'Main:cyber' %}" class="text-marron">Cybersécurité</a></li>
+          <li><a href="{% url 'Main:ai' %}" class="text-black">Intelligence artificielle</a></li>
+          <li><a href="{% url 'Main:iot' %}" class="text-black">IOT</a></li>
+          <li><a href="{% url 'Main:cyber' %}" class="text-black">Cybersécurité</a></li>
         </ul>
       </div>
-      <div class="col-md-2">
+      <div class="col-md-3">
         <h5>Entreprise</h5>
         <ul class="list-unstyled">
-          <li><a href="{% url 'Main:join' %}" class="text-marron">Nous rejoindre</a></li>
-          <li><a href="{% url 'Main:blog' %}" class="text-marron">Blog</a></li>
-          <li><a href="{% url 'Main:faq' %}" class="text-marron">FAQ</a></li>
-          <li><a href="{% url 'Main:charte' %}" class="text-marron">Charte</a></li>
+          <li><a href="{% url 'Main:join' %}" class="text-black">Nous rejoindre</a></li>
+          <li><a href="{% url 'Main:blog' %}" class="text-black">Blog</a></li>
+          <li><a href="{% url 'Main:faq' %}" class="text-black">FAQ</a></li>
+          <li><a href="{% url 'Main:charte' %}" class="text-black">Charte</a></li>
         </ul>
       </div>
-      <div class="col-md-2">
-        <h5>Suivez-nous</h5>
-        <ul class="list-unstyled">
-          <li><a href="#" class="text-marron">LinkedIn</a></li>
-          <li><a href="#" class="text-marron">Twitter</a></li>
-          <li><a href="#" class="text-marron">Facebook</a></li>
-        </ul>
-      </div>
-      <div class="col-md-2">
+      <div class="col-md-3">
         <h5>Nous contacter</h5>
         <ul class="list-unstyled">
-          <li><a href="mailto:contact@theforge.fr" class="text-marron">contact@theforge.fr</a></li>
-          <li><a href="tel:0299123244" class="text-marron">02 99 12 32 44</a></li>
+          <li><a href="mailto:contact@theforge.fr" class="text-black">contact@theforge.fr</a></li>
+          <li><a href="https://www.linkedin.com/company/theforgefr/about/?viewAsMember=true" class="text-black">LinkedIn</a></li>
         </ul>
       </div>
     </div>
     <div class="borderTop row pt-3 justify-content-around m-auto">
       <div class="col-6 flex-grow-1">
-        <address class="text-marron">
+        <address class="text-black">
           <strong>The Forge</strong><br>
           5 CRS DE VERDUN GENSOUL<br>
           69002 LYON
-          <abbr title="Phone"></abbr> (123) 456-7890
         </address>
       </div>
       <div class="col-6 align-items-end" style="text-align:right">
-         <a href="{% url 'Main:Conditions' %}" class="text-marron unstyled" style="text-align:right; margin:0 !important; margin-bottom:0px !important;">Conditions générales d'utilisation</a><br>
-        <a href="{% url 'Main:Mentions' %}" class="text-marron unstyled" style="text-align:right; margin:0 !important; margin-bottom:0px !important;">Mentions légales</a>
+         <a href="{% url 'Main:Conditions' %}" class="text-black unstyled" style="text-align:right; margin:0 !important; margin-bottom:0px !important;">Conditions générales d'utilisation</a><br>
+        <a href="{% url 'Main:Mentions' %}" class="text-black unstyled" style="text-align:right; margin:0 !important; margin-bottom:0px !important;">Mentions légales</a>
       </div>
     </div>
   </div>
-    <img src="{% static 'Assets/Motifs/horizontale/footer_marron.png' %}" width="100%" style="">
+    <img src="{% static 'Assets/Motifs/horizontale/footer_noir.png' %}" width="100%" style=" outline: none;box-shadow: none;">
 </footer>
 
-     <!-- Modal -->
+  <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-      <div class="modal-content" style="background-color:#CAFFFF; border-color:#823712">
-        <div class="modal-header" style="border-color:#823712">
-          <h1 class="modal-title fs-5 text-marron" id="exampleModalLabel">Parlez-nous de vos besoins !</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style=""></button>
+      <div class="modal-content" style="background-color:#F5F6F1; border-color:black">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5 text-black" id="exampleModalLabel">Parlez-nous de vos besoins !</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body text-marron">
+        <div class="modal-body text-black">
           <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="mb-3 mt-4">
-                <label for="exampleFormControlInput1" class="form-label text-bleu">Votre adresse email</label>
-                <input type="email" class="form-control" name='email' id="exampleFormControlInput1" placeholder="nom@exemple.com" style="background-color:transparent; color:#823712; border-color:#823712; outline: none;box-shadow: none;" required>
+                <label for="exampleFormControlInput1" class="form-label text-black">Votre adresse email</label>
+                <input type="email" class="form-control" name='email' id="exampleFormControlInput1" style="background-color:transparent; color:black; border-color:black; outline: none;box-shadow: none;" required>
             </div>
 
             <div class="mb-3 mt-4">
                 <label for="firstName" class="form-label">Votre prénom</label>
-                <input type="text" class="form-control" name='first_name' id="firstName" placeholder="Jane" style="background-color:transparent; color:#823712; border-color:#823712; outline: none;box-shadow: none;" required>
+                <input type="text" class="form-control" name='first_name' id="firstName" style="background-color:transparent; color:black; border-color:black; outline: none;box-shadow: none;" required>
             </div>
 
             <div class="mb-3 mt-4">
                 <label for="lastName" class="form-label">Votre nom</label>
-                <input type="text" class="form-control" name='last_name' id="lastName" placeholder="Doe" style="background-color:transparent; color:#823712; border-color:#823712; outline: none;box-shadow: none;" required>
+                <input type="text" class="form-control" name='last_name' id="lastName" style="background-color:transparent; color:black; border-color:black; outline: none;box-shadow: none;" required>
             </div>
 
             <div class="mb-3 mt-4">
                 <label for="companyName" class="form-label">Votre Entreprise</label>
-                <input type="text" class="form-control" name='company' id="companyName" placeholder="Company.ltd" style="background-color:transparent; color:#823712; border-color:#823712; outline: none;box-shadow: none;" required>
+                <input type="text" class="form-control" name='company' id="companyName" style="background-color:transparent; color:black; border-color:black; outline: none;box-shadow: none;" required>
             </div>
 
             <div class="mb-3 mt-4">
                 <label for="sectorSelect" class="form-label">Votre secteur d'activité</label>
-                <select class="form-control" name='field' id="sectorSelect" style="background-color:transparent; color:#823712; border-color:#823712; outline: none;box-shadow: none;" required>
+                <select class="form-control" name='field' id="sectorSelect" style="background-color:transparent; color:black; border-color:black; outline: none;box-shadow: none;" required>
                     <option value="">>> Sélectionnez votre secteur <<</option>
                     <!-- Liste exhaustive des secteurs -->
                     <option value="technologie">Technologie et Informatique</option>
@@ -305,7 +558,7 @@
 
             <div class="mb-3 mt-4">
                 <label for="contentTextArea" class="form-label">Vos besoins</label>
-                <textarea class="form-control" name='content' id="contentTextArea" placeholder="Décrivez vos besoins" style="background-color:transparent; color:#823712; border-color:#823712; outline: none;box-shadow: none;" required></textarea>
+                <textarea class="form-control" name='content' id="contentTextArea" style="background-color:transparent; color:black; border-color:black; outline: none;box-shadow: none;" required></textarea>
             </div>
 
             <div class="mb-3 form-check">
@@ -313,7 +566,7 @@
                 <label class="form-check-label" for="callbackRequest">Être rappelé ?</label>
             </div>
 
-            <button class="btn btn-outline-marron w-100 mt-2">Envoyer</button>
+            <button class="btn btn-outline-black w-100 mt-2">Envoyer</button>
         </form>
 
         </div>
@@ -342,11 +595,12 @@
         });
     });
 
-     function closeMessage() {
+      function closeMessage() {
     document.getElementById('messageBox').style.display = 'none';
     };
 
     </script>
+
     <script src="{% static 'js/main.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>

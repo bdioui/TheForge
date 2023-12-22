@@ -55,7 +55,7 @@
           <!-- Menu déroulant pour les services -->
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Services
+              Expertise
             </a>
             <ul class="dropdown-menu" style="background-color:#014948; border-style:none;">
               <li><a class="nav-link" href="{% url 'Main:ai' %}">Intelligence artificielle</a></li>
@@ -75,7 +75,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'Main:join' %}">Nous rejoindre</a>
+            <a class="nav-link" href="{% url 'Main:join' %}">L'équipe</a>
           </li>
         </ul>
           <a type="button" class="btn btn-outline-beige contact-item" href="{% url 'Main:contact' %}">Nous contacter</a>
@@ -110,7 +110,7 @@
             <a href="{% url 'Main:join' %}" class="text-beige ms-3">Rejoindre The Forge</a>
           </div>
         </div>
-          <img class='mt-5' src="{% static 'Assets/Images/cinematic-image-of-people-working-in-a-start-up-bu-2022-09-07-00-09-49-utc.jpg' %}" alt="L'équipe de The Forge en session brainstorm" width="100%">
+          <img class='mt-5' src="{% static 'Assets/images/cinematic-image-of-people-working-in-a-start-up-bu-2022-09-07-00-09-49-utc.jpg' %}" alt="L'équipe de The Forge en session brainstorm" width="100%">
       </div>
     </section>
     <!-- Section Hero -->
@@ -124,7 +124,7 @@
             <p style="font-size:20px !important;">The Forge est guidée par la conviction que la collaboration est la clé de l'innovation. Nous valorisons le potentiel unique de chaque membre de notre équipe, et c'est ensemble que nous mobilisons nos compétences et notre créativité.</p>
           </div>
           <div class="col-sm-12 col-md-6">
-            <img src="{% static 'Assets/Images/cinematic-image-of-people-working-in-a-start-up-bu-2022-09-07-00-05-40-utc.jpg' %}" width="100%">
+            <img src="{% static 'Assets/images/cinematic-image-of-people-working-in-a-start-up-bu-2022-09-07-00-05-40-utc.jpg' %}" width="100%">
           </div>
         </div>
 
@@ -173,7 +173,7 @@
       <div class="text-beige container text-whit mt-3" style="padding-bottom:60px !important">
         <div class="row justify-content-between align-items-center fade-up">
           <div class="col-sm-12 col-md-6">
-            <img src="{% static 'Assets/Images/cinematic-image-of-people-working-in-a-start-up-bu-2022-09-07-00-05-39-utc.jpg' %}" width="100%">
+            <img src="{% static 'Assets/images/cinematic-image-of-people-working-in-a-start-up-bu-2022-09-07-00-05-39-utc.jpg' %}" width="100%">
           </div>
           <div class="col-sm-12 col-md-4 align-items-between">
             <p class="display-2">Notre engagement</p>
@@ -243,36 +243,28 @@
           <img src="{% static 'Logos/Principal/Principal_beige.svg' %}" alt="Logo" height="60">
         </a>
       </div>
-      <div class="col-md-2 mb-3 mb-md-0 text-beige">
-        <h5>Services</h5>
+      <div class="col-md-3 mb-3 mb-md-0 text-beige">
+        <h5>Expertise</h5>
         <ul class="list-unstyled">
           <li><a href="{% url 'Main:ai' %}" class="text-beige">Intelligence artificielle</a></li>
           <li><a href="{% url 'Main:iot' %}" class="text-beige">IOT</a></li>
           <li><a href="{% url 'Main:cyber' %}" class="text-beige">Cybersécurité</a></li>
         </ul>
       </div>
-      <div class="col-md-2">
+      <div class="col-md-3">
         <h5>Entreprise</h5>
         <ul class="list-unstyled">
-          <li><a href="{% url 'Main:join' %}" class="text-beige">Nous rejoindre</a></li>
+          <li><a href="{% url 'Main:join' %}" class="text-beige">L'équipe</a></li>
           <li><a href="{% url 'Main:blog' %}" class="text-beige">Blog</a></li>
           <li><a href="{% url 'Main:faq' %}" class="text-beige">FAQ</a></li>
           <li><a href="{% url 'Main:charte' %}" class="text-beige">Charte</a></li>
         </ul>
       </div>
-      <div class="col-md-2">
-        <h5>Suivez-nous</h5>
-        <ul class="list-unstyled">
-          <li><a href="#" class="text-beige">LinkedIn</a></li>
-          <li><a href="#" class="text-beige">Twitter</a></li>
-          <li><a href="#" class="text-beige">Facebook</a></li>
-        </ul>
-      </div>
-      <div class="col-md-2">
+      <div class="col-md-3">
         <h5>Nous contacter</h5>
         <ul class="list-unstyled">
-          <li><a href="mailto:contact@theforge.fr" class="text-beige">contact@theforge.fr</a></li>
-          <li><a href="tel:0299123244" class="text-beige">02 99 12 32 44</a></li>
+          <li><a href="" class="text-beige">contact@theforge.fr</a></li>
+          <li><a href="https://www.linkedin.com/company/theforgefr/about/?viewAsMember=true" class="text-beige">LinkedIn</a></li>
         </ul>
       </div>
     </div>
@@ -282,7 +274,6 @@
           <strong>The Forge</strong><br>
           5 CRS DE VERDUN GENSOUL<br>
           69002 LYON
-          <abbr title="Phone"></abbr> (123) 456-7890
         </address>
       </div>
       <div class="col-6 align-items-end" style="text-align:right">
