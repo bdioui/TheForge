@@ -312,7 +312,7 @@ def Join(request):
         application.save()
 
         email = request.POST.get('email')
-        email_template = get_template(os.path.join(settings.BASE_DIR, 'Main/templates/Main/job_confirmation.html'))
+        email_template = get_template(os.path.join(settings.BASE_DIR, 'Main/templates/Main/job_confirmation_libre.html'))
 
         subject = 'Message reçu !'
         email_body = email_template.render()
