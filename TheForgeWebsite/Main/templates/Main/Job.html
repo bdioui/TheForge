@@ -55,7 +55,7 @@
           <!-- Menu déroulant pour les services -->
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Expertise
+              Notre expertise
             </a>
             <ul class="dropdown-menu" style="background-color:#FFF0D6; border-style:none;">
               <li><a class="nav-link" href="{% url 'Main:ai' %}">Intelligence artificielle</a></li>
@@ -166,13 +166,13 @@
   </Main>
 
   <footer class="footer text-vert" style="margin-top:15rem; background-color:#FFF0D6;">
-  <div class="container text-vert borderTop"style="margin-bottom:150px;">
+  <div class="container text-vert borderTop" style="margin-bottom:150px;">
     <div class="row m-auto text-vert" style="padding-top:50px; padding-bottom:50px;">
       <div class="col-md-3 mb-3 mb-md-0 text-vert">
         <img src="{% static 'Logos/Principal/Principal_vert.svg' %}" alt="Logo" height="60">
       </div>
       <div class="col-md-2 mb-3 mb-md-0 bleu">
-        <h5>Expertise</h5>
+        <h5>Notre expertise</h5>
         <ul class="list-unstyled">
           <li><a href="{% url 'Main:ai' %}" class="text-vert">Intelligence artificielle</a></li>
           <li><a href="{% url 'Main:cyber' %}" class="text-vert">Cybersécurité</a></li>
@@ -197,20 +197,20 @@
       </div>
     </div>
     <div class="borderTop row pt-3 justify-content-around m-auto">
-      <div class="col-6 flex-grow-1">
-        <address class="">
-          <strong>The Forge ltd</strong><br>
-          5 CRS DE VERDUN GENSOUL<br>
-          69002 LYON
-        </address>
-      </div>
-      <div class="col-6 align-items-end" style="text-align:right">
+      <div class="col-12 align-items-end" style="text-align:right">
          <a href="{% url 'Main:Conditions' %}" class="text-vert unstyled" style="text-align:right; margin:0 !important; margin-bottom:0px !important;">Conditions générales d'utilisation</a><br>
         <a href="{% url 'Main:Mentions' %}" class="text-vert unstyled" style="text-align:right; margin:0 !important; margin-bottom:0px !important;">Mentions légales</a>
       </div>
     </div>
   </div>
-    <img src="{% static 'Assets/Motifs/horizontale/footer_vert.webp' %}" width="100%" style="">
+    <div class='row' style="width: 100%; height: auto; margin-right: 0; margin-left: 0;">
+      <div class="col-6 px-0">
+          <img loading="lazy" src="{% static 'Assets/Motifs/horizontale/footer_vert.webp' %}" alt="grille d'illustration géometrique du footer" style="width: 100.4%; height:auto;">
+      </div>
+      <div class="col-6 px-0">
+          <img loading="lazy" src="{% static 'Assets/Motifs/horizontale/footer_vert.webp' %}" alt="grille d'illustration géometrique du footer" style="width: 100%; height:auto;">
+      </div>
+    </div>
 </footer>
 
     <script>

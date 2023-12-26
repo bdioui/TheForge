@@ -55,7 +55,7 @@
           <!-- Menu déroulant pour les services -->
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Expertise
+              Notre expertise
             </a>
             <ul class="dropdown-menu" style="background-color:#F5F6F1; border-style:none;">
               <li><a class="nav-link" href="{% url 'Main:ai' %}">Intelligence artificielle</a></li>
@@ -91,11 +91,11 @@
     <!-- Section Hero -->
     <section>
       {% if messages %}
-      <div class="messages row justify-content-center align-items-center" id='messageBox' style="position:fixed; top:100px; right:25px; text-align:center; background-color:#F5F6F1; border-style:solid; border-width:1px; border-color:#0000FF; color:black; padding:10px">
-        <a type="button" onclick="closeMessage()" style="--bs-btn-close-color:white; position:absolute; left:5px; top:5px; color:#0000FF; width:5px;">X</a>
+      <div class="messages row justify-content-center align-items-center" id='messageBox' style="position:fixed; top:100px; right:25px; text-align:center; background-color:#F5F6F1; border-style:solid; border-width:1px; border-color:black; color:black; padding:10px">
+        <a type="button" onclick="closeMessage()" style="--bs-btn-close-color:white; position:absolute; left:5px; top:5px; color:#00000; width:5px;">X</a>
         {% for message in messages %}
           <div>
-             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 64 64" fill="none" stroke-width="2px" stroke="#0000FF"><path d="M8 12h48v40H8z"/><path d="M56 20L32 36 8 20"/></svg>
+             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 64 64" fill="none" stroke-width="2px" stroke="#00000"><path d="M8 12h48v40H8z"/><path d="M56 20L32 36 8 20"/></svg>
              <h3>Merci !</h3>
              <p>{{ message }}</p>
           </div>
@@ -118,34 +118,34 @@
 
     <!-- Section sur mesure -->
     <section>
-      <div class="container text-black m-auto borderTop py-4">
+      <div class="container text-black m-auto borderTop py-4 fade-up">
         <div class="row justify-content-between align-items-top">
-          <div class="col-md-3 col-lg-3 col-sm-12 mb-4 fade-up">
+          <div class="col-md-3 col-lg-3 col-sm-12 mb-4">
             <div class="text-left" style="margin-bottom:2.5rem;">
               <img src="{% static 'Assets/Motifs/illustration_AI_machine_learning.webp' %}" style="width:60%">
             </div>
 
             <h3> Machine learning</h3>
             <p class="mt-5" style="width:20rem;">Notre expertise en Machine Learning nous permet de développer des algorithmes sophistiqués qui apprennent de façon recursive à partir d'un ensemble de données complexes. Nous apportons notre expertise dans la création de solutions pour la prédiction de tendances, la détection de fraudes, et l'optimisation des processus.</p>
-            <p><strong>Exemple de projet :</strong> développement de systèmes prédictifs pour l'analyse financière, solutions de détection de fraudes pour les banques, optimisation des chaînes d'approvisionnement.</p>
+            <p><strong>Expertise :</strong> développement de systèmes prédictifs pour l'analyse financière, solutions de détection de fraudes pour les banques, optimisation des chaînes d'approvisionnement.</p>
           </div>
-          <div class="col-md-3 col-lg-3 col-sm-12 mb-4 fade-up">
+          <div class="col-md-3 col-lg-3 col-sm-12 mb-4">
              <div class="text-left" style="margin-bottom:2.5rem;">
               <img src="{% static 'Assets/Motifs/illustration_AI_Deep_learning.webp' %}" style="width:60%">
             </div>
 
             <h3>Deep learning</h3>
             <p class="mt-5" style="width:20rem;">Le Deep Learning, un domaine avancé du Machine Learning, est au cœur de notre expertise, utilisant des réseaux de neurones artificiels profonds pour analyser des ensembles de données complexes. Cette technologie nous permet de développer des solutions en reconnaissance d'images, synthèse vocale, traduction automatique ou encore génération de texte. </p>
-            <p><strong>Exemple de projet :</strong> systèmes de reconnaissance faciale, analyse et génération automatique d'images, modèles de traitement automatique de la parole pour les assistants vocaux.</p>
+            <p><strong>Expertise :</strong> systèmes de reconnaissance faciale, analyse et génération automatique d'images, modèles de traitement automatique de la parole pour les assistants vocaux.</p>
           </div>
-          <div class="col-md-3 col-lg-3 col-sm-12 mb-4 fade-up">
+          <div class="col-md-3 col-lg-3 col-sm-12 mb-4">
             <div class="text-left" style="margin-bottom:2.5rem;">
               <img src="{% static 'Assets/Motifs/illustration_AI_NLP.webp' %}" style="width:60%">
             </div>
 
             <h3>Traitement du Langage Naturel (NLP)</h3>
             <p class="mt-4" style="width:20rem;">Nous développons des systèmes qui comprennent le langage humain, transformant la manière dont les entreprises et les institutions interagissent et comprennent leur environnement et les acteurs qui y évoluent.</p>
-            <p><strong>Exemple de projet : </strong> développement de chatbots pour le service client, systèmes de traduction automatique, outils d'analyse de sentiments.</p>
+            <p><strong>Expertise : </strong> développement de chatbots pour le service client, systèmes de traduction automatique, outils d'analyse de sentiments.</p>
           </div>
         </div>
       </div>
@@ -155,7 +155,7 @@
     <section class="container text-black m-auto borderTop py-4" style="margin-top:4rem;">
       <div class='mb-5 m-auto text-center fade-up' style="max-width:600px;">
         <h1>Notre methode</h1>
-        <h4>Chaque projet est unique. Nous vous accompagons pour trouver des solutions adaptées à vos besoins en accord avec vos objectifs.</h4>
+        <h4>Chaque projet est unique. Nous vous accompagnons pour trouver des solutions adaptées à vos besoins en accord avec vos objectifs.</h4>
       </div>
       <div class="container m-auto ps-3 fade-up">
         <div class="row">
@@ -183,7 +183,7 @@
               <div class="col col-md-12 ms-n5 ms-md-0" style="padding-left:0 !important; padding-right:30px !important;">
 
                 <!-- Heading -->
-                <h3 class="padding-sm-left">
+                <h3 class="padding-sm-left mb-4">
                   Comprendre votre besoin et cadrer votre projet
                 </h3>
 
@@ -223,7 +223,7 @@
               <div class="col col-md-12 ms-n5 ms-md-0 p-0" style="padding-left:0 !important; padding-right:30px !important;">
 
                 <!-- Heading -->
-                <h3 class="padding-sm-left">
+                <h3 class="padding-sm-left mb-4">
                   Design et développement d'une solution sur mesure
                 </h3>
 
@@ -258,7 +258,7 @@
               <div class="col col-md-12 ms-n5 ms-md-0 p-0" style="padding-left:0 !important; padding-right:30px !important;">
 
                 <!-- Heading -->
-                <h3>
+                <h3 class="mb-4">
                   Accompagnement et évolutions du projet
                 </h3>
 
@@ -312,7 +312,7 @@
         </a>
       </div>
       <div class="col-md-3 mb-3 mb-md-0 text-black">
-        <h5>Expertise</h5>
+        <h5>Notre expertise</h5>
         <ul class="list-unstyled">
           <li><a href="{% url 'Main:ai' %}" class="text-black">Intelligence artificielle</a></li>
           <li><a href="{% url 'Main:iot' %}" class="text-black">IOT</a></li>
@@ -337,20 +337,20 @@
       </div>
     </div>
     <div class="borderTop row pt-3 justify-content-around m-auto">
-      <div class="col-6 flex-grow-1">
-        <address class="text-black">
-          <strong>The Forge</strong><br>
-          5 CRS DE VERDUN GENSOUL<br>
-          69002 LYON
-        </address>
-      </div>
-      <div class="col-6 align-items-end" style="text-align:right">
+      <div class="col-12 align-items-end" style="text-align:right">
          <a href="{% url 'Main:Conditions' %}" class="text-black unstyled" style="text-align:right; margin:0 !important; margin-bottom:0px !important;">Conditions générales d'utilisation</a><br>
         <a href="{% url 'Main:Mentions' %}" class="text-black unstyled" style="text-align:right; margin:0 !important; margin-bottom:0px !important;">Mentions légales</a>
       </div>
     </div>
   </div>
-    <img src="{% static 'Assets/Motifs/horizontale/footer_noir.webp' %}" width="100%" style=" outline: none;box-shadow: none;">
+    <div class='row' style="width: 100%; height: auto; margin-right: 0; margin-left: 0;">
+      <div class="col-6 px-0">
+          <img loading="lazy" src="{% static 'Assets/Motifs/horizontale/footer_noir.webp' %}" alt="grille d'illustration géometrique du footer" style="width: 100.4%; height:auto;">
+      </div>
+      <div class="col-6 px-0">
+          <img loading="lazy" src="{% static 'Assets/Motifs/horizontale/footer_noir.webp' %}" alt="grille d'illustration géometrique du footer" style="width: 100%; height:auto;">
+      </div>
+    </div>
 </footer>
 
   <!-- Modal -->
@@ -380,8 +380,16 @@
             </div>
 
             <div class="mb-3 mt-4">
-                <label for="companyName" class="form-label">Votre Entreprise</label>
-                <input type="text" class="form-control" name='company' id="companyName" style="background-color:transparent; color:black; border-color:black; outline: none;box-shadow: none;" required>
+              <label for="phoneInput" class="form-label">Votre numéro de téléphone</label>
+              <input type="tel" class="form-control" name="phone" id="phoneInput" style="background-color:transparent; color:black; border-color:black; outline: none;box-shadow: none;" required>
+              <div class="invalid-feedback">
+                Veuillez entrer un numéro de téléphone valide (ex. 01 23 45 67 89).
+              </div>
+            </div>
+
+            <div class="mb-3 mt-4">
+                <label for="company" class="form-label">Votre Entreprise</label>
+                <input type="text" class="form-control" name='company' id="company" style="background-color:transparent; color:black; border-color:black; outline: none;box-shadow: none;" required>
             </div>
 
             <div class="mb-3 mt-4">
@@ -456,6 +464,23 @@
     };
 
     </script>
+  <script>
+   document.getElementById('phoneInput').addEventListener('input', function(e) {
+    var input = e.target.value.replace(/\D/g, '');  // Supprime tous les caractères non numériques
+    var formattedInput = '';
+
+    // Boucle pour ajouter des tirets tous les deux chiffres
+    for (var i = 0; i < input.length; i++) {
+      if (i !== 0 && i % 2 === 0) {
+        formattedInput += '-';
+      }
+      formattedInput += input[i];
+    }
+
+    // Met à jour la valeur du champ de saisie avec le format correct
+    e.target.value = formattedInput;
+  });
+</script>
 
     <script src="{% static 'js/main.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>

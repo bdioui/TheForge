@@ -55,7 +55,7 @@
           <!-- Menu déroulant pour les services -->
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Expertise
+              Notre expertise
             </a>
             <ul class="dropdown-menu" style="background-color:#F5F6F1; border-style:none;">
               <li><a class="nav-link" href="{% url 'Main:ai' %}">Intelligence artificielle</a></li>
@@ -90,16 +90,35 @@
   <Main>
     <!-- Section Hero -->
     <section>
-      <div class="mt-5 container HeroContainer text-vert m-auto fade-up">
+      <div class="mt-5 container HeroContainer text-vert m-auto fade-up" style="margin-top:10rem !important;">
         <div class="row justify-content-between align-items-center">
+          <div class="display-1">Nous contacter</div>
+          <hr>
           <div class="col-lg-6 col-sm-12 col-md-6">
-            <div class="display-1">Nous contacter</div>
             <form method="POST">
               {% csrf_token %}
               <div class="mb-3 mt-4">
                 <label for="exampleFormControlInput1" class="form-label">Votre adresse email</label>
                 <input type="email" class="form-control" name='email' id="exampleFormControlInput1" style="background-color:transparent; color:#015453; border-color:#015453; box-shadow: 0 0 0px transparent;">
               </div>
+              <div class="row mb-3 mt-4">
+                <div class="col">
+                  <label for="first_name" class="form-label">Votre prénom</label>
+                  <input type="text" id="first_name" name="last_name" class="form-control" style="background-color:transparent; color:#015453; border-color:#015453; box-shadow: 0 0 0px transparent;">
+                </div>
+                <div class="col">
+                  <label for="last_name" class="form-label">Votre nom</label>
+                  <input type="text" id="last_name" name="last_name" class="form-control" style="background-color:transparent; color:#015453; border-color:#015453; box-shadow: 0 0 0px transparent;">
+                </div>
+              </div>
+              <div class="mb-3 mt-4">
+              <label for="phoneInput" class="form-label">Votre numéro de téléphone</label>
+              <input type="tel" class="form-control" name="phone" id="phoneInput" style="background-color:transparent; color:#015453; border-color:#015453; box-shadow: 0 0 0px transparent;" required>
+              <div class="invalid-feedback">
+                Veuillez entrer un numéro de téléphone valide (ex. 01 23 45 67 89).
+              </div>
+            </div>
+
               <div class="col-12 mt-4">
                 <label for="exampleFormControlInput1" class="form-label">Votre message</label>
                 <textarea class="text-vert w-100 h-50" name="content" style="background-color:transparent !important; border-color:#015453; border-width:1px;"></textarea>
@@ -125,7 +144,7 @@
         </a>
       </div>
       <div class="col-md-3 mb-3 mb-md-0 text-vert">
-        <h5>Expertise</h5>
+        <h5>Notre expertise</h5>
         <ul class="list-unstyled">
           <li><a href="{% url 'Main:ai' %}" class="text-vert">Intelligence artificielle</a></li>
           <li><a href="{% url 'Main:iot' %}" class="text-vert">IOT</a></li>
@@ -150,20 +169,20 @@
       </div>
     </div>
     <div class="borderTop row pt-3 justify-content-around m-auto">
-      <div class="col-6 flex-grow-1">
-        <address class="">
-          <strong>The Forge</strong><br>
-          5 CRS DE VERDUN GENSOUL<br>
-          69002 LYON
-        </address>
-      </div>
-      <div class="col-6 align-items-end" style="text-align:right">
+      <div class="col-12 align-items-end" style="text-align:right">
          <a href="{% url 'Main:Conditions' %}" class="text-vert unstyled" style="text-align:right; margin:0 !important; margin-bottom:0px !important;">Conditions générales d'utilisation</a><br>
         <a href="{% url 'Main:Mentions' %}" class="text-vert unstyled" style="text-align:right; margin:0 !important; margin-bottom:0px !important;">Mentions légales</a>
       </div>
     </div>
   </div>
-    <img src="{% static 'Assets/Motifs/horizontale/footer_vert.webp' %}" width="100%" style="">
+    <div class='row' style="width: 100%; height: auto; margin-right: 0; margin-left: 0;">
+      <div class="col-6 px-0">
+          <img loading="lazy" src="{% static 'Assets/Motifs/horizontale/footer_vert.webp' %}" alt="grille d'illustration géometrique du footer" style="width: 100.4%; height:auto;">
+      </div>
+      <div class="col-6 px-0">
+          <img loading="lazy" src="{% static 'Assets/Motifs/horizontale/footer_vert.webp' %}" alt="grille d'illustration géometrique du footer" style="width: 100%; height:auto;">
+      </div>
+    </div>
 </footer>
 
     <script>
@@ -178,6 +197,23 @@
     });
 
     </script>
+    <script>
+     document.getElementById('phoneInput').addEventListener('input', function(e) {
+      var input = e.target.value.replace(/\D/g, '');  // Supprime tous les caractères non numériques
+      var formattedInput = '';
+
+      // Boucle pour ajouter des tirets tous les deux chiffres
+      for (var i = 0; i < input.length; i++) {
+        if (i !== 0 && i % 2 === 0) {
+          formattedInput += '-';
+        }
+        formattedInput += input[i];
+      }
+
+      // Met à jour la valeur du champ de saisie avec le format correct
+      e.target.value = formattedInput;
+    });
+  </script>
     <script src="{% static 'js/main.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>

@@ -49,7 +49,10 @@ class Job(models.Model):
 
 class Applicant(models.Model):
     email = models.TextField(default='bdiouipierre@gmail.com')
+    first_name = models.CharField(max_length=100, default="non renseigné")
+    last_name = models.CharField(max_length=100, default="non renseigné")
     job = models.ForeignKey(Job, on_delete=models.CASCADE, related_name='applicants')
+    phone = models.TextField(default="non renseigné")
     cv = models.FileField(upload_to=get_CV_filepath, null=True, blank=True)
     cover_letter = models.FileField(upload_to=get_Cover_letter_filepath, null=True, blank=True)
     submitted_at = models.DateTimeField(auto_now_add=True)
@@ -60,6 +63,9 @@ class Applicant(models.Model):
 class Message(models.Model):
     email = models.TextField()
     content = models.TextField()
+    first_name = models.CharField(max_length=100, default="non renseigné")
+    last_name = models.CharField(max_length=100, default="non renseigné")
+    phone = models.TextField(default="non renseigné")
     submitted_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -73,6 +79,7 @@ class ContactRequest(models.Model):
     company = models.CharField(max_length=100)
     field = models.CharField(max_length=100)
     content = models.TextField()
+    phone = models.TextField(default="non renseigné")
     callback_request = models.BooleanField(default=False)
 
     def __str__(self):
