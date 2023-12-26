@@ -5,6 +5,7 @@ from django.core.mail import EmailMessage
 from django.template.loader import get_template
 from django.conf import settings
 from django.contrib import messages
+import requests
 import os
 
 # Create your views here.
@@ -22,339 +23,421 @@ def Conditions(request):
 
 def FAQ(request):
     if request.method == "POST":
-        callback_request = request.POST.get('callback_request') == 'on'
+        recaptcha_response = request.POST.get('g-recaptcha-response')
+        data = {
+            'secret': settings.RECAPTCHA_PRIVATE_KEY,
+            'response': recaptcha_response
+        }
+        r = requests.post('https://www.google.com/recaptcha/api/siteverify', data=data)
+        result = r.json()
 
-        # Mail de confirmation
-        email_template = get_template(os.path.join(settings.BASE_DIR, 'Main/templates/Main/request_confirmation.html'))
-        email = request.POST.get('email')
-        subject = 'Demande reçu !'
-        email_body = email_template.render()
-        from_email = settings.EMAIL_HOST_USER
-        recipient_list = [email]
+        if result['success']:
+            callback_request = request.POST.get('callback_request') == 'on'
 
-        email = EmailMessage(subject, email_body, from_email, recipient_list)
-        email.content_subtype = 'html'
-        email.send()
+            # Mail de confirmation
+            email_template = get_template(os.path.join(settings.BASE_DIR, 'Main/templates/Main/request_confirmation.html'))
+            email = request.POST.get('email')
+            subject = 'Demande reçue !'
+            email_body = email_template.render()
+            from_email = settings.EMAIL_HOST_USER
+            recipient_list = [email]
 
-        # Préparation de l'email pour l'administrateur avec les pièces jointes
-        email = request.POST.get('email'),
-        first_name = request.POST.get('first_name'),
-        last_name = request.POST.get('last_name'),
-        content = request.POST.get('content'),
-        company = request.POST.get('company'),
-        callback_request = callback_request,
+            email = EmailMessage(subject, email_body, from_email, recipient_list)
+            email.content_subtype = 'html'
+            email.send()
 
-        admin_email = EmailMessage(
-            subject=f'Nouvelle question',
-            body=f'Une nouvelle question a été reçue sur le site internet de The Forge.\n'
-                 f'Email : {email}\n'
-                 f'Nom : {first_name} {last_name}\n'
-                 f'Entreprise : {company} \n'
-                 f'Demande : {content}',
-            from_email=settings.EMAIL_HOST_USER,
-            to=['bdiouipierre@gmail.com']  # Remplacez par l'email de l'administrateur
-        )
-        admin_email.send()
-        messages.success(request, 'Votre demande a bien été envoyée !')
-        return redirect('Main:faq')
+            # email pour l'admin du site
+            callback_request = request.POST.get('callback_request') == 'on'
+
+            email = request.POST.get('email'),
+            first_name = request.POST.get('first_name'),
+            last_name = request.POST.get('last_name'),
+            content = request.POST.get('content'),
+            company = request.POST.get('company'),
+            phone = request.POST.get('phone'),
+            field = '-',
+            callback_request = 'oui' if callback_request else 'non'
+
+            context = {
+                'first_name': request.POST.get('first_name'),
+                'last_name': request.POST.get('last_name'),
+                'email': request.POST.get('email'),
+                'content': request.POST.get('content'),
+                'phone': request.POST.get('phone'),
+                'field': request.POST.get('field'),
+                'company': request.POST.get('company'),
+                'callback_request': callback_request,
+            }
+
+            # Mail de confirmation
+            email_template = get_template(os.path.join(settings.BASE_DIR, 'Main/templates/Main/Admin_alert.html'))
+            subject = 'Nouveau message'
+            email_body = email_template.render(context)
+            from_email = settings.EMAIL_HOST_USER
+            recipient_list = ['bdiouipierre@gmail.com']
+
+            email = EmailMessage(subject, email_body, from_email, recipient_list)
+            email.content_subtype = 'html'
+            email.send()
+            messages.success(request, 'Votre demande a bien été envoyée !')
+            return redirect("Main:faq")
+        else:
+            messages.error(request, 'Oups ! Erreur de Captcha!')
+            return redirect("Main:faq")
     else:
         return render(request, 'Main/FAQ.html')
 
 def AI(request):
     if request.method == "POST":
-        callback_request = request.POST.get('callback_request') == 'on'
-        contact_request = ContactRequest(
-            email=request.POST.get('email'),
+        recaptcha_response = request.POST.get('g-recaptcha-response')
+        data = {
+            'secret': settings.RECAPTCHA_PRIVATE_KEY,
+            'response': recaptcha_response
+        }
+        r = requests.post('https://www.google.com/recaptcha/api/siteverify', data=data)
+        result = r.json()
+
+        if result['success']:
+            callback_request = request.POST.get('callback_request') == 'on'
+            contact_request = ContactRequest(
+                email=request.POST.get('email'),
+                first_name = request.POST.get('first_name'),
+                last_name = request.POST.get('last_name'),
+                content = request.POST.get('content'),
+                company = request.POST.get('company'),
+                phone=request.POST.get('phone'),
+                field = request.POST.get('field'),
+                callback_request = callback_request,
+            )
+            contact_request.save()
+
+            # Mail de confirmation
+            email_template = get_template(os.path.join(settings.BASE_DIR, 'Main/templates/Main/request_confirmation.html'))
+            email = request.POST.get('email')
+            subject = 'Demande reçue !'
+            email_body = email_template.render()
+            from_email = settings.EMAIL_HOST_USER
+            recipient_list = [email]
+
+            email = EmailMessage(subject, email_body, from_email, recipient_list)
+            email.content_subtype = 'html'
+            email.send()
+
+            # email pour l'admin du site
+            email = request.POST.get('email'),
             first_name = request.POST.get('first_name'),
             last_name = request.POST.get('last_name'),
             content = request.POST.get('content'),
             company = request.POST.get('company'),
-            phone=request.POST.get('phone'),
+            phone = request.POST.get('phone'),
             field = request.POST.get('field'),
-            callback_request = callback_request,
-        )
-        contact_request.save()
+            callback_request = 'oui' if callback_request else 'non'
 
-        # Mail de confirmation
-        email_template = get_template(os.path.join(settings.BASE_DIR, 'Main/templates/Main/request_confirmation.html'))
-        email = request.POST.get('email')
-        subject = 'Demande reçu !'
-        email_body = email_template.render()
-        from_email = settings.EMAIL_HOST_USER
-        recipient_list = [email]
+            context = {
+                'first_name': request.POST.get('first_name'),
+                'last_name': request.POST.get('last_name'),
+                'email': request.POST.get('email'),
+                'content': request.POST.get('content'),
+                'phone': request.POST.get('phone'),
+                'field': request.POST.get('field'),
+                'company': request.POST.get('company'),
+                'callback_request': callback_request,
 
-        email = EmailMessage(subject, email_body, from_email, recipient_list)
-        email.content_subtype = 'html'
-        email.send()
+            }
 
-        # email pour l'admin du site
-        email = request.POST.get('email'),
-        first_name = request.POST.get('first_name'),
-        last_name = request.POST.get('last_name'),
-        content = request.POST.get('content'),
-        company = request.POST.get('company'),
-        phone = request.POST.get('phone'),
-        field = request.POST.get('field'),
-        callback_request = 'oui' if callback_request else 'non'
+            # Mail de confirmation
+            email_template = get_template(os.path.join(settings.BASE_DIR, 'Main/templates/Main/Admin_alert.html'))
+            subject = 'Nouveau message'
+            email_body = email_template.render(context)
+            from_email = settings.EMAIL_HOST_USER
+            recipient_list = ['bdiouipierre@gmail.com']
 
-        context = {
-            'first_name': request.POST.get('first_name'),
-            'last_name': request.POST.get('last_name'),
-            'email': request.POST.get('email'),
-            'content': request.POST.get('content'),
-            'phone': request.POST.get('phone'),
-            'field': request.POST.get('field'),
-            'company': request.POST.get('company'),
-            'callback_request': callback_request,
-
-        }
-
-        # Mail de confirmation
-        email_template = get_template(os.path.join(settings.BASE_DIR, 'Main/templates/Main/Admin_alert.html'))
-        subject = 'Nouveau message'
-        email_body = email_template.render(context)
-        from_email = settings.EMAIL_HOST_USER
-        recipient_list = ['bdiouipierre@gmail.com']
-
-        email = EmailMessage(subject, email_body, from_email, recipient_list)
-        email.content_subtype = 'html'
-        email.send()
-        messages.success(request, 'Votre demande a bien été envoyée !')
-        return redirect('Main:ai')
+            email = EmailMessage(subject, email_body, from_email, recipient_list)
+            email.content_subtype = 'html'
+            email.send()
+            messages.success(request, 'Votre demande a bien été envoyée !')
+            return redirect('Main:ai')
+        else:
+            messages.error(request, 'Oups ! Erreur de Captcha!')
+            return redirect("Main:ai")
     else:
         return render(request, 'Main/AI.html')
 
 def Cyber(request):
     if request.method == "POST":
-        callback_request = request.POST.get('callback_request') == 'on'
-        contact_request = ContactRequest(
-            email=request.POST.get('email'),
-            first_name=request.POST.get('first_name'),
-            last_name=request.POST.get('last_name'),
-            content=request.POST.get('content'),
-            phone=request.POST.get('phone'),
-            company=request.POST.get('company'),
-            field=request.POST.get('field'),
-            callback_request=callback_request,
-        )
-        contact_request.save()
-
-        # Mail de confirmation
-        email_template = get_template(os.path.join(settings.BASE_DIR, 'Main/templates/Main/request_confirmation.html'))
-        email = request.POST.get('email')
-        subject = 'Demande reçu !'
-        email_body = email_template.render()
-        from_email = settings.EMAIL_HOST_USER
-        recipient_list = [email]
-
-        email = EmailMessage(subject, email_body, from_email, recipient_list)
-        email.content_subtype = 'html'
-        email.send()
-
-        # email pour l'admin du site
-        email = request.POST.get('email'),
-        first_name = request.POST.get('first_name'),
-        last_name = request.POST.get('last_name'),
-        content = request.POST.get('content'),
-        company = request.POST.get('company'),
-        phone = request.POST.get('phone'),
-        field = request.POST.get('field'),
-        callback_request = 'oui' if callback_request else 'non'
-
-        context = {
-            'first_name': request.POST.get('first_name'),
-            'last_name': request.POST.get('last_name'),
-            'email': request.POST.get('email'),
-            'content': request.POST.get('content'),
-            'phone': request.POST.get('phone'),
-            'field': request.POST.get('field'),
-            'company': request.POST.get('company'),
-            'callback_request': callback_request,
-
+        recaptcha_response = request.POST.get('g-recaptcha-response')
+        data = {
+            'secret': settings.RECAPTCHA_PRIVATE_KEY,
+            'response': recaptcha_response
         }
+        r = requests.post('https://www.google.com/recaptcha/api/siteverify', data=data)
+        result = r.json()
 
-        # Mail de confirmation
-        email_template = get_template(os.path.join(settings.BASE_DIR, 'Main/templates/Main/Admin_alert.html'))
-        subject = 'Nouveau message'
-        email_body = email_template.render(context)
-        from_email = settings.EMAIL_HOST_USER
-        recipient_list = ['bdiouipierre@gmail.com']
+        if result['success']:
+            callback_request = request.POST.get('callback_request') == 'on'
+            contact_request = ContactRequest(
+                email=request.POST.get('email'),
+                first_name=request.POST.get('first_name'),
+                last_name=request.POST.get('last_name'),
+                content=request.POST.get('content'),
+                phone=request.POST.get('phone'),
+                company=request.POST.get('company'),
+                field=request.POST.get('field'),
+                callback_request=callback_request,
+            )
+            contact_request.save()
 
-        email = EmailMessage(subject, email_body, from_email, recipient_list)
-        email.content_subtype = 'html'
-        email.send()
-        messages.success(request, 'Votre demande a bien été envoyée !')
-        return redirect('Main:cyber')
+            # Mail de confirmation
+            email_template = get_template(os.path.join(settings.BASE_DIR, 'Main/templates/Main/request_confirmation.html'))
+            email = request.POST.get('email')
+            subject = 'Demande reçue !'
+            email_body = email_template.render()
+            from_email = settings.EMAIL_HOST_USER
+            recipient_list = [email]
+
+            email = EmailMessage(subject, email_body, from_email, recipient_list)
+            email.content_subtype = 'html'
+            email.send()
+
+            # email pour l'admin du site
+            email = request.POST.get('email'),
+            first_name = request.POST.get('first_name'),
+            last_name = request.POST.get('last_name'),
+            content = request.POST.get('content'),
+            company = request.POST.get('company'),
+            phone = request.POST.get('phone'),
+            field = request.POST.get('field'),
+            callback_request = 'oui' if callback_request else 'non'
+
+            context = {
+                'first_name': request.POST.get('first_name'),
+                'last_name': request.POST.get('last_name'),
+                'email': request.POST.get('email'),
+                'content': request.POST.get('content'),
+                'phone': request.POST.get('phone'),
+                'field': request.POST.get('field'),
+                'company': request.POST.get('company'),
+                'callback_request': callback_request,
+
+            }
+
+            # Mail de confirmation
+            email_template = get_template(os.path.join(settings.BASE_DIR, 'Main/templates/Main/Admin_alert.html'))
+            subject = 'Nouveau message'
+            email_body = email_template.render(context)
+            from_email = settings.EMAIL_HOST_USER
+            recipient_list = ['bdiouipierre@gmail.com']
+
+            email = EmailMessage(subject, email_body, from_email, recipient_list)
+            email.content_subtype = 'html'
+            email.send()
+            messages.success(request, 'Votre demande a bien été envoyée !')
+            return redirect('Main:cyber')
+        else:
+            messages.error(request, 'Oups ! Erreur de Captcha !')
     else:
         return render(request, 'Main/Cyber.html')
 
 def IoT(request):
     if request.method == "POST":
-        callback_request = request.POST.get('callback_request') == 'on'
-        contact_request = ContactRequest(
-            email=request.POST.get('email'),
-            first_name=request.POST.get('first_name'),
-            last_name=request.POST.get('last_name'),
-            content=request.POST.get('content'),
-            company=request.POST.get('company'),
-            phone=request.POST.get('phone'),
-            field=request.POST.get('field'),
-            callback_request=callback_request,
-        )
-        contact_request.save()
-
-        # Mail de confirmation
-        email_template = get_template(os.path.join(settings.BASE_DIR, 'Main/templates/Main/request_confirmation.html'))
-        email = request.POST.get('email')
-        subject = 'Demande reçu !'
-        email_body = email_template.render()
-        from_email = settings.EMAIL_HOST_USER
-        recipient_list = [email]
-
-        email = EmailMessage(subject, email_body, from_email, recipient_list)
-        email.content_subtype = 'html'
-        email.send()
-
-        callback_request = 'oui' if callback_request else 'non'
-
-        context = {
-           'first_name':request.POST.get('first_name'),
-           'last_name': request.POST.get('last_name'),
-           'email': request.POST.get('email'),
-           'content': request.POST.get('content'),
-           'phone': request.POST.get('phone'),
-           'field': request.POST.get('field'),
-           'company': request.POST.get('company'),
-           'callback_request': callback_request,
-
+        recaptcha_response = request.POST.get('g-recaptcha-response')
+        data = {
+            'secret': settings.RECAPTCHA_PRIVATE_KEY,
+            'response': recaptcha_response
         }
+        r = requests.post('https://www.google.com/recaptcha/api/siteverify', data=data)
+        result = r.json()
 
-        # Mail de confirmation
-        email_template = get_template(os.path.join(settings.BASE_DIR, 'Main/templates/Main/Admin_alert.html'))
-        subject = 'Nouveau message'
-        email_body = email_template.render(context)
-        from_email = settings.EMAIL_HOST_USER
-        recipient_list = ['bdiouipierre@gmail.com']
+        if result['success']:
+            callback_request = request.POST.get('callback_request') == 'on'
+            contact_request = ContactRequest(
+                email=request.POST.get('email'),
+                first_name=request.POST.get('first_name'),
+                last_name=request.POST.get('last_name'),
+                content=request.POST.get('content'),
+                company=request.POST.get('company'),
+                phone=request.POST.get('phone'),
+                field=request.POST.get('field'),
+                callback_request=callback_request,
+            )
+            contact_request.save()
 
-        email = EmailMessage(subject, email_body, from_email, recipient_list)
-        email.content_subtype = 'html'
-        email.send()
+            # Mail de confirmation
+            email_template = get_template(os.path.join(settings.BASE_DIR, 'Main/templates/Main/request_confirmation.html'))
+            email = request.POST.get('email')
+            subject = 'Demande reçue !'
+            email_body = email_template.render()
+            from_email = settings.EMAIL_HOST_USER
+            recipient_list = [email]
 
-        messages.success(request, 'Votre demande a bien été envoyée !')
-        return redirect('Main:iot')
+            email = EmailMessage(subject, email_body, from_email, recipient_list)
+            email.content_subtype = 'html'
+            email.send()
+
+            callback_request = 'oui' if callback_request else 'non'
+
+            context = {
+               'first_name':request.POST.get('first_name'),
+               'last_name': request.POST.get('last_name'),
+               'email': request.POST.get('email'),
+               'content': request.POST.get('content'),
+               'phone': request.POST.get('phone'),
+               'field': request.POST.get('field'),
+               'company': request.POST.get('company'),
+               'callback_request': callback_request,
+
+            }
+
+            # Mail de confirmation
+            email_template = get_template(os.path.join(settings.BASE_DIR, 'Main/templates/Main/Admin_alert.html'))
+            subject = 'Nouveau message'
+            email_body = email_template.render(context)
+            from_email = settings.EMAIL_HOST_USER
+            recipient_list = ['bdiouipierre@gmail.com']
+
+            email = EmailMessage(subject, email_body, from_email, recipient_list)
+            email.content_subtype = 'html'
+            email.send()
+
+            messages.success(request, 'Votre demande a bien été envoyée !')
+            return redirect('Main:iot')
+        else:
+            messages.error(request, 'Oups ! Erreur de Captcha !')
     else:
         return render(request, 'Main/IoT.html')
 
 def About(request):
     if request.method == "POST":
-        callback_request = request.POST.get('callback_request') == 'on'
-        contact_request = ContactRequest(
-            email=request.POST.get('email'),
-            first_name = request.POST.get('first_name'),
-            last_name = request.POST.get('last_name'),
-            content = request.POST.get('content'),
-            company = request.POST.get('company'),
-            field = request.POST.get('field'),
-            callback_request = callback_request,
-        )
-        contact_request.save()
-
-        # Mail de confirmation
-        email_template = get_template(os.path.join(settings.BASE_DIR, 'Main/templates/Main/request_confirmation.html'))
-        email = request.POST.get('email')
-        subject = 'Demande reçu !'
-        email_body = email_template.render()
-        from_email = settings.EMAIL_HOST_USER
-        recipient_list = [email]
-
-        email = EmailMessage(subject, email_body, from_email, recipient_list)
-        email.content_subtype = 'html'
-        email.send()
-
-        callback_request = 'oui' if callback_request else 'non'
-
-        context = {
-            'first_name': request.POST.get('first_name'),
-            'last_name': request.POST.get('last_name'),
-            'email': request.POST.get('email'),
-            'content': request.POST.get('content'),
-            'phone': request.POST.get('phone'),
-            'field': request.POST.get('field'),
-            'company': request.POST.get('company'),
-            'callback_request': callback_request,
-
+        recaptcha_response = request.POST.get('g-recaptcha-response')
+        data = {
+            'secret': settings.RECAPTCHA_PRIVATE_KEY,
+            'response': recaptcha_response
         }
+        r = requests.post('https://www.google.com/recaptcha/api/siteverify', data=data)
+        result = r.json()
 
-        # Mail de confirmation
-        email_template = get_template(os.path.join(settings.BASE_DIR, 'Main/templates/Main/Admin_alert.html'))
-        subject = 'Nouveau message'
-        email_body = email_template.render(context)
-        from_email = settings.EMAIL_HOST_USER
-        recipient_list = ['bdiouipierre@gmail.com']
+        if result['success']:
+            callback_request = request.POST.get('callback_request') == 'on'
+            contact_request = ContactRequest(
+                email=request.POST.get('email'),
+                first_name = request.POST.get('first_name'),
+                last_name = request.POST.get('last_name'),
+                content = request.POST.get('content'),
+                company = request.POST.get('company'),
+                field = request.POST.get('field'),
+                callback_request = callback_request,
+            )
+            contact_request.save()
 
-        email = EmailMessage(subject, email_body, from_email, recipient_list)
-        email.content_subtype = 'html'
-        email.send()
-        messages.success(request, 'Votre demande a bien été envoyée !')
-        return redirect('Main:about')
+            # Mail de confirmation
+            email_template = get_template(os.path.join(settings.BASE_DIR, 'Main/templates/Main/request_confirmation.html'))
+            email = request.POST.get('email')
+            subject = 'Demande reçue !'
+            email_body = email_template.render()
+            from_email = settings.EMAIL_HOST_USER
+            recipient_list = [email]
+
+            email = EmailMessage(subject, email_body, from_email, recipient_list)
+            email.content_subtype = 'html'
+            email.send()
+
+            callback_request = 'oui' if callback_request else 'non'
+
+            context = {
+                'first_name': request.POST.get('first_name'),
+                'last_name': request.POST.get('last_name'),
+                'email': request.POST.get('email'),
+                'content': request.POST.get('content'),
+                'phone': request.POST.get('phone'),
+                'field': request.POST.get('field'),
+                'company': request.POST.get('company'),
+                'callback_request': callback_request,
+
+            }
+
+            # Mail de confirmation
+            email_template = get_template(os.path.join(settings.BASE_DIR, 'Main/templates/Main/Admin_alert.html'))
+            subject = 'Nouveau message'
+            email_body = email_template.render(context)
+            from_email = settings.EMAIL_HOST_USER
+            recipient_list = ['bdiouipierre@gmail.com']
+
+            email = EmailMessage(subject, email_body, from_email, recipient_list)
+            email.content_subtype = 'html'
+            email.send()
+            messages.success(request, 'Votre demande a bien été envoyée !')
+            return redirect('Main:about')
+        else:
+            messages.error(request, 'Oups ! Erreur de Captcha !')
     else:
         return render(request, 'Main/About.html')
 
 def Join(request):
     jobs = Job.objects.all()
     if request.method == "POST":
-        application = Applicant(
-            email=request.POST.get('email'),
-            job=Job.objects.get(title='candidature_libre'),
-            cv = request.FILES.get('cv'),
-            cover_letter = request.FILES.get('cover_letter'),
-            )
-        application.save()
-
-        email = request.POST.get('email')
-        email_template = get_template(os.path.join(settings.BASE_DIR, 'Main/templates/Main/Job_confirmation_libre.html'))
-
-        subject = 'Message reçu !'
-        email_body = email_template.render()
-        from_email = settings.EMAIL_HOST_USER
-        recipient_list = [email]
-
-        email = EmailMessage(subject, email_body, from_email, recipient_list)
-        email.content_subtype = 'html'
-        email.send()
-
-        context = {
-            'first_name': request.POST.get('first_name'),
-            'last_name': request.POST.get('last_name'),
-            'email': request.POST.get('email'),
-            'phone': request.POST.get('phone'),
+        recaptcha_response = request.POST.get('g-recaptcha-response')
+        data = {
+            'secret': settings.RECAPTCHA_PRIVATE_KEY,
+            'response': recaptcha_response
         }
+        r = requests.post('https://www.google.com/recaptcha/api/siteverify', data=data)
+        result = r.json()
 
-        # Récupération des fichiers
-        cv_file = request.FILES.get('cv')
-        cover_letter_file = request.FILES.get('cover_letter')
+        if result['success']:
+            application = Applicant(
+                email=request.POST.get('email'),
+                job=Job.objects.get(title='candidature_libre'),
+                cv = request.FILES.get('cv'),
+                cover_letter = request.FILES.get('cover_letter'),
+                )
+            application.save()
 
-        # Chargement du template d'email et génération du contenu
-        email_template = get_template(os.path.join(settings.BASE_DIR, 'Main/templates/Main/Admin_applicant.html'))
-        email_body = email_template.render(context)
+            email = request.POST.get('email')
+            email_template = get_template(os.path.join(settings.BASE_DIR, 'Main/templates/Main/job_confirmation.html'))
 
-        # Création de l'email
-        subject = 'Nouveau message'
-        from_email = settings.EMAIL_HOST_USER
-        recipient_list = ['bdiouipierre@gmail.com']
-        email = EmailMessage(subject, email_body, from_email, recipient_list)
-        email.content_subtype = 'html'
+            subject = 'Message reçu !'
+            email_body = email_template.render()
+            from_email = settings.EMAIL_HOST_USER
+            recipient_list = [email]
 
-        # Ajout des pièces jointes
-        if cv_file:
-            email.attach(cv_file.name, cv_file.read(), cv_file.content_type)
-        if cover_letter_file:
-            email.attach(cover_letter_file.name, cover_letter_file.read(), cover_letter_file.content_type)
+            email = EmailMessage(subject, email_body, from_email, recipient_list)
+            email.content_subtype = 'html'
+            email.send()
 
-        # Envoi de l'email
-        email.send()
-        messages.success(request, 'Votre candidature a bien été envoyée !')
-        return redirect('Main:join')
+            context = {
+                'first_name': request.POST.get('first_name'),
+                'last_name': request.POST.get('last_name'),
+                'email': request.POST.get('email'),
+                'phone': request.POST.get('phone'),
+            }
+
+            # Récupération des fichiers
+            cv_file = request.FILES.get('cv')
+            cover_letter_file = request.FILES.get('cover_letter')
+
+            # Chargement du template d'email et génération du contenu
+            email_template = get_template(os.path.join(settings.BASE_DIR, 'Main/templates/Main/Admin_applicant.html'))
+            email_body = email_template.render(context)
+
+            # Création de l'email
+            subject = 'Nouveau message'
+            from_email = settings.EMAIL_HOST_USER
+            recipient_list = ['bdiouipierre@gmail.com']
+            email = EmailMessage(subject, email_body, from_email, recipient_list)
+            email.content_subtype = 'html'
+
+            # Ajout des pièces jointes
+            if cv_file:
+                email.attach(cv_file.name, cv_file.read(), cv_file.content_type)
+            if cover_letter_file:
+                email.attach(cover_letter_file.name, cover_letter_file.read(), cover_letter_file.content_type)
+
+            # Envoi de l'email
+            email.send()
+            messages.success(request, 'Votre candidature a bien été envoyée !')
+            return redirect('Main:join')
+        else:
+            messages.error(request, 'Oups ! Erreur de Captcha !')
     else :
         return render(request, 'Main/Join.html', {'jobs':jobs})
 
@@ -365,47 +448,59 @@ def Blog(request):
 
 def Contact(request):
     if request.method == "POST":
-        message = Message(
-            email=request.POST.get('email'),
-            content=request.POST.get('content')
-        )
-        message.save()
-        sender_email = request.POST.get('email')
-        content = request.POST.get('content')
-        email_template = get_template(os.path.join(settings.BASE_DIR, 'Main/templates/Main/message_confirmation.html'))
+        if request.method == "POST":
+            recaptcha_response = request.POST.get('g-recaptcha-response')
+            data = {
+                'secret': settings.RECAPTCHA_PRIVATE_KEY,
+                'response': recaptcha_response
+            }
+            r = requests.post('https://www.google.com/recaptcha/api/siteverify', data=data)
+            result = r.json()
 
-        subject = 'Message reçu !'
-        email_body = email_template.render()
-        from_email = settings.EMAIL_HOST_USER
-        recipient_list = [sender_email]
+            if result['success']:
+                message = Message(
+                    email=request.POST.get('email'),
+                    content=request.POST.get('content')
+                )
+                message.save()
+                sender_email = request.POST.get('email')
+                content = request.POST.get('content')
+                email_template = get_template(os.path.join(settings.BASE_DIR, 'Main/templates/Main/message_confirmation.html'))
 
-        email = EmailMessage(subject, email_body, from_email, recipient_list)
-        email.content_subtype = 'html'
-        email.send()
+                subject = 'Message reçu !'
+                email_body = email_template.render()
+                from_email = settings.EMAIL_HOST_USER
+                recipient_list = [sender_email]
+
+                email = EmailMessage(subject, email_body, from_email, recipient_list)
+                email.content_subtype = 'html'
+                email.send()
 
 
-        context = {
-            'first_name': request.POST.get('first_name'),
-            'last_name': request.POST.get('last_name'),
-            'email': request.POST.get('email'),
-            'content': request.POST.get('content'),
-            'phone': request.POST.get('phone'),
+                context = {
+                    'first_name': request.POST.get('first_name'),
+                    'last_name': request.POST.get('last_name'),
+                    'email': request.POST.get('email'),
+                    'content': request.POST.get('content'),
+                    'phone': request.POST.get('phone'),
 
-        }
+                }
 
-        # Mail de confirmation
-        email_template = get_template(os.path.join(settings.BASE_DIR, 'Main/templates/Main/Admin_contact.html'))
-        subject = 'Nouveau message'
-        email_body = email_template.render(context)
-        from_email = settings.EMAIL_HOST_USER
-        recipient_list = ['bdiouipierre@gmail.com']
+                # Mail de confirmation
+                email_template = get_template(os.path.join(settings.BASE_DIR, 'Main/templates/Main/Admin_contact.html'))
+                subject = 'Nouveau message'
+                email_body = email_template.render(context)
+                from_email = settings.EMAIL_HOST_USER
+                recipient_list = ['bdiouipierre@gmail.com']
 
-        email = EmailMessage(subject, email_body, from_email, recipient_list)
-        email.content_subtype = 'html'
-        email.send()
+                email = EmailMessage(subject, email_body, from_email, recipient_list)
+                email.content_subtype = 'html'
+                email.send()
 
-        messages.success(request, 'Votre message a bien été envoyé !')
-        return redirect('Main:index')
+                messages.success(request, 'Votre message a bien été envoyé !')
+                return redirect('Main:index')
+            else:
+                messages.error(request, 'Oups ! Erreur de Captcha !')
     else:
         return render(request, 'Main/Contact.html')
 
