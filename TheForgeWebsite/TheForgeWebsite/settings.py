@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Main',
     'django_quill',
-    'django-recaptcha',
 ]
 
 MIDDLEWARE = [
