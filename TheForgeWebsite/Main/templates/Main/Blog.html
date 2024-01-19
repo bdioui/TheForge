@@ -86,6 +86,7 @@
       <div class="container text-vert fade-up" style="margin-top:10rem !important; padding-bottom:100px !important">
         <div class="display-1" style="margin-bottom:100px;">Blog</div>
         <div class="row borderTop justify-content-around pt-4 m-auto p-2">
+          {% if posts %}
           {% for post in posts %}
           <a href="{% url 'Main:post' post.pk %}" class="nav-link mb-3 col-sm-12 col-md-6 col-lg-4 pointer" style="cursor:pointer !important;">
             <img src="{{post.image.url}}" width="250px">
@@ -96,6 +97,9 @@
         </div>
         {% if user.is_staff %}
         <a class='text-vert' href="{% url 'Main:create_post' %}">+ Publier un nouvel article</a>
+        {% endif %}
+        {% else %}
+        <p>Aucun article publié pour le moment.</p>
         {% endif %}
       </div>
 
