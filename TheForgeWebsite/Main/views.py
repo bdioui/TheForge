@@ -74,7 +74,7 @@ def FAQ(request):
             subject = 'Nouveau message'
             email_body = email_template.render(context)
             from_email = settings.EMAIL_HOST_USER
-            recipient_list = ['bdiouipierre@gmail.com']
+            recipient_list = ['adrien.schwartzentruber@theforge.fr']
 
             email = EmailMessage(subject, email_body, from_email, recipient_list)
             email.content_subtype = 'html'
@@ -150,7 +150,7 @@ def AI(request):
             subject = 'Nouveau message'
             email_body = email_template.render(context)
             from_email = settings.EMAIL_HOST_USER
-            recipient_list = ['bdiouipierre@gmail.com']
+            recipient_list = ['adrien.schwartzentruber@theforge.fr']
 
             email = EmailMessage(subject, email_body, from_email, recipient_list)
             email.content_subtype = 'html'
@@ -226,7 +226,7 @@ def Cyber(request):
             subject = 'Nouveau message'
             email_body = email_template.render(context)
             from_email = settings.EMAIL_HOST_USER
-            recipient_list = ['bdiouipierre@gmail.com']
+            recipient_list = ['adrien.schwartzentruber@theforge.fr']
 
             email = EmailMessage(subject, email_body, from_email, recipient_list)
             email.content_subtype = 'html'
@@ -293,7 +293,7 @@ def IoT(request):
             subject = 'Nouveau message'
             email_body = email_template.render(context)
             from_email = settings.EMAIL_HOST_USER
-            recipient_list = ['bdiouipierre@gmail.com']
+            recipient_list = ['adrien.schwartzentruber@theforge.fr']
 
             email = EmailMessage(subject, email_body, from_email, recipient_list)
             email.content_subtype = 'html'
@@ -360,7 +360,7 @@ def About(request):
             subject = 'Nouveau message'
             email_body = email_template.render(context)
             from_email = settings.EMAIL_HOST_USER
-            recipient_list = ['bdiouipierre@gmail.com']
+            recipient_list = ['adrien.schwartzentruber@theforge.fr']
 
             email = EmailMessage(subject, email_body, from_email, recipient_list)
             email.content_subtype = 'html'
@@ -422,7 +422,7 @@ def Join(request):
             # Création de l'email
             subject = 'Nouveau message'
             from_email = settings.EMAIL_HOST_USER
-            recipient_list = ['bdiouipierre@gmail.com']
+            recipient_list = ['adrien.schwartzentruber@theforge.fr']
             email = EmailMessage(subject, email_body, from_email, recipient_list)
             email.content_subtype = 'html'
 
@@ -491,7 +491,7 @@ def Contact(request):
                 subject = 'Nouveau message'
                 email_body = email_template.render(context)
                 from_email = settings.EMAIL_HOST_USER
-                recipient_list = ['bdiouipierre@gmail.com']
+                recipient_list = ['adrien.schwartzentruber@theforge.fr']
 
                 email = EmailMessage(subject, email_body, from_email, recipient_list)
                 email.content_subtype = 'html'
@@ -575,7 +575,7 @@ def Job_Detail(request, pk):
         # Création de l'email
         subject = 'Nouveau message'
         from_email = settings.EMAIL_HOST_USER
-        recipient_list = ['bdiouipierre@gmail.com']
+        recipient_list = ['adrien.schwartzentruber@theforge.fr']
         email = EmailMessage(subject, email_body, from_email, recipient_list)
         email.content_subtype = 'html'
 
