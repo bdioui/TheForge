@@ -101,7 +101,7 @@
         {% else %}
         <p>Aucun article publié pour le moment.</p>
         {% if user.is_staff %}
-        <a class='text-white' href="{% url 'Main:create_post' %}">+ Publier un nouvel article</a>
+        <a class='text-vert' href="{% url 'Main:create_post' %}">+ Publier un nouvel article</a>
         {% endif %}
         {% endif %}
       </div>
