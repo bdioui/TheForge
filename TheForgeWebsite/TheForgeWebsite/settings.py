@@ -27,7 +27,7 @@ SECRET_KEY = config("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["193.70.90.13", "theforge.fr", "www.theforge.fr"]
+ALLOWED_HOSTS = ["193.70.90.13", "tech-forge.fr", "www.tech-forge.fr"]
 
 
 # Application definition
